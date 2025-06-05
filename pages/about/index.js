@@ -1,7 +1,7 @@
 import React from "react";
 
 // icons
-import { FaHtml5, FaCss3, FaJs, FaReact } from "react-icons/fa";
+import { FaHtml5, FaCss3, FaJs, FaReact, FaPython } from "react-icons/fa";
 
 import {
   SiNextdotjs,
@@ -11,9 +11,20 @@ import {
   SiPostgresql,
   SiAmazonaws,
   SiDocker,
+  SiFlask,
+  SiPandas,
+  SiNumpy,
+  SiScikitlearn,
+  SiTensorflow,
+  SiKubernetes,
+  SiVercel,
+  SiNestjs,
+  SiGooglecloud,
+  SiExpress,
+  SiPhp,
 } from "react-icons/si";
 
-// Updated about data based on your CV with financial/trading focus
+// Updated about data with Python/ML trading focus
 export const aboutData = [
   {
     title: "skills",
@@ -31,11 +42,29 @@ export const aboutData = [
       },
       {
         title: "Backend Development",
-        icons: [<SiNodedotjs />, <SiMongodb />, <SiPostgresql />],
+        icons: [
+          <SiNodedotjs />,
+          <FaPython />,
+          <SiFlask />,
+          <SiNestjs />,
+          <SiPhp />,
+          <SiMongodb />,
+          <SiPostgresql />,
+        ],
       },
       {
-        title: "DevOps & Cloud",
-        icons: [<SiAmazonaws />, <SiDocker />],
+        title: "Machine Learning & Data Science (Trading)",
+        icons: [<SiPandas />, <SiNumpy />, <SiScikitlearn />, <SiTensorflow />],
+      },
+      {
+        title: "DevOps & Cloud Services",
+        icons: [
+          <SiAmazonaws />,
+          <SiDocker />,
+          <SiKubernetes />,
+          <SiVercel />,
+          <SiGooglecloud />,
+        ],
       },
     ],
   },
@@ -46,7 +75,7 @@ export const aboutData = [
         title: "Senior Fullstack Developer - VIPCLUB.LV",
         stage: "2024 - 2025",
         description:
-          "Web3 crypto casino platform development with blockchain integration",
+          "Web3 crypto casino platform development with blockchain integration and Python-based analytics",
       },
       {
         title: "Senior Frontend Developer - ENCORA",
@@ -74,28 +103,43 @@ export const aboutData = [
       {
         title: "Algorithmic Trading Systems",
         description:
-          "Development of automated trading bots and algorithms for cryptocurrency and forex markets",
+          "Development of automated trading bots using Python, Jesse framework, and advanced ML algorithms (PPO, SAC)",
+      },
+      {
+        title: "Machine Learning Trading",
+        description:
+          "Implementation of reinforcement learning algorithms (PPO, SAC) for adaptive trading strategies and market prediction",
       },
       {
         title: "Financial Data Analysis",
         description:
-          "Real-time market data processing, technical indicators, and risk management systems",
+          "Real-time market data processing using Python, Flask APIs, technical indicators, and risk management systems",
       },
       {
         title: "Trading Platform Development",
         description:
-          "Custom trading interfaces, portfolio management tools, and market analysis dashboards",
+          "Custom trading interfaces, portfolio management tools, and market analysis dashboards with Python backends",
       },
       {
         title: "DeFi & Yield Farming",
         description:
-          "Smart contract integration for decentralized finance protocols and yield optimization",
+          "Smart contract integration for decentralized finance protocols and yield optimization strategies",
       },
     ],
   },
   {
     title: "products I can build",
     info: [
+      {
+        title: "AI Trading Systems",
+        description:
+          "Advanced algorithmic trading platforms using Jesse framework with PPO/SAC reinforcement learning models",
+      },
+      {
+        title: "Financial APIs",
+        description:
+          "RESTful APIs built with Flask for market data processing, trading signals, and portfolio management",
+      },
       {
         title: "Chrome Extensions",
         description:
@@ -104,17 +148,17 @@ export const aboutData = [
       {
         title: "Web Applications",
         description:
-          "Modern responsive web apps using React, Next.js, and cutting-edge technologies",
+          "Modern responsive web apps using React, Next.js, and Python backends with Flask",
       },
       {
         title: "Hybrid Mobile Apps",
         description:
-          "Cross-platform mobile applications using React Native and Capacitor.js",
+          "Cross-platform mobile applications using React Native with Python API integration",
       },
       {
-        title: "Trading Bots",
+        title: "ML Trading Bots",
         description:
-          "Automated algorithmic trading systems for cryptocurrency and forex markets",
+          "Intelligent trading systems with adaptive learning capabilities using reinforcement learning algorithms",
       },
     ],
   },
@@ -180,9 +224,9 @@ const About = () => {
   return (
     <>
       <SEO
-        title="About Diego Rodriguez - Senior Full Stack Developer"
-        description="Learn about Diego Rodriguez, a senior full stack developer with 9+ years of experience in Web3, fintech, algorithmic trading systems, and modern web applications. University educated with multiple certifications in blockchain and software engineering."
-        keywords="diego rodriguez about, full stack developer experience, web3 expertise, trading systems developer, software engineer uruguay, blockchain developer experience, fintech developer background"
+        title="About Diego Rodriguez - Senior Full Stack Developer & ML Trading Specialist"
+        description="Learn about Diego Rodriguez, a senior full stack developer with 9+ years of experience in Web3, fintech, algorithmic trading systems with Python/Flask, Jesse framework, and machine learning (PPO, SAC algorithms). University educated with multiple certifications in blockchain and software engineering."
+        keywords="diego rodriguez about, full stack developer experience, web3 expertise, python flask developer, jesse framework, machine learning trading, PPO SAC algorithms, trading systems developer, software engineer uruguay, blockchain developer experience, fintech developer background"
         image="/og-about.jpg"
       />
       <PersonJsonLd />
@@ -221,8 +265,9 @@ const About = () => {
               >
                 I&apos;m an enterprising full-stack developer who loves
                 challenges and never gives up easily. With expertise in Web3,
-                fintech, algorithmic trading, and chrome extensions, I
-                specialize in creating scalable financial applications that
+                fintech, algorithmic trading using Python/Flask, Jesse
+                framework, and machine learning (PPO, SAC algorithms), I
+                specialize in creating intelligent financial applications that
                 drive business growth.
               </motion.p>
               {/* counters */}
@@ -255,7 +300,7 @@ const About = () => {
                   {/* technologies */}
                   <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
                     <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                      <CountUp start={0} end={25} duration={5} /> +
+                      <CountUp start={0} end={35} duration={5} /> +
                     </div>
                     <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
                       Technologies mastered

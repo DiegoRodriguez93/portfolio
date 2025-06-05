@@ -38,7 +38,7 @@ export const serviceData = [
     icon: <RxPencil2 />,
     title: "Mobile Apps",
     description:
-      "Cross-platform hybrid mobile applications using React Native and Capacitor.js for iOS and Android.",
+      "Cross-platform hybrid mobile applications using React Native or React/Capacitor.js for iOS and Android.",
     category: "mobile-apps",
   },
   {
