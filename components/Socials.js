@@ -1,36 +1,31 @@
 // links
-import Link from 'next/link';
+import Link from "next/link";
 
 // icons
-import {
-  RiYoutubeLine,
-  RiInstagramLine,
-  RiFacebookLine,
-  RiDribbbleLine,
-  RiBehanceLine,
-  RiPinterestLine,
-} from 'react-icons/ri';
+import { RiLinkedinLine, RiMailLine } from "react-icons/ri";
 
 const Socials = () => {
+  const mailtoLink = `mailto:Diego Rodriguez <diegorodriguezpaiva1993@gmail.com>?subject=${encodeURIComponent(
+    "Freelance Services Inquiry"
+  )}&body=${encodeURIComponent(
+    "Hi Diego,\n\nI'm interested in hiring your freelance services.\n\nI'd like to discuss:\n- \n\nLooking forward to your response.\n\nBest regards."
+  )}`;
+
   return (
-    <div className='flex items-center gap-x-5 text-lg'>
-      <Link href={''} className='hover:text-accent transition-all duration-300'>
-        <RiYoutubeLine />
+    <div className="flex items-center gap-x-5 text-lg">
+      <Link
+        href={"https://linkedin.com/in/diego-rodriguez-paiva"}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-accent transition-all duration-300"
+      >
+        <RiLinkedinLine />
       </Link>
-      <Link href={''} className='hover:text-accent transition-all duration-300'>
-        <RiFacebookLine />
-      </Link>
-      <Link href={''} className='hover:text-accent transition-all duration-300'>
-        <RiInstagramLine />
-      </Link>
-      <Link href={''} className='hover:text-accent transition-all duration-300'>
-        <RiDribbbleLine />
-      </Link>
-      <Link href={''} className='hover:text-accent transition-all duration-300'>
-        <RiBehanceLine />
-      </Link>
-      <Link href={''} className='hover:text-accent transition-all duration-300'>
-        <RiPinterestLine />
+      <Link
+        href={mailtoLink}
+        className="hover:text-accent transition-all duration-300"
+      >
+        <RiMailLine />
       </Link>
     </div>
   );
