@@ -173,177 +173,191 @@ import { fadeIn } from "../../variants";
 // counter
 import CountUp from "react-countup";
 
+import SEO from "../../components/SEO";
+import { PersonJsonLd } from "../../components/JsonLd";
+
 const About = () => {
   return (
-    <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
-      <Circles />
-      {/* avatar img */}
-      <motion.div
-        variants={fadeIn("right", 0.2)}
-        initial="hidden"
-        animate="show"
-        exit="hidden"
-        className="hidden xl:flex absolute bottom-0 -left-[370px]"
-      >
-        <Avatar />
-      </motion.div>
-      <div className="container mx-auto h-full flex flex-col">
-        {/* text and counters section */}
-        <div className="flex flex-col items-center xl:flex-row gap-x-6 mb-12">
-          <div className="flex-1 flex flex-col justify-center">
-            <motion.h2
-              variants={fadeIn("right", 0.2)}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              className="h2"
-            >
-              Transforming <span className="text-accent">ideas</span> into
-              digital reality.
-            </motion.h2>
-            <motion.p
-              variants={fadeIn("right", 0.4)}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0"
-            >
-              I&apos;m an enterprising full-stack developer who loves challenges
-              and never gives up easily. With expertise in Web3, fintech,
-              algorithmic trading, and chrome extensions, I specialize in
-              creating scalable financial applications that drive business
-              growth.
-            </motion.p>
-            {/* counters */}
-            <motion.div
-              variants={fadeIn("right", 0.6)}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              className="hidden md:flex md:max-w-xl xl:max-w-none mx-auto xl:mx-0 mb-8"
-            >
-              <div className="flex flex-1 xl:gap-x-6">
-                {/* experience */}
-                <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
-                  <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                    <CountUp start={0} end={9} duration={5} /> +
-                  </div>
-                  <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                    Years of experience
-                  </div>
-                </div>
-                {/* projects */}
-                <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
-                  <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                    <CountUp start={0} end={50} duration={5} /> +
-                  </div>
-                  <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                    Projects completed
-                  </div>
-                </div>
-                {/* technologies */}
-                <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
-                  <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                    <CountUp start={0} end={25} duration={5} /> +
-                  </div>
-                  <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                    Technologies mastered
-                  </div>
-                </div>
-                {/* certifications */}
-                <div className="relative flex-1">
-                  <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                    <CountUp start={0} end={8} duration={5} /> +
-                  </div>
-                  <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                    Certifications earned
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Full width info section */}
+    <>
+      <SEO
+        title="About Diego Rodriguez - Senior Full Stack Developer"
+        description="Learn about Diego Rodriguez, a senior full stack developer with 9+ years of experience in Web3, fintech, algorithmic trading systems, and modern web applications. University educated with multiple certifications in blockchain and software engineering."
+        keywords="diego rodriguez about, full stack developer experience, web3 expertise, trading systems developer, software engineer uruguay, blockchain developer experience, fintech developer background"
+        image="/og-about.jpg"
+      />
+      <PersonJsonLd />
+      <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
+        <Circles />
+        {/* avatar img */}
         <motion.div
-          variants={fadeIn("up", 0.4)}
+          variants={fadeIn("right", 0.2)}
           initial="hidden"
           animate="show"
           exit="hidden"
-          className="w-full mb-16"
+          className="hidden xl:flex absolute bottom-0 -left-[370px]"
         >
-          <div
-            style={{ marginBottom: "120px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
-          >
-            {aboutData.map((section, sectionIndex) => (
-              <div key={sectionIndex} className="space-y-4">
-                <h3 className="text-lg xl:text-xl font-bold text-accent capitalize mb-4 border-b border-accent/30 pb-2">
-                  {section.title}
-                </h3>
-                <div className="space-y-3">
-                  {section.info.map((item, itemIndex) => (
-                    <div
-                      key={itemIndex}
-                      className="p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300"
-                    >
-                      <div className="flex flex-col gap-y-2 text-white">
-                        <div className="font-medium text-sm">{item.title}</div>
-                        {item.stage && (
-                          <div className="text-accent text-xs">
-                            {item.stage}
-                          </div>
-                        )}
-                        {item.description && (
-                          <div className="text-white/70 text-xs leading-relaxed">
-                            {item.description}
-                          </div>
-                        )}
-                        {item.certificate && (
-                          <a
-                            href={item.certificate}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-x-1 text-accent hover:text-white transition-colors duration-300 text-xs cursor-pointer underline hover:no-underline"
-                          >
-                            View Certificate
-                            <svg
-                              className="w-3 h-3"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                              />
-                            </svg>
-                          </a>
-                        )}
-                        {item.icons && (
-                          <div className="flex gap-x-2 mt-2 flex-wrap">
-                            {item.icons.map((icon, iconIndex) => (
-                              <div
-                                key={iconIndex}
-                                className="text-lg text-accent hover:text-white transition-colors duration-300"
-                              >
-                                {icon}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <Avatar />
         </motion.div>
+        <div className="container mx-auto h-full flex flex-col">
+          {/* text and counters section */}
+          <div className="flex flex-col items-center xl:flex-row gap-x-6 mb-12">
+            <div className="flex-1 flex flex-col justify-center">
+              <motion.h2
+                variants={fadeIn("right", 0.2)}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                className="h2"
+              >
+                Transforming <span className="text-accent">ideas</span> into
+                digital reality.
+              </motion.h2>
+              <motion.p
+                variants={fadeIn("right", 0.4)}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0"
+              >
+                I&apos;m an enterprising full-stack developer who loves
+                challenges and never gives up easily. With expertise in Web3,
+                fintech, algorithmic trading, and chrome extensions, I
+                specialize in creating scalable financial applications that
+                drive business growth.
+              </motion.p>
+              {/* counters */}
+              <motion.div
+                variants={fadeIn("right", 0.6)}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                className="hidden md:flex md:max-w-xl xl:max-w-none mx-auto xl:mx-0 mb-8"
+              >
+                <div className="flex flex-1 xl:gap-x-6">
+                  {/* experience */}
+                  <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
+                    <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
+                      <CountUp start={0} end={9} duration={5} /> +
+                    </div>
+                    <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
+                      Years of experience
+                    </div>
+                  </div>
+                  {/* projects */}
+                  <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
+                    <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
+                      <CountUp start={0} end={50} duration={5} /> +
+                    </div>
+                    <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
+                      Projects completed
+                    </div>
+                  </div>
+                  {/* technologies */}
+                  <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
+                    <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
+                      <CountUp start={0} end={25} duration={5} /> +
+                    </div>
+                    <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
+                      Technologies mastered
+                    </div>
+                  </div>
+                  {/* certifications */}
+                  <div className="relative flex-1">
+                    <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
+                      <CountUp start={0} end={8} duration={5} /> +
+                    </div>
+                    <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
+                      Certifications earned
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+
+          {/* Full width info section */}
+          <motion.div
+            variants={fadeIn("up", 0.4)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="w-full mb-16"
+          >
+            <div
+              style={{ marginBottom: "120px" }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
+            >
+              {aboutData.map((section, sectionIndex) => (
+                <div key={sectionIndex} className="space-y-4">
+                  <h3 className="text-lg xl:text-xl font-bold text-accent capitalize mb-4 border-b border-accent/30 pb-2">
+                    {section.title}
+                  </h3>
+                  <div className="space-y-3">
+                    {section.info.map((item, itemIndex) => (
+                      <div
+                        key={itemIndex}
+                        className="p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300"
+                      >
+                        <div className="flex flex-col gap-y-2 text-white">
+                          <div className="font-medium text-sm">
+                            {item.title}
+                          </div>
+                          {item.stage && (
+                            <div className="text-accent text-xs">
+                              {item.stage}
+                            </div>
+                          )}
+                          {item.description && (
+                            <div className="text-white/70 text-xs leading-relaxed">
+                              {item.description}
+                            </div>
+                          )}
+                          {item.certificate && (
+                            <a
+                              href={item.certificate}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-x-1 text-accent hover:text-white transition-colors duration-300 text-xs cursor-pointer underline hover:no-underline"
+                            >
+                              View Certificate
+                              <svg
+                                className="w-3 h-3"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                                />
+                              </svg>
+                            </a>
+                          )}
+                          {item.icons && (
+                            <div className="flex gap-x-2 mt-2 flex-wrap">
+                              {item.icons.map((icon, iconIndex) => (
+                                <div
+                                  key={iconIndex}
+                                  className="text-lg text-accent hover:text-white transition-colors duration-300"
+                                >
+                                  {icon}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

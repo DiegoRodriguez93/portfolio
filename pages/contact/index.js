@@ -13,6 +13,7 @@ import { motion } from "framer-motion";
 
 // variants
 import { fadeIn } from "../../variants";
+import SEO from "../../components/SEO";
 
 // service categories mapping
 const serviceCategories = {
@@ -148,153 +149,161 @@ const Contact = () => {
   };
 
   return (
-    <div className="h-full bg-primary/30">
-      <Circles />
-      <div className="container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full">
-        {/* text & form */}
-        <div className="flex flex-col w-full max-w-[700px]">
-          {/* text */}
-          <motion.h2
-            variants={fadeIn("up", 0.2)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className="h2 text-center mb-12"
-          >
-            Let&apos;s <span className="text-accent">connect.</span>
-          </motion.h2>
-
-          {/* Success/Error Messages */}
-          {submitStatus && (
-            <motion.div
-              variants={fadeIn("up", 0.3)}
+    <>
+      <SEO
+        title="Contact Diego Rodriguez - Hire Full Stack Developer"
+        description="Get in touch with Diego Rodriguez for your next project. Available for Web3 development, trading systems, chrome extensions, and custom software solutions. Let's discuss your ideas."
+        keywords="hire full stack developer, web3 developer for hire, trading bot developer, chrome extension developer, contact diego rodriguez, freelance developer, custom software development"
+        image="/og-contact.jpg"
+      />
+      <div className="h-full bg-primary/30">
+        <Circles />
+        <div className="container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full">
+          {/* text & form */}
+          <div className="flex flex-col w-full max-w-[700px]">
+            {/* text */}
+            <motion.h2
+              variants={fadeIn("up", 0.2)}
               initial="hidden"
               animate="show"
               exit="hidden"
-              className={`mb-6 p-4 rounded-lg text-center ${
-                submitStatus === "success"
-                  ? "bg-green-500/10 border border-green-500/30"
-                  : submitStatus === "captcha_error"
-                    ? "bg-yellow-500/10 border border-yellow-500/30"
-                    : "bg-red-500/10 border border-red-500/30"
-              }`}
+              className="h2 text-center mb-12"
             >
-              <p
-                className={`font-medium ${
+              Let&apos;s <span className="text-accent">connect.</span>
+            </motion.h2>
+
+            {/* Success/Error Messages */}
+            {submitStatus && (
+              <motion.div
+                variants={fadeIn("up", 0.3)}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                className={`mb-6 p-4 rounded-lg text-center ${
                   submitStatus === "success"
-                    ? "text-green-400"
+                    ? "bg-green-500/10 border border-green-500/30"
                     : submitStatus === "captcha_error"
-                      ? "text-yellow-400"
-                      : "text-red-400"
+                      ? "bg-yellow-500/10 border border-yellow-500/30"
+                      : "bg-red-500/10 border border-red-500/30"
                 }`}
               >
-                {submitStatus === "success"
-                  ? "Message sent successfully! I'll get back to you soon."
-                  : submitStatus === "captcha_error"
-                    ? "Please solve the math problem correctly before submitting."
-                    : "Error sending message. Please try again."}
-              </p>
-            </motion.div>
-          )}
+                <p
+                  className={`font-medium ${
+                    submitStatus === "success"
+                      ? "text-green-400"
+                      : submitStatus === "captcha_error"
+                        ? "text-yellow-400"
+                        : "text-red-400"
+                  }`}
+                >
+                  {submitStatus === "success"
+                    ? "Message sent successfully! I'll get back to you soon."
+                    : submitStatus === "captcha_error"
+                      ? "Please solve the math problem correctly before submitting."
+                      : "Error sending message. Please try again."}
+                </p>
+              </motion.div>
+            )}
 
-          {/* Show selected service if any - con botón para cerrar */}
-          {selectedService && serviceCategories[selectedService] && (
-            <motion.div
-              variants={fadeIn("up", 0.3)}
+            {/* Show selected service if any - con botón para cerrar */}
+            {selectedService && serviceCategories[selectedService] && (
+              <motion.div
+                variants={fadeIn("up", 0.3)}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-center relative"
+              >
+                <p className="text-green-400 font-medium">
+                  Interested in: {serviceCategories[selectedService]}
+                </p>
+              </motion.div>
+            )}
+
+            {/* form */}
+            <motion.form
+              variants={fadeIn("up", 0.4)}
               initial="hidden"
               animate="show"
               exit="hidden"
-              className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-center relative"
+              className="flex-1 flex flex-col gap-6 w-full mx-auto"
+              onSubmit={handleSubmit}
             >
-              <p className="text-green-400 font-medium">
-                Interested in: {serviceCategories[selectedService]}
-              </p>
-            </motion.div>
-          )}
-
-          {/* form */}
-          <motion.form
-            variants={fadeIn("up", 0.4)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className="flex-1 flex flex-col gap-6 w-full mx-auto"
-            onSubmit={handleSubmit}
-          >
-            {/* input group */}
-            <div className="flex gap-x-6 w-full">
+              {/* input group */}
+              <div className="flex gap-x-6 w-full">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="name"
+                  className="input"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="email"
+                  className="input"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                />
+              </div>
               <input
                 type="text"
-                name="name"
-                placeholder="name"
+                name="subject"
+                placeholder="subject"
                 className="input"
-                value={formData.name}
+                value={formData.subject}
                 onChange={handleInputChange}
                 required
               />
-              <input
-                type="email"
-                name="email"
-                placeholder="email"
-                className="input"
-                value={formData.email}
+              <textarea
+                name="message"
+                placeholder="message"
+                className="textarea"
+                value={formData.message}
                 onChange={handleInputChange}
                 required
-              />
-            </div>
-            <input
-              type="text"
-              name="subject"
-              placeholder="subject"
-              className="input"
-              value={formData.subject}
-              onChange={handleInputChange}
-              required
-            />
-            <textarea
-              name="message"
-              placeholder="message"
-              className="textarea"
-              value={formData.message}
-              onChange={handleInputChange}
-              required
-            ></textarea>
+              ></textarea>
 
-            {/* Captcha Component */}
-            <motion.div
-              variants={fadeIn("up", 0.5)}
-              initial="hidden"
-              animate="show"
-              exit="hidden"
-              className="w-full"
-            >
-              <label className="block text-white/80 text-sm mb-2">
-                Please solve this math problem to verify you&apos;re human:
-              </label>
-              <MathCaptcha
-                onValidationChange={handleCaptchaValidation}
-                reset={captchaReset}
-              />
-            </motion.div>
+              {/* Captcha Component */}
+              <motion.div
+                variants={fadeIn("up", 0.5)}
+                initial="hidden"
+                animate="show"
+                exit="hidden"
+                className="w-full"
+              >
+                <label className="block text-white/80 text-sm mb-2">
+                  Please solve this math problem to verify you&apos;re human:
+                </label>
+                <MathCaptcha
+                  onValidationChange={handleCaptchaValidation}
+                  reset={captchaReset}
+                />
+              </motion.div>
 
-            <button
-              type="submit"
-              disabled={isSubmitting || !isCaptchaValid}
-              className={`btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group ${
-                isSubmitting || !isCaptchaValid
-                  ? "opacity-50 cursor-not-allowed"
-                  : ""
-              }`}
-            >
-              <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
-                {isSubmitting ? "Sending..." : "Let's talk"}
-              </span>
-              <BsArrowRight className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]" />
-            </button>
-          </motion.form>
+              <button
+                type="submit"
+                disabled={isSubmitting || !isCaptchaValid}
+                className={`btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group ${
+                  isSubmitting || !isCaptchaValid
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
+                }`}
+              >
+                <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
+                  {isSubmitting ? "Sending..." : "Let's talk"}
+                </span>
+                <BsArrowRight className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]" />
+              </button>
+            </motion.form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

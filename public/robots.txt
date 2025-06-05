@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or private pages if any
+# Disallow: /admin/
+# Disallow: /api/
+
+# Sitemap
+Sitemap: https://www.diego-rodriguez.work/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1

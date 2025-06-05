@@ -19,13 +19,13 @@ const Socials = () => {
         rel="noopener noreferrer"
         className="hover:text-accent transition-all duration-300"
       >
-        <RiLinkedinLine />
+        <RiLinkedinLine className="text-2xl" />
       </Link>
       <Link
         href={mailtoLink}
         className="hover:text-accent transition-all duration-300"
       >
-        <RiMailLine />
+        <RiMailLine className="text-2xl" />
       </Link>
     </div>
   );
