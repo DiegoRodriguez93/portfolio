@@ -161,7 +161,7 @@ const TradingBotsArticle = () => {
               {/* Introduction */}
               <div className="bg-white/5 border border-white/10 rounded-xl p-8 mb-8">
                 <p className="text-xl leading-relaxed mb-4">
-                  In 2025, algorithmic trading has become more accessible than ever, but building truly profitable trading bots requires deep technical knowledge, proper risk management, and proven strategies. After 9+ years developing financial systems and trading algorithms, I'll share the exact framework I use to create consistently profitable trading bots.
+                  In 2025, algorithmic trading has become more accessible than ever, but building truly profitable trading bots requires deep technical knowledge, proper risk management, and proven strategies. After 9+ years developing financial systems and trading algorithms, I&apos;ll share the exact framework I use to create consistently profitable trading bots.
                 </p>
                 <p className="text-lg text-accent font-medium">
                   This comprehensive guide covers everything from Python setup to advanced machine learning algorithms, with real performance metrics and battle-tested strategies.
@@ -170,7 +170,7 @@ const TradingBotsArticle = () => {
 
               {/* Table of Contents */}
               <div className="bg-accent/10 border border-accent/30 rounded-xl p-6 mb-8">
-                <h2 className="text-2xl font-bold text-accent mb-4">What You'll Learn</h2>
+                <h2 className="text-2xl font-bold text-accent mb-4">What You&apos;ll Learn</h2>
                 <ul className="space-y-2 text-white/80">
                   <li>• Setting up the perfect Python trading environment</li>
                   <li>• Implementing the Jesse framework for backtesting</li>
@@ -186,7 +186,7 @@ const TradingBotsArticle = () => {
                 <h2 className="text-3xl font-bold text-white mb-6">1. Building the Foundation: Python Environment Setup</h2>
                 
                 <p className="mb-6">
-                  The success of your trading bot starts with a robust development environment. After testing dozens of configurations, here's the optimal setup I recommend for 2025:
+                  The success of your trading bot starts with a robust development environment. After testing dozens of configurations, here&apos;s the optimal setup I recommend for 2025:
                 </p>
 
                 <div className="bg-primary/50 border border-white/20 rounded-lg p-6 mb-6">
@@ -216,7 +216,7 @@ pip install optuna`}
                 <h2 className="text-3xl font-bold text-white mb-6">2. Strategy Development: From Concept to Code</h2>
                 
                 <p className="mb-6">
-                  The most profitable trading bots combine multiple strategies and adapt to changing market conditions. Here's a proven approach I've used to generate consistent returns:
+                  The most profitable trading bots combine multiple strategies and adapt to changing market conditions. Here&apos;s a proven approach I&apos;ve used to generate consistent returns:
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
@@ -253,7 +253,7 @@ pip install optuna`}
                 <h2 className="text-3xl font-bold text-white mb-6">3. Advanced ML: PPO and SAC Algorithms</h2>
                 
                 <p className="mb-6">
-                  Machine learning transforms static trading rules into adaptive systems that learn from market behavior. Here's how I implement reinforcement learning in trading bots:
+                  Machine learning transforms static trading rules into adaptive systems that learn from market behavior. Here&apos;s how I implement reinforcement learning in trading bots:
                 </p>
 
                 <div className="bg-primary/50 border border-white/20 rounded-lg p-6 mb-6">
@@ -285,7 +285,7 @@ model.learn(total_timesteps=100000)`}
                 <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-6 mb-6">
                   <h3 className="text-xl font-semibold text-yellow-400 mb-4">⚠️ Important: Reward Function Design</h3>
                   <p>
-                    The reward function is crucial for ML success. I've found that combining profit-based rewards with risk-adjusted metrics (like Sharpe ratio) produces more stable, long-term profitable strategies. Avoid pure profit maximization as it often leads to overly risky behavior.
+                    The reward function is crucial for ML success. I&apos;ve found that combining profit-based rewards with risk-adjusted metrics (like Sharpe ratio) produces more stable, long-term profitable strategies. Avoid pure profit maximization as it often leads to overly risky behavior.
                   </p>
                 </div>
               </section>
@@ -325,7 +325,7 @@ model.learn(total_timesteps=100000)`}
                 <h2 className="text-3xl font-bold text-white mb-6">5. Real Performance Metrics</h2>
                 
                 <p className="mb-6">
-                  Here are actual performance metrics from trading bots I've developed and deployed in live markets:
+                  Here are actual performance metrics from trading bots I&apos;ve developed and deployed in live markets:
                 </p>
 
                 <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-8 mb-8">
@@ -359,7 +359,7 @@ model.learn(total_timesteps=100000)`}
               <div className="bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30 rounded-xl p-8 my-12">
                 <h3 className="text-2xl font-bold text-white mb-4">Ready to Build Your Own Trading Bot?</h3>
                 <p className="text-white/80 mb-6">
-                  This guide covers the fundamentals, but building a truly profitable trading bot requires deep expertise in both trading and software development. If you're serious about algorithmic trading but want to skip the months of trial and error, I can help.
+                  This guide covers the fundamentals, but building a truly profitable trading bot requires deep expertise in both trading and software development. If you&apos;re serious about algorithmic trading but want to skip the months of trial and error, I can help.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="/contact?service=trading-bots">
