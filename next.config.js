@@ -13,34 +13,125 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/:path*",
+        // Apply to all routes
+        source: "/(.*)",
         headers: [
+          // Content Security Policy - Comprehensive XSS protection
           {
-            key: "X-DNS-Prefetch-Control",
-            value: "on",
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://ssl.google-analytics.com https://tagmanager.google.com",
+              "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+              "font-src 'self' https://fonts.gstatic.com",
+              "img-src 'self' data: https: blob:",
+              "media-src 'self' data: https:",
+              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net https://www.googletagmanager.com",
+              "frame-src 'none'",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "frame-ancestors 'none'",
+              "upgrade-insecure-requests"
+            ].join("; ")
           },
+          // Cross-Origin-Opener-Policy for origin isolation
           {
-            key: "Strict-Transport-Security",
-            value: "max-age=63072000; includeSubDomains; preload",
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin"
           },
+          // Cross-Origin-Embedder-Policy
           {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
+            key: "Cross-Origin-Embedder-Policy",
+            value: "credentialless"
           },
+          // Cross-Origin-Resource-Policy
           {
-            key: "X-Frame-Options",
-            value: "DENY",
+            key: "Cross-Origin-Resource-Policy",
+            value: "cross-origin"
           },
-          {
-            key: "X-XSS-Protection",
-            value: "1; mode=block",
-          },
+          // Referrer Policy
           {
             key: "Referrer-Policy",
-            value: "origin-when-cross-origin",
+            value: "strict-origin-when-cross-origin"
           },
-        ],
+          // X-Content-Type-Options
+          {
+            key: "X-Content-Type-Options",
+            value: "nosniff"
+          },
+          // X-Frame-Options
+          {
+            key: "X-Frame-Options",
+            value: "DENY"
+          },
+          // X-XSS-Protection
+          {
+            key: "X-XSS-Protection",
+            value: "1; mode=block"
+          },
+          // Strict-Transport-Security
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload"
+          },
+          // Permissions Policy
+          {
+            key: "Permissions-Policy",
+            value: [
+              "camera=()",
+              "microphone=()",
+              "geolocation=()",
+              "interest-cohort=()",
+              "payment=()",
+              "usb=()",
+              "bluetooth=()",
+              "accelerometer=()",
+              "gyroscope=()",
+              "magnetometer=()"
+            ].join(", ")
+          },
+          // DNS Prefetch Control
+          {
+            key: "X-DNS-Prefetch-Control",
+            value: "on"
+          }
+        ]
       },
+      {
+        // More restrictive CSP for API routes
+        source: "/api/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'none'",
+              "script-src 'none'",
+              "style-src 'none'",
+              "img-src 'none'",
+              "font-src 'none'",
+              "connect-src 'self'",
+              "frame-src 'none'",
+              "object-src 'none'",
+              "base-uri 'none'",
+              "form-action 'none'",
+              "frame-ancestors 'none'"
+            ].join("; ")
+          },
+          {
+            key: "Cross-Origin-Opener-Policy",
+            value: "same-origin"
+          },
+          {
+            key: "Cross-Origin-Embedder-Policy",
+            value: "require-corp"
+          },
+          {
+            key: "Cross-Origin-Resource-Policy",
+            value: "same-origin"
+          }
+        ]
+      }
     ];
   },
 
