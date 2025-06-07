@@ -13,6 +13,7 @@ import Nav from '../components/Nav';
 import Header from '../components/Header';
 import TopLeftImg from '../components/TopLeftImg';
 import GoogleAnalytics from '../components/GoogleAnalytics';
+import CookieConsent from '../components/CookieConsent';
 
 const Layout = ({ children }) => {
   return (
@@ -20,6 +21,7 @@ const Layout = ({ children }) => {
       className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
     >
       <GoogleAnalytics />
+      <CookieConsent />
       <TopLeftImg />
       <Nav />
       <Header />

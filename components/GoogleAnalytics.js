@@ -12,24 +12,47 @@ const GoogleAnalytics = () => {
       return;
     }
 
-    // Load Google Analytics script
-    const script1 = document.createElement('script');
-    script1.async = true;
-    script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-    document.head.appendChild(script1);
-
-    // Initialize gtag
+    // Initialize gtag with consent mode
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       window.dataLayer.push(arguments);
     }
     window.gtag = gtag;
 
+    // Set default consent state
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      wait_for_update: 500,
+    });
+
+    // Load Google Analytics script
+    const script1 = document.createElement('script');
+    script1.async = true;
+    script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+    document.head.appendChild(script1);
+
     gtag('js', new Date());
     gtag('config', GA_MEASUREMENT_ID, {
       page_title: document.title,
       page_location: window.location.href,
     });
+
+    // Check if user has already consented
+    const consent = localStorage.getItem('cookie-consent');
+    if (consent) {
+      try {
+        const preferences = JSON.parse(consent);
+        if (preferences.analytics) {
+          gtag('consent', 'update', {
+            analytics_storage: 'granted',
+            ad_storage: preferences.marketing ? 'granted' : 'denied',
+          });
+        }
+      } catch (error) {
+        console.error('Error parsing cookie preferences:', error);
+      }
+    }
 
     // Track page views on route change
     const handleRouteChange = (url) => {
