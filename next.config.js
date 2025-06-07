@@ -68,6 +68,32 @@ const nextConfig = {
         destination: "/contact",
         permanent: true,
       },
+      {
+        source: "/blog/",
+        destination: "/blog",
+        permanent: true,
+      },
+      // Blog article redirects
+      {
+        source: "/blog/trading-bots-guide",
+        destination: "/blog/how-to-build-profitable-trading-bots-2025",
+        permanent: true,
+      },
+      {
+        source: "/blog/web3-enterprise-guide",
+        destination: "/blog/web3-development-best-practices-enterprise",
+        permanent: true,
+      },
+      {
+        source: "/blog/chrome-extensions-guide",
+        destination: "/blog/chrome-extension-development-guide",
+        permanent: true,
+      },
+      {
+        source: "/blog/fintech-api-guide",
+        destination: "/blog/fintech-api-development-security-scalability",
+        permanent: true,
+      },
     ];
   },
 };
