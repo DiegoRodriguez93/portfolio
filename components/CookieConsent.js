@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BsCookie, BsX, BsShield, BsGear } from 'react-icons/bs';
+import { BsCookie, BsX, BsShield, BsGear, BsChevronDown, BsChevronUp } from 'react-icons/bs';
 
 const CookieConsent = () => {
   const [showModal, setShowModal] = useState(false);
@@ -118,26 +118,26 @@ const CookieConsent = () => {
   const cookieTypes = [
     {
       id: 'necessary',
-      name: 'Necessary Cookies',
-      description: 'Essential for the website to function properly. These cannot be disabled.',
+      name: 'Necessary',
+      description: 'Essential for website functionality',
       required: true,
     },
     {
       id: 'analytics',
-      name: 'Analytics Cookies',
-      description: 'Help us understand how visitors interact with our website by collecting anonymous information.',
+      name: 'Analytics',
+      description: 'Help us understand website usage',
       required: false,
     },
     {
       id: 'functional',
-      name: 'Functional Cookies',
-      description: 'Enable enhanced functionality and personalization, such as remembering your preferences.',
+      name: 'Functional',
+      description: 'Remember your preferences',
       required: false,
     },
     {
       id: 'marketing',
-      name: 'Marketing Cookies',
-      description: 'Used to track visitors across websites to display relevant advertisements.',
+      name: 'Marketing',
+      description: 'Show relevant advertisements',
       required: false,
     },
   ];
@@ -146,53 +146,67 @@ const CookieConsent = () => {
     <AnimatePresence>
       {showModal && (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+          initial={{ x: 400, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: 400, opacity: 0 }}
+          transition={{ type: "spring", damping: 25, stiffness: 300 }}
+          className="fixed bottom-4 right-4 z-50 w-80 max-w-[calc(100vw-2rem)]"
         >
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="bg-primary/95 backdrop-blur-md border border-white/20 rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-          >
+          <div className="bg-primary/95 backdrop-blur-md border border-white/20 rounded-xl shadow-2xl">
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-white/10">
-              <div className="flex items-center gap-3">
-                <BsCookie className="w-6 h-6 text-accent" />
-                <h2 className="text-xl font-bold text-white">Cookie Preferences</h2>
+            <div className="flex items-center justify-between p-4 border-b border-white/10">
+              <div className="flex items-center gap-2">
+                <BsCookie className="w-5 h-5 text-accent" />
+                <h3 className="text-sm font-semibold text-white">Cookie Settings</h3>
               </div>
               <button
                 onClick={() => setShowModal(false)}
-                className="p-2 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-all duration-300"
+                className="p-1 rounded text-white/60 hover:text-white hover:bg-white/10 transition-all duration-300"
               >
-                <BsX className="w-5 h-5" />
+                <BsX className="w-4 h-4" />
               </button>
             </div>
 
             {/* Content */}
-            <div className="p-6">
-              <div className="mb-6">
-                <p className="text-white/80 leading-relaxed">
-                  We use cookies to enhance your browsing experience, serve personalized content, 
-                  and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
-                </p>
+            <div className="p-4">
+              <p className="text-xs text-white/70 mb-4 leading-relaxed">
+                We use cookies to enhance your experience and analyze our traffic. 
+                Choose your preferences below.
+              </p>
+
+              {/* Quick Actions */}
+              <div className="flex gap-2 mb-4">
+                <button
+                  onClick={handleRejectAll}
+                  className="flex-1 px-3 py-2 text-xs rounded-lg border border-white/20 text-white/80 hover:text-white hover:bg-white/5 transition-all duration-300"
+                >
+                  Reject All
+                </button>
+                <button
+                  onClick={handleAcceptAll}
+                  className="flex-1 px-3 py-2 text-xs rounded-lg bg-accent text-white hover:bg-accent/90 transition-all duration-300 font-medium"
+                >
+                  Accept All
+                </button>
               </div>
 
-              {/* Cookie Details Toggle */}
+              {/* Settings Toggle */}
               <button
                 onClick={() => setShowDetails(!showDetails)}
-                className="flex items-center gap-2 mb-4 text-accent hover:text-white transition-colors duration-300"
+                className="flex items-center justify-between w-full p-2 text-xs text-accent hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
               >
-                <BsGear className="w-4 h-4" />
-                <span className="text-sm font-medium">
-                  {showDetails ? 'Hide Details' : 'Customize Settings'}
+                <span className="flex items-center gap-2">
+                  <BsGear className="w-3 h-3" />
+                  Customize Settings
                 </span>
+                {showDetails ? (
+                  <BsChevronUp className="w-3 h-3" />
+                ) : (
+                  <BsChevronDown className="w-3 h-3" />
+                )}
               </button>
 
-              {/* Detailed Cookie Settings */}
+              {/* Detailed Settings */}
               <AnimatePresence>
                 {showDetails && (
                   <motion.div
@@ -200,91 +214,66 @@ const CookieConsent = () => {
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="overflow-hidden mb-6"
+                    className="overflow-hidden mt-3"
                   >
-                    <div className="space-y-4 p-4 bg-white/5 rounded-lg border border-white/10">
+                    <div className="space-y-3 p-3 bg-white/5 rounded-lg border border-white/10">
                       {cookieTypes.map((cookie) => (
-                        <div key={cookie.id} className="flex items-start gap-4">
-                          <div className="flex items-center h-5">
+                        <div key={cookie.id} className="flex items-start gap-3">
+                          <div className="flex items-center h-4 mt-0.5">
                             <input
                               type="checkbox"
                               id={cookie.id}
                               checked={preferences[cookie.id]}
                               onChange={() => handlePreferenceChange(cookie.id)}
                               disabled={cookie.required}
-                              className="w-4 h-4 text-accent bg-transparent border-white/30 rounded focus:ring-accent focus:ring-2 disabled:opacity-50"
+                              className="w-3 h-3 text-accent bg-transparent border-white/30 rounded focus:ring-accent focus:ring-1 disabled:opacity-50"
                             />
                           </div>
-                          <div className="flex-1">
+                          <div className="flex-1 min-w-0">
                             <label
                               htmlFor={cookie.id}
-                              className={`block text-sm font-medium mb-1 ${
+                              className={`block text-xs font-medium mb-1 ${
                                 cookie.required ? 'text-white/60' : 'text-white cursor-pointer'
                               }`}
                             >
                               {cookie.name}
                               {cookie.required && (
-                                <span className="ml-2 text-xs text-accent">(Required)</span>
+                                <span className="ml-1 text-[10px] text-accent">(Required)</span>
                               )}
                             </label>
-                            <p className="text-xs text-white/60 leading-relaxed">
+                            <p className="text-[10px] text-white/50 leading-relaxed">
                               {cookie.description}
                             </p>
                           </div>
                         </div>
                       ))}
                     </div>
+
+                    {/* Save Preferences Button */}
+                    <button
+                      onClick={handleSavePreferences}
+                      className="w-full mt-3 px-3 py-2 text-xs rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+                    >
+                      Save Preferences
+                    </button>
                   </motion.div>
                 )}
               </AnimatePresence>
 
               {/* Privacy Policy Link */}
-              <div className="mb-6 p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-                <div className="flex items-start gap-3">
-                  <BsShield className="w-5 h-5 text-blue-400 mt-0.5" />
-                  <div>
-                    <p className="text-sm text-white/80 mb-2">
-                      Your privacy is important to us. Learn more about how we handle your data.
-                    </p>
-                    <a
-                      href="/privacy-policy"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 text-sm underline transition-colors duration-300"
-                    >
-                      Read our Privacy Policy
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3">
-                <button
-                  onClick={handleRejectAll}
-                  className="flex-1 px-6 py-3 rounded-lg border border-white/20 text-white/80 hover:text-white hover:bg-white/5 transition-all duration-300"
+              <div className="mt-4 pt-3 border-t border-white/10">
+                <a
+                  href="/privacy-policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-[10px] text-blue-400 hover:text-blue-300 transition-colors duration-300"
                 >
-                  Reject All
-                </button>
-                
-                {showDetails && (
-                  <button
-                    onClick={handleSavePreferences}
-                    className="flex-1 px-6 py-3 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
-                  >
-                    Save Preferences
-                  </button>
-                )}
-                
-                <button
-                  onClick={handleAcceptAll}
-                  className="flex-1 px-6 py-3 rounded-lg bg-accent text-white hover:bg-accent/90 transition-all duration-300 font-medium"
-                >
-                  Accept All
-                </button>
+                  <BsShield className="w-3 h-3" />
+                  Privacy Policy
+                </a>
               </div>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
