@@ -13,6 +13,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  
   return (
     <>
       <Head>
@@ -20,6 +21,11 @@ function MyApp({ Component, pageProps }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#7c3aed" />
+
+        {/* Preload critical resources */}
+        <link rel="preload" href="/site-bg.svg" as="image" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         {/* Favicons globales */}
         <link rel="icon" href="/favicon.ico" />
@@ -43,9 +49,13 @@ function MyApp({ Component, pageProps }) {
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#7c3aed" />
 
-        {/* DNS Prefetch para optimización */}
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+        {/* DNS Prefetch para optimización - solo en producción */}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+            <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+          </>
+        )}
 
         {/* Global SEO */}
         <meta name="author" content="Diego Rodriguez" />
@@ -58,7 +68,14 @@ function MyApp({ Component, pageProps }) {
 
       <Layout>
         <AnimatePresence mode="wait">
-          <motion.div key={router.route} className="overflow-y-auto h-full">
+          <motion.div 
+            key={router.route} 
+            className="overflow-y-auto h-full"
+            style={{
+              willChange: 'transform',
+              contain: 'layout style paint',
+            }}
+          >
             <Transition />
             <Component {...pageProps} />
           </motion.div>

@@ -1,7 +1,7 @@
 // framer motion
 import { motion } from "framer-motion";
 
-// variants
+// variants optimizados para evitar layout shifts
 const transitionVariants = {
   initial: {
     x: "100%",
@@ -15,7 +15,7 @@ const transitionVariants = {
     width: "0%",
     rotate: [0, 5, -5, 0],
     scale: [1, 1.02, 0.98, 1],
-    opacity: [1, 1, 1, 0], // Se desvanece al final
+    opacity: [1, 1, 1, 0],
   },
   exit: {
     x: ["0%", "100%"],
@@ -26,7 +26,7 @@ const transitionVariants = {
   },
 };
 
-// Variante para el texto
+// Variante para el texto optimizada
 const textVariants = {
   initial: {
     opacity: 1,
@@ -51,20 +51,28 @@ const Transition = () => {
       animate="animate"
       exit="exit"
       transition={{
-        delay: 0.5,
-        duration: 1.0,
+        delay: 0.2, // Reducido de 0.5
+        duration: 0.8, // Reducido de 1.0
         ease: [0.25, 0.46, 0.45, 0.94],
-        x: { type: "spring", damping: 10, stiffness: 140 },
-        opacity: { duration: 0.3, delay: 0.7 }, // Controla cuándo se oculta
+        x: { type: "spring", damping: 12, stiffness: 160 }, // Más rápido
+        opacity: { duration: 0.2, delay: 0.6 },
+      }}
+      // Evitar layout shift con dimensiones fijas
+      style={{
+        willChange: 'transform, opacity',
+        contain: 'layout style paint',
       }}
     >
       <motion.h1
         className="text-white text-2xl md:text-4xl font-bold tracking-wide"
         variants={textVariants}
         transition={{
-          duration: 0.6,
-          delay: 0.5,
-          opacity: { duration: 0.3, delay: 0.8 }, // Se oculta un poco después
+          duration: 0.4, // Reducido
+          delay: 0.3, // Reducido
+          opacity: { duration: 0.2, delay: 0.6 },
+        }}
+        style={{
+          willChange: 'transform, opacity',
         }}
       >
         Loading...

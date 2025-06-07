@@ -2,14 +2,26 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  
+  // Optimización de performance
+  experimental: {
+    optimizeCss: true,
+    scrollRestoration: true,
+  },
 
   // Optimización de imágenes
   images: {
     domains: ["www.diego-rodriguez.work"],
     formats: ["image/webp", "image/avif"],
+    minimumCacheTTL: 60,
   },
 
-  // Headers para SEO y seguridad
+  // Optimización de JavaScript
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production",
+  },
+
+  // Headers para performance y seguridad
   async headers() {
     return [
       {
@@ -38,6 +50,21 @@ const nextConfig = {
           {
             key: "Referrer-Policy",
             value: "origin-when-cross-origin",
+          },
+          // Performance headers
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      // Headers específicos para assets estáticos
+      {
+        source: "/_next/static/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },
@@ -95,6 +122,25 @@ const nextConfig = {
         permanent: true,
       },
     ];
+  },
+
+  // Webpack optimizations
+  webpack: (config, { dev, isServer }) => {
+    // Optimizaciones para producción
+    if (!dev && !isServer) {
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      };
+    }
+    
+    return config;
   },
 };
 
