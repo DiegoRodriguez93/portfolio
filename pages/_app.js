@@ -56,16 +56,14 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
 
-      <html lang="en">
-        <Layout>
-          <AnimatePresence mode="wait">
-            <motion.div key={router.route} className="overflow-y-auto h-full">
-              <Transition />
-              <Component {...pageProps} />
-            </motion.div>
-          </AnimatePresence>
-        </Layout>
-      </html>
+      <Layout>
+        <AnimatePresence mode="wait">
+          <motion.div key={router.route} className="overflow-y-auto h-full">
+            <Transition />
+            <Component {...pageProps} />
+          </motion.div>
+        </AnimatePresence>
+      </Layout>
     </>
   );
 }
