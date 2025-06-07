@@ -15,6 +15,9 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 import SEO from "../../components/SEO";
 
+// Google Analytics
+import { trackContactForm, trackServiceInterest } from "../../lib/gtag";
+
 // service categories mapping
 const serviceCategories = {
   "web-applications": "Web Applications Development",
@@ -53,6 +56,9 @@ const Contact = () => {
             service
           ].toLowerCase()} services.\n\nI'd like to discuss:\n- \n\nLooking forward to hearing from you.\n\nBest regards.`,
         }));
+
+        // Track service interest
+        trackServiceInterest(service);
       }
     }
     /* eslint-disable-next-line */
@@ -118,6 +124,9 @@ const Contact = () => {
 
       if (response.ok) {
         setSubmitStatus("success");
+
+        // Track successful contact form submission
+        trackContactForm(selectedService);
 
         // Usar la función centralizada para resetear todo
         resetForm();
