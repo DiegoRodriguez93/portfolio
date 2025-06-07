@@ -52,8 +52,8 @@ function MyApp({ Component, pageProps }) {
         {/* DNS Prefetch para optimización - solo en producción */}
         {process.env.NODE_ENV === 'production' && (
           <>
-            <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-            <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+            <link rel="dns-prefetch\" href="//www.googletagmanager.com" />
+            <link rel="dns-prefetch\" href="//fonts.googleapis.com" />
           </>
         )}
 
