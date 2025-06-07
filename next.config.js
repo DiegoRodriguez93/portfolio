@@ -11,9 +11,57 @@ const nextConfig = {
 
   // Headers para SEO y seguridad
   async headers() {
+    // Detectar si estamos en desarrollo o en WebContainer
+    const isDevelopment = process.env.NODE_ENV === 'development';
+    const isWebContainer = process.env.HOSTNAME?.includes('webcontainer') || 
+                          process.env.CODESPACE_NAME || 
+                          process.env.GITPOD_WORKSPACE_ID ||
+                          typeof window !== 'undefined' && window.location.hostname.includes('webcontainer');
+
+    // Headers básicos para desarrollo
+    if (isDevelopment || isWebContainer) {
+      return [
+        {
+          source: "/(.*)",
+          headers: [
+            // CSP muy permisivo para desarrollo
+            {
+              key: "Content-Security-Policy",
+              value: [
+                "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: *",
+                "script-src 'self' 'unsafe-inline' 'unsafe-eval' *",
+                "style-src 'self' 'unsafe-inline' *",
+                "font-src 'self' data: *",
+                "img-src 'self' data: blob: *",
+                "media-src 'self' data: blob: *",
+                "connect-src 'self' *",
+                "frame-src *",
+                "object-src *",
+                "base-uri 'self'",
+                "form-action 'self' *"
+              ].join("; ")
+            },
+            // Headers básicos de seguridad (menos restrictivos)
+            {
+              key: "X-Content-Type-Options",
+              value: "nosniff"
+            },
+            {
+              key: "X-DNS-Prefetch-Control",
+              value: "on"
+            },
+            {
+              key: "Referrer-Policy",
+              value: "origin-when-cross-origin"
+            }
+          ]
+        }
+      ];
+    }
+
+    // Headers de producción (más restrictivos)
     return [
       {
-        // Apply to all routes
         source: "/(.*)",
         headers: [
           // Content Security Policy - Comprehensive XSS protection
@@ -99,7 +147,7 @@ const nextConfig = {
         ]
       },
       {
-        // More restrictive CSP for API routes
+        // More restrictive CSP for API routes in production
         source: "/api/(.*)",
         headers: [
           {
