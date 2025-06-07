@@ -13,6 +13,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  
   return (
     <>
       <Head>
