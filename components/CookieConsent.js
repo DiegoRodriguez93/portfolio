@@ -151,25 +151,30 @@ const CookieConsent = () => {
           exit={{ x: 400, opacity: 0 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
           className="fixed bottom-4 right-4 xl:right-[170px] z-50 w-80 max-w-[calc(100vw-2rem)] xl:max-w-[calc(100vw-190px)]"
+          role="dialog"
+          aria-labelledby="cookie-consent-title"
+          aria-describedby="cookie-consent-description"
         >
           <div className="bg-primary/95 backdrop-blur-md border border-white/20 rounded-xl shadow-2xl">
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-white/10">
               <div className="flex items-center gap-2">
-                <BsCookie className="w-5 h-5 text-accent" />
-                <h3 className="text-sm font-semibold text-white">Cookie Settings</h3>
+                <BsCookie className="w-5 h-5 text-accent" aria-hidden="true" />
+                <h3 id="cookie-consent-title" className="text-sm font-semibold text-white">Cookie Settings</h3>
               </div>
               <button
                 onClick={() => setShowModal(false)}
                 className="p-1 rounded text-white/60 hover:text-white hover:bg-white/10 transition-all duration-300"
+                aria-label="Close cookie settings dialog"
+                title="Close"
               >
-                <BsX className="w-4 h-4" />
+                <BsX className="w-4 h-4" aria-hidden="true" />
               </button>
             </div>
 
             {/* Content */}
             <div className="p-4">
-              <p className="text-xs text-white/70 mb-4 leading-relaxed">
+              <p id="cookie-consent-description" className="text-xs text-white/70 mb-4 leading-relaxed">
                 We use cookies to enhance your experience and analyze our traffic. 
                 Choose your preferences below.
               </p>
@@ -179,12 +184,15 @@ const CookieConsent = () => {
                 <button
                   onClick={handleRejectAll}
                   className="flex-1 px-3 py-2 text-xs rounded-lg border border-white/20 text-white/80 hover:text-white hover:bg-white/5 transition-all duration-300"
+                  aria-label="Reject all non-essential cookies"
                 >
                   Reject All
                 </button>
                 <button
                   onClick={handleAcceptAll}
                   className="flex-1 px-3 py-2 text-xs rounded-lg bg-accent text-white hover:bg-accent/90 transition-all duration-300 font-medium"
+                  style={{ backgroundColor: '#F13024' }}
+                  aria-label="Accept all cookies"
                 >
                   Accept All
                 </button>
@@ -194,15 +202,18 @@ const CookieConsent = () => {
               <button
                 onClick={() => setShowDetails(!showDetails)}
                 className="flex items-center justify-between w-full p-2 text-xs text-accent hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
+                aria-expanded={showDetails}
+                aria-controls="cookie-details"
+                aria-label={showDetails ? "Hide cookie settings" : "Show cookie settings"}
               >
                 <span className="flex items-center gap-2">
-                  <BsGear className="w-3 h-3" />
+                  <BsGear className="w-3 h-3" aria-hidden="true" />
                   Customize Settings
                 </span>
                 {showDetails ? (
-                  <BsChevronUp className="w-3 h-3" />
+                  <BsChevronUp className="w-3 h-3" aria-hidden="true" />
                 ) : (
-                  <BsChevronDown className="w-3 h-3" />
+                  <BsChevronDown className="w-3 h-3" aria-hidden="true" />
                 )}
               </button>
 
@@ -210,6 +221,7 @@ const CookieConsent = () => {
               <AnimatePresence>
                 {showDetails && (
                   <motion.div
+                    id="cookie-details"
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
@@ -227,6 +239,7 @@ const CookieConsent = () => {
                               onChange={() => handlePreferenceChange(cookie.id)}
                               disabled={cookie.required}
                               className="w-3 h-3 text-accent bg-transparent border-white/30 rounded focus:ring-accent focus:ring-1 disabled:opacity-50"
+                              aria-describedby={`${cookie.id}-description`}
                             />
                           </div>
                           <div className="flex-1 min-w-0">
@@ -241,7 +254,7 @@ const CookieConsent = () => {
                                 <span className="ml-1 text-[10px] text-accent">(Required)</span>
                               )}
                             </label>
-                            <p className="text-[10px] text-white/50 leading-relaxed">
+                            <p id={`${cookie.id}-description`} className="text-[10px] text-white/50 leading-relaxed">
                               {cookie.description}
                             </p>
                           </div>
@@ -253,6 +266,7 @@ const CookieConsent = () => {
                     <button
                       onClick={handleSavePreferences}
                       className="w-full mt-3 px-3 py-2 text-xs rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
+                      aria-label="Save cookie preferences"
                     >
                       Save Preferences
                     </button>
@@ -267,8 +281,9 @@ const CookieConsent = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-[10px] text-blue-400 hover:text-blue-300 transition-colors duration-300"
+                  aria-label="Read our privacy policy (opens in new tab)"
                 >
-                  <BsShield className="w-3 h-3" />
+                  <BsShield className="w-3 h-3" aria-hidden="true" />
                   Privacy Policy
                 </a>
               </div>

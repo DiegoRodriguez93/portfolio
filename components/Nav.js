@@ -38,7 +38,11 @@ const Nav = () => {
   const router = useRouter();
   const pathname = router.pathname;
   return (
-    <nav className="flex flex-col items-center xl:justify-center gap-y-4 fixed h-max bottom-0 mt-auto xl:right-[2%] z-50 top-0 w-full xl:w-16 xl:max-w-md xl:h-screen">
+    <nav 
+      className="flex flex-col items-center xl:justify-center gap-y-4 fixed h-max bottom-0 mt-auto xl:right-[2%] z-50 top-0 w-full xl:w-16 xl:max-w-md xl:h-screen"
+      role="navigation"
+      aria-label="Main navigation"
+    >
       {/* inner */}
       <div
         className="flex w-full xl:flex-col items-center justify-between xl:justify-center gap-y-10 px-4 md:px-40 xl:px-0 h-[80px] xl:h-max py-8 bg-white/10
@@ -52,6 +56,8 @@ const Nav = () => {
               } relative flex items-center group hover:text-accent transition-all duration-300`}
               href={link.path}
               key={index}
+              aria-label={`Navigate to ${link.name} page`}
+              title={`Go to ${link.name}`}
             >
               {/* tooltip */}
               <div className="absolute pr-14 right-0 hidden xl:group-hover:flex">
@@ -64,7 +70,8 @@ const Nav = () => {
                 </div>
               </div>
               {/* icon */}
-              <div>{link.icon}</div>
+              <div aria-hidden="true">{link.icon}</div>
+              <span className="sr-only">{link.name}</span>
             </Link>
           );
         })}

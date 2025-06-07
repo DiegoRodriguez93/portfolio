@@ -18,14 +18,18 @@ const Socials = () => {
         target="_blank"
         rel="noopener noreferrer"
         className="hover:text-accent transition-all duration-300"
+        aria-label="Visit Diego Rodriguez's LinkedIn profile"
+        title="LinkedIn Profile"
       >
-        <RiLinkedinLine className="text-2xl" />
+        <RiLinkedinLine className="text-2xl" aria-hidden="true" />
       </Link>
       <Link
         href={mailtoLink}
         className="hover:text-accent transition-all duration-300"
+        aria-label="Send email to Diego Rodriguez"
+        title="Send Email"
       >
-        <RiMailLine className="text-2xl" />
+        <RiMailLine className="text-2xl" aria-hidden="true" />
       </Link>
     </div>
   );
