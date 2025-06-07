@@ -47,7 +47,6 @@ function MyApp({ Component, pageProps }) {
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
 
-
         {/* Global SEO */}
         <meta name="author" content="Diego Rodriguez" />
         <meta name="robots" content="index, follow" />
@@ -57,14 +56,16 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
 
-      <Layout>
-        <AnimatePresence mode="wait">
-          <motion.div key={router.route} className="overflow-y-auto h-full">
-            <Transition />
-            <Component {...pageProps} />
-          </motion.div>
-        </AnimatePresence>
-      </Layout>
+      <html lang="en">
+        <Layout>
+          <AnimatePresence mode="wait">
+            <motion.div key={router.route} className="overflow-y-auto h-full">
+              <Transition />
+              <Component {...pageProps} />
+            </motion.div>
+          </AnimatePresence>
+        </Layout>
+      </html>
     </>
   );
 }
