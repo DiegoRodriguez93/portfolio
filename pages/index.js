@@ -27,30 +27,22 @@ const Home = () => {
         <div className="w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10">
           <div className="text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto">
             <motion.h1
-              variants={fadeIn("down", 0.1)} // Reducido delay
+              variants={fadeIn("down", 0.1)}
               initial="hidden"
               animate="show"
               exit="hidden"
               className="h1"
-              style={{
-                willChange: 'transform, opacity',
-                contain: 'layout style paint',
-              }}
             >
               Transforming Ideas <br /> Into{" "}
               <span className="text-accent">Digital Reality</span>
             </motion.h1>
 
             <motion.p
-              variants={fadeIn("down", 0.2)} // Reducido delay
+              variants={fadeIn("down", 0.2)}
               initial="hidden"
               animate="show"
               exit="hidden"
               className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16"
-              style={{
-                willChange: 'transform, opacity',
-                contain: 'layout style paint',
-              }}
             >
               I create powerful digital solutions that drive results. From
               stunning websites to custom applications, I help businesses
@@ -62,14 +54,11 @@ const Home = () => {
               <ProjectsBtn />
             </div>
             <motion.div
-              variants={fadeIn("down", 0.3)} // Reducido delay
+              variants={fadeIn("down", 0.3)}
               initial="hidden"
               animate="show"
               exit="hidden"
               className="hidden xl:flex"
-              style={{
-                willChange: 'transform, opacity',
-              }}
             >
               <ProjectsBtn />
             </motion.div>
@@ -82,15 +71,12 @@ const Home = () => {
           <ParticlesContainer />
 
           <motion.div
-            variants={fadeIn("up", 0.4)} // Reducido delay
+            variants={fadeIn("up", 0.4)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            transition={{ duration: 0.8, ease: "easeInOut" }} // Reducido duration
+            transition={{ duration: 0.8, ease: "easeInOut" }}
             className="w-full h-full max-w-[737px] max-h-[678px] absolute -bottom-32 lg:bottom-0 lg:right-[8%]"
-            style={{
-              willChange: 'transform, opacity',
-            }}
           >
             {/* <Avatar /> */}
           </motion.div>
