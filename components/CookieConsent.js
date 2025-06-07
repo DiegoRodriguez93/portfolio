@@ -150,7 +150,7 @@ const CookieConsent = () => {
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: 400, opacity: 0 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="fixed bottom-4 right-4 z-50 w-80 max-w-[calc(100vw-2rem)]"
+          className="fixed bottom-4 right-4 xl:right-[170px] z-50 w-80 max-w-[calc(100vw-2rem)] xl:max-w-[calc(100vw-190px)]"
         >
           <div className="bg-primary/95 backdrop-blur-md border border-white/20 rounded-xl shadow-2xl">
             {/* Header */}
