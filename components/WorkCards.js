@@ -8,6 +8,17 @@ import { BsArrowRight, BsSearch } from "react-icons/bs";
 const workData = [
   {
     id: 1,
+    title: "CryptoChart - Professional Trading Charts",
+    description:
+      "Professional cryptocurrency charting application with real-time data powered by Binance API and TradingView Lightweight Charts.",
+    image: "/work/image.png",
+    categories: ["trading-bots", "financial apps", "website"],
+    link: "https://celadon-arithmetic-9db35a.netlify.app/",
+    isExternal: true,
+    featured: true,
+  },
+  {
+    id: 2,
     title: "E-commerce Dashboard",
     description:
       "Complete dashboard for managing online store operations with real-time analytics.",
@@ -16,7 +27,7 @@ const workData = [
     link: "/work/ecommerce-dashboard",
   },
   {
-    id: 2,
+    id: 3,
     title: "Task Manager Extension",
     description:
       "Chrome extension for productivity management with calendar integration.",
@@ -25,7 +36,7 @@ const workData = [
     link: "/work/task-manager",
   },
   {
-    id: 3,
+    id: 4,
     title: "NetSuite Inventory App",
     description:
       "Custom NetSuite application for advanced inventory management and reporting.",
@@ -34,7 +45,7 @@ const workData = [
     link: "/work/netsuite-inventory",
   },
   {
-    id: 4,
+    id: 5,
     title: "Portfolio Website",
     description:
       "Modern portfolio website with smooth animations and responsive design.",
@@ -43,7 +54,7 @@ const workData = [
     link: "/work/portfolio-website",
   },
   {
-    id: 5,
+    id: 6,
     title: "Budget Tracker",
     description:
       "Personal finance application with expense tracking and budget planning.",
@@ -52,7 +63,7 @@ const workData = [
     link: "/work/budget-tracker",
   },
   {
-    id: 6,
+    id: 7,
     title: "Password Manager Extension",
     description:
       "Secure password management browser extension with encryption.",
@@ -84,6 +95,12 @@ const categories = [
       .length,
   },
   {
+    id: "trading-bots",
+    name: "Trading Systems",
+    count: workData.filter((item) => item.categories.includes("trading-bots"))
+      .length,
+  },
+  {
     id: "website",
     name: "Websites",
     count: workData.filter((item) => item.categories.includes("website"))
@@ -104,6 +121,9 @@ const WorkCards = () => {
       project.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
+
+  const featuredProjects = filteredProjects.filter((project) => project.featured);
+  const regularProjects = filteredProjects.filter((project) => !project.featured);
 
   return (
     <div className="w-full">
@@ -149,10 +169,103 @@ const WorkCards = () => {
         </div>
       </div>
 
-      {/* Projects Grid */}
+      {/* Featured Projects */}
+      {featuredProjects.length > 0 && (
+        <div className="mb-12">
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">Featured Projects</h3>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <AnimatePresence>
+              {featuredProjects.map((project, index) => (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  className="group"
+                >
+                  <div className="bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30 rounded-xl p-1">
+                    <div className="bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden hover:shadow-xl hover:shadow-accent/10 transition-all duration-500">
+                      {/* Image */}
+                      <div className="relative h-64 overflow-hidden">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <span className="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Featured
+                          </span>
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-6">
+                        {/* Categories */}
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {project.categories.map((category) => (
+                            <span
+                              key={category}
+                              className="px-3 py-1 text-xs rounded-full bg-accent/20 text-accent border border-accent/30"
+                            >
+                              {category}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Title */}
+                        <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-accent transition-colors duration-300">
+                          {project.title}
+                        </h3>
+
+                        {/* Description */}
+                        <p className="text-white/70 text-sm leading-relaxed mb-6">
+                          {project.description}
+                        </p>
+
+                        {/* Button */}
+                        {project.isExternal ? (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
+                                      bg-gradient-to-r from-accent to-accent/80 text-white
+                                      hover:from-accent/90 hover:to-accent/70
+                                      transition-all duration-300 group/btn"
+                          >
+                            <span className="text-sm font-medium">View Live Demo</span>
+                            <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                          </a>
+                        ) : (
+                          <Link href={project.link}>
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
+                                          bg-gradient-to-r from-accent to-accent/80 text-white
+                                          hover:from-accent/90 hover:to-accent/70
+                                          transition-all duration-300 group/btn">
+                              <span className="text-sm font-medium">View Project</span>
+                              <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                            </div>
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        </div>
+      )}
+
+      {/* Regular Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <AnimatePresence>
-          {filteredProjects.map((project, index) => (
+          {regularProjects.map((project, index) => (
             <motion.div
               key={project.id}
               layout
@@ -162,10 +275,7 @@ const WorkCards = () => {
               transition={{ duration: 0.3, delay: index * 0.1 }}
               className="group"
             >
-              <div
-                className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10
-                            hover:border-accent/50 transition-all duration-500 hover:shadow-xl hover:shadow-accent/10"
-              >
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 hover:shadow-xl hover:shadow-accent/10">
                 {/* Image */}
                 <div className="relative h-48 overflow-hidden">
                   <Image
@@ -174,48 +284,58 @@ const WorkCards = () => {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div
-                    className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 
-                                group-hover:opacity-100 transition-opacity duration-300"
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
                 {/* Content */}
                 <div className="p-6">
                   {/* Categories */}
                   <div className="flex flex-wrap gap-2 mb-3">
-                    {project.categories.map((category) => (
+                    {project.categories.slice(0, 2).map((category) => (
                       <span
                         key={category}
                         className="px-3 py-1 text-xs rounded-full bg-accent/20 text-accent border border-accent/30"
                       >
-                        {category}
+                        {category.replace("-", " ")}
                       </span>
                     ))}
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-accent transition-colors duration-300">
+                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-accent transition-colors duration-300 line-clamp-2">
                     {project.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-white/70 text-sm leading-relaxed mb-6">
+                  <p className="text-white/70 text-sm leading-relaxed mb-6 line-clamp-3">
                     {project.description}
                   </p>
 
                   {/* Button */}
-                  <Link href={project.link}>
-                    <div
+                  {project.isExternal ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
-                                  bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30
-                                  text-accent hover:from-accent hover:to-accent/80 hover:text-white
-                                  transition-all duration-300 group/btn"
+                                bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30
+                                text-accent hover:from-accent hover:to-accent/80 hover:text-white
+                                transition-all duration-300 group/btn"
                     >
-                      <span className="text-sm font-medium">View Project</span>
+                      <span className="text-sm font-medium">View Live Demo</span>
                       <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                    </div>
-                  </Link>
+                    </a>
+                  ) : (
+                    <Link href={project.link}>
+                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
+                                    bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30
+                                    text-accent hover:from-accent hover:to-accent/80 hover:text-white
+                                    transition-all duration-300 group/btn">
+                        <span className="text-sm font-medium">View Project</span>
+                        <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                      </div>
+                    </Link>
+                  )}
                 </div>
               </div>
             </motion.div>
