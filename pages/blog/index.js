@@ -16,6 +16,18 @@ import { fadeIn } from "../../variants";
 const blogPosts = [
   {
     id: 1,
+    title: "Building Professional Cryptocurrency Charts: TradingView Integration & Binance API",
+    excerpt:
+      "Complete guide to building professional cryptocurrency charting applications with TradingView Lightweight Charts, Binance API integration, and real-time data streaming.",
+    image: "/work/image.png",
+    categories: ["cryptocurrency", "trading-apis", "charts"],
+    readTime: "14 min read",
+    publishDate: "2025-01-20",
+    slug: "cryptocurrency-charting-trading-api-integration",
+    featured: true,
+  },
+  {
+    id: 2,
     title: "How to Build Profitable Trading Bots in 2025: A Complete Guide",
     excerpt:
       "Learn how to develop algorithmic trading systems using Python, Jesse framework, and machine learning algorithms like PPO and SAC for consistent profits.",
@@ -24,10 +36,10 @@ const blogPosts = [
     readTime: "12 min read",
     publishDate: "2025-01-15",
     slug: "how-to-build-profitable-trading-bots-2025",
-    featured: true,
+    featured: false,
   },
   {
-    id: 2,
+    id: 3,
     title: "Web3 Development Best Practices for Enterprise Applications",
     excerpt:
       "Discover the essential patterns and security considerations when building enterprise-grade Web3 applications with React and blockchain integration.",
@@ -39,7 +51,7 @@ const blogPosts = [
     featured: false,
   },
   {
-    id: 3,
+    id: 4,
     title: "Chrome Extension Development: From Idea to Chrome Store",
     excerpt:
       "Step-by-step guide to building, testing, and publishing Chrome extensions that solve real problems and generate revenue.",
@@ -51,7 +63,7 @@ const blogPosts = [
     featured: false,
   },
   {
-    id: 4,
+    id: 5,
     title: "Fintech API Development: Security and Scalability",
     excerpt:
       "Building secure and scalable financial APIs with Node.js, implementing proper authentication, rate limiting, and compliance standards.",
@@ -71,6 +83,13 @@ const categories = [
     name: "Trading Bots",
     count: blogPosts.filter((post) =>
       post.categories.includes("trading-bots")
+    ).length,
+  },
+  {
+    id: "cryptocurrency",
+    name: "Cryptocurrency",
+    count: blogPosts.filter((post) =>
+      post.categories.includes("cryptocurrency")
     ).length,
   },
   {
