@@ -16,6 +16,18 @@ import { fadeIn } from "../../variants";
 const blogPosts = [
   {
     id: 1,
+    title: "Building a DEX Pool Scanner: Analyzing CLMM Pools on Solana with Rust",
+    excerpt:
+      "Learn how to build a sophisticated DeFi analytics tool using Rust to scan and analyze Concentrated Liquidity Market Maker pools across multiple Solana DEXs like Raydium, Orca, and Meteor.",
+    image: "/work/blog-clmm-1.png",
+    categories: ["defi", "rust", "solana"],
+    readTime: "12 min read",
+    publishDate: "2025-01-22",
+    slug: "building-dex-pool-scanner-clmm-solana-rust",
+    featured: true,
+  },
+  {
+    id: 2,
     title: "Building Professional Cryptocurrency Charts: TradingView Integration & Binance API",
     excerpt:
       "Complete guide to building professional cryptocurrency charting applications with TradingView Lightweight Charts, Binance API integration, and real-time data streaming.",
@@ -24,10 +36,10 @@ const blogPosts = [
     readTime: "14 min read",
     publishDate: "2025-01-20",
     slug: "cryptocurrency-charting-trading-api-integration",
-    featured: true,
+    featured: false,
   },
   {
-    id: 2,
+    id: 3,
     title: "How to Build Profitable Trading Bots in 2025: A Complete Guide",
     excerpt:
       "Learn how to develop algorithmic trading systems using Python, Jesse framework, and machine learning algorithms like PPO and SAC for consistent profits.",
@@ -39,7 +51,7 @@ const blogPosts = [
     featured: false,
   },
   {
-    id: 3,
+    id: 4,
     title: "Web3 Development Best Practices for Enterprise Applications",
     excerpt:
       "Discover the essential patterns and security considerations when building enterprise-grade Web3 applications with React and blockchain integration.",
@@ -51,7 +63,7 @@ const blogPosts = [
     featured: false,
   },
   {
-    id: 4,
+    id: 5,
     title: "Chrome Extension Development: From Idea to Chrome Store",
     excerpt:
       "Step-by-step guide to building, testing, and publishing Chrome extensions that solve real problems and generate revenue.",
@@ -63,7 +75,7 @@ const blogPosts = [
     featured: false,
   },
   {
-    id: 5,
+    id: 6,
     title: "Fintech API Development: Security and Scalability",
     excerpt:
       "Building secure and scalable financial APIs with Node.js, implementing proper authentication, rate limiting, and compliance standards.",
@@ -78,6 +90,19 @@ const blogPosts = [
 
 const categories = [
   { id: "all", name: "All Posts", count: blogPosts.length },
+  {
+    id: "defi",
+    name: "DeFi & Blockchain",
+    count: blogPosts.filter((post) =>
+      post.categories.includes("defi")
+    ).length,
+  },
+  {
+    id: "rust",
+    name: "Rust Development",
+    count: blogPosts.filter((post) => post.categories.includes("rust"))
+      .length,
+  },
   {
     id: "trading-bots",
     name: "Trading Bots",

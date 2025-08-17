@@ -19,6 +19,17 @@ const workData = [
   },
   {
     id: 2,
+    title: "DEX CLMM Pool Scanner",
+    description:
+      "Advanced Rust application that analyzes Concentrated Liquidity Market Maker pools across Raydium, Orca, and Meteor DEXs on Solana blockchain.",
+    image: "/work/blog-clmm-1.png",
+    categories: ["trading-bots", "financial apps"],
+    link: "https://github.com/DiegoRodriguez93/dex-clmm-scanner",
+    isExternal: true,
+    featured: false,
+  },
+  {
+    id: 3,
     title: "E-commerce Dashboard",
     description:
       "Complete dashboard for managing online store operations with real-time analytics.",
@@ -27,7 +38,7 @@ const workData = [
     link: "/work/ecommerce-dashboard",
   },
   {
-    id: 3,
+    id: 4,
     title: "Task Manager Extension",
     description:
       "Chrome extension for productivity management with calendar integration.",
@@ -36,7 +47,7 @@ const workData = [
     link: "/work/task-manager",
   },
   {
-    id: 4,
+    id: 5,
     title: "NetSuite Inventory App",
     description:
       "Custom NetSuite application for advanced inventory management and reporting.",
@@ -45,7 +56,7 @@ const workData = [
     link: "/work/netsuite-inventory",
   },
   {
-    id: 5,
+    id: 6,
     title: "Portfolio Website",
     description:
       "Modern portfolio website with smooth animations and responsive design.",
@@ -54,7 +65,7 @@ const workData = [
     link: "/work/portfolio-website",
   },
   {
-    id: 6,
+    id: 7,
     title: "Budget Tracker",
     description:
       "Personal finance application with expense tracking and budget planning.",
@@ -63,7 +74,7 @@ const workData = [
     link: "/work/budget-tracker",
   },
   {
-    id: 7,
+    id: 8,
     title: "Password Manager Extension",
     description:
       "Secure password management browser extension with encryption.",
