@@ -546,7 +546,7 @@ pub enum RiskLevel {
                     <div>
                       <h4 className="font-semibold text-white mb-2">Risk Adjustments:</h4>
                       <ul className="space-y-1 text-white/80 text-sm">
-                        <li>• <strong>High APR Penalty:</strong> 50% reduction for APR > 1000%</li>
+                        <li>• <strong>High APR Penalty:</strong> 50% reduction for APR &gt; 1000%</li>
                         <li>• <strong>Established Pool Bonus:</strong> 20% boost for proven pools</li>
                         <li>• <strong>Minimum Thresholds:</strong> Prevents division by zero</li>
                         <li>• <strong>Risk Classification:</strong> Low/Medium/High categories</li>
