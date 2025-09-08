@@ -71,7 +71,7 @@ const workData = [
     title: "Allstate - Insurance Platform",
     description:
       "Serverless insurance platform built on AWS infrastructure. Developed scalable backend services and modern React frontend applications.",
-    image: "/work/allstate.web",
+    image: "/work/allstate.webp",
     categories: ["financial apps", "enterprise", "serverless"],
     link: "https://www.allstate.com/",
     isExternal: true,
