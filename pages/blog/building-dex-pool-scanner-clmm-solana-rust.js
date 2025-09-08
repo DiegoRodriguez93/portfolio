@@ -24,7 +24,7 @@ import AuthorBio from "../../components/AuthorBio";
 import { fadeIn } from "../../variants";
 
 const DexPoolScannerArticle = () => {
-  const publishDate = "2025-01-22";
+  const publishDate = "2025-08-22";
   const readTime = "12 min read";
   const articleUrl = "https://www.diego-rodriguez.work/blog/building-dex-pool-scanner-clmm-solana-rust";
 
