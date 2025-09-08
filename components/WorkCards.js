@@ -35,7 +35,7 @@ const workData = [
     title: "BC.Game - Web3 Casino Platform",
     description:
       "Leading Web3 crypto casino platform with blockchain integration, real-time gaming, and cryptocurrency payment systems. Built scalable backend services and modern frontend interfaces.",
-    image: "/thumb1.jpg",
+    image: "/work/bc-game.jpg",
     categories: ["web3", "gaming", "financial apps"],
     link: "https://bc.game/",
     isExternal: true,
@@ -47,7 +47,7 @@ const workData = [
     title: "MeridianLink - Banking Platform",
     description:
       "Enterprise banking and lending platform serving financial institutions. Developed scalable microservices architecture and modern React interfaces.",
-    image: "/thumb1.jpg",
+    image: "/work/meridianlink.jpg",
     categories: ["financial apps", "enterprise"],
     link: "https://www.meridianlink.com/",
     isExternal: true,
@@ -59,7 +59,7 @@ const workData = [
     title: "VidaApp - Companion Services Management",
     description:
       "Hybrid mobile application for managing companion and care services. Built with React Native for cross-platform compatibility.",
-    image: "/thumb2.jpg",
+    image: "/work/vida.webp",
     categories: ["mobile apps", "healthcare"],
     link: "https://play.google.com/store/apps/details?id=uy.com.vida.vidaapp&hl=es_UY&pli=1",
     isExternal: true,
@@ -71,7 +71,7 @@ const workData = [
     title: "Allstate - Insurance Platform",
     description:
       "Serverless insurance platform built on AWS infrastructure. Developed scalable backend services and modern React frontend applications.",
-    image: "/thumb3.jpg",
+    image: "/work/allstate.web",
     categories: ["financial apps", "enterprise", "serverless"],
     link: "https://www.allstate.com/",
     isExternal: true,
@@ -83,7 +83,7 @@ const workData = [
     title: "UnlockReturns - E-commerce Returns Management",
     description:
       "Advanced returns management system for e-commerce platforms. Integrated with NetSuite ERP and built with modern web technologies.",
-    image: "/thumb4.jpg",
+    image: "/work/unlockreturns.png",
     categories: ["e-commerce", "enterprise"],
     link: "https://unlockcommerce.co/products/unlockreturns/",
     isExternal: true,
@@ -95,7 +95,7 @@ const workData = [
     title: "UnlockShipping - Logistics Platform",
     description:
       "Comprehensive shipping and logistics management platform for e-commerce businesses. Features real-time tracking and automated workflows.",
-    image: "/thumb1.jpg",
+    image: "/work/unlockshipping.webp",
     categories: ["e-commerce", "logistics"],
     link: "https://unlockcommerce.co/products/unlockshipping/",
     isExternal: true,
