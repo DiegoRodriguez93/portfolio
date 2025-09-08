@@ -18,6 +18,7 @@ import { FaTwitter, FaLinkedin, FaFacebook, FaGithub, FaRust } from "react-icons
 // components
 import SEO from "../../components/SEO";
 import Circles from "../../components/Circles";
+import AuthorBio from "../../components/AuthorBio";
 
 // framer motion
 import { fadeIn } from "../../variants";
@@ -744,23 +745,11 @@ Meteor - 26 pools, TVL: $89472638, average APR: 12.33%
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="bg-white/5 border border-white/10 rounded-xl p-8 my-12"
           >
-            <div className="flex flex-col md:flex-row gap-6 items-start">
-              <div className="w-24 h-24 rounded-full bg-accent/20 flex items-center justify-center text-accent text-2xl font-bold">
-                DR
-              </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-white mb-2">Diego Rodriguez</h3>
-                <p className="text-accent mb-4">Senior Full Stack Developer & DeFi Specialist</p>
-                <p className="text-white/80 mb-4">
-                  Diego has developed multiple DeFi applications and trading systems, including advanced analytics tools for yield farming optimization. He specializes in Rust development, blockchain integration, and high-performance financial applications.
-                </p>
-                <Link href="/about" className="text-accent hover:text-white transition-colors">
-                  Learn more about Diego →
-                </Link>
-              </div>
-            </div>
+            <AuthorBio 
+              specialization="Senior Full Stack Developer & DeFi Specialist"
+              description="Diego has developed multiple DeFi applications and trading systems, including advanced analytics tools for yield farming optimization. He specializes in Rust development, blockchain integration, and high-performance financial applications."
+            />
           </motion.div>
 
           {/* Related Articles */}

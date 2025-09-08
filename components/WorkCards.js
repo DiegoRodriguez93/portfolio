@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { BsArrowRight, BsSearch } from "react-icons/bs";
 
-// Datos de ejemplo - reemplaza con tus proyectos reales
+// Datos de proyectos reales
 const workData = [
   {
     id: 1,
@@ -16,6 +16,7 @@ const workData = [
     link: "https://celadon-arithmetic-9db35a.netlify.app/",
     isExternal: true,
     featured: true,
+    technologies: ["React", "TradingView Charts", "Binance API", "WebSocket", "JavaScript"]
   },
   {
     id: 2,
@@ -27,96 +28,125 @@ const workData = [
     link: "https://github.com/DiegoRodriguez93/dex-clmm-scanner",
     isExternal: true,
     featured: false,
+    technologies: ["Rust", "Solana", "DeFi", "API Integration", "Async Programming"]
   },
   {
     id: 3,
-    title: "E-commerce Dashboard",
+    title: "BC.Game - Web3 Casino Platform",
     description:
-      "Complete dashboard for managing online store operations with real-time analytics.",
-    image: "/thumb1.jpg",
-    categories: ["website", "financial apps"],
-    link: "/work/ecommerce-dashboard",
+      "Leading Web3 crypto casino platform with blockchain integration, real-time gaming, and cryptocurrency payment systems. Built scalable backend services and modern frontend interfaces.",
+    image: "/work/bc-game.jpg",
+    categories: ["web3", "gaming", "financial apps"],
+    link: "https://bc.game/",
+    link: "https://bc.game/",
+    isExternal: true,
+    featured: false,
+    technologies: ["Node.js", "NestJS", "Next.js", "Web3", "Blockchain", "Casino Gaming"]
   },
   {
     id: 4,
-    title: "Task Manager Extension",
+    title: "MeridianLink - Banking Platform",
     description:
-      "Chrome extension for productivity management with calendar integration.",
-    image: "/thumb2.jpg",
-    categories: ["chrome extensions"],
-    link: "/work/task-manager",
+      "Enterprise banking and lending platform serving financial institutions. Developed scalable microservices architecture and modern React interfaces.",
+    image: "/work/meridianlink.jpg",
+    categories: ["financial apps", "enterprise"],
+    link: "https://www.meridianlink.com/",
+    isExternal: true,
+    featured: false,
+    technologies: ["React", "Python", "Node.js", "Docker", "Microservices", "PostgreSQL"]
   },
   {
     id: 5,
-    title: "NetSuite Inventory App",
+    title: "VidaApp - Companion Services Management",
     description:
-      "Custom NetSuite application for advanced inventory management and reporting.",
-    image: "/thumb3.jpg",
-    categories: ["netsuite apps", "financial apps"],
-    link: "/work/netsuite-inventory",
+      "Hybrid mobile application for managing companion and care services. Built with React Native for cross-platform compatibility.",
+    image: "/work/vida.webp",
+    categories: ["mobile apps", "healthcare"],
+    link: "https://play.google.com/store/apps/details?id=uy.com.vida.vidaapp&hl=es_UY&pli=1",
+    isExternal: true,
+    featured: false,
+    technologies: ["React Native", "Mobile Development", "Healthcare", "Cross-platform"]
   },
   {
     id: 6,
-    title: "Portfolio Website",
+    title: "Allstate - Insurance Platform",
     description:
-      "Modern portfolio website with smooth animations and responsive design.",
-    image: "/thumb4.jpg",
-    categories: ["website"],
-    link: "/work/portfolio-website",
+      "Serverless insurance platform built on AWS infrastructure. Developed scalable backend services and modern React frontend applications.",
+    image: "/work/allstate.webp",
+    categories: ["financial apps", "enterprise", "serverless"],
+    link: "https://www.allstate.com/",
+    isExternal: true,
+    featured: false,
+    technologies: ["AWS Lambda", "EC2", "React", "TypeScript", "Express", "Hono", "Serverless"]
   },
   {
     id: 7,
-    title: "Budget Tracker",
+    title: "UnlockReturns - E-commerce Returns Management",
     description:
-      "Personal finance application with expense tracking and budget planning.",
-    image: "/thumb1.jpg",
-    categories: ["financial apps", "website"],
-    link: "/work/budget-tracker",
+      "Advanced returns management system for e-commerce platforms. Integrated with NetSuite ERP and built with modern web technologies.",
+    image: "/work/unlockreturns.png",
+    categories: ["e-commerce", "enterprise"],
+    link: "https://unlockcommerce.co/products/unlockreturns/",
+    isExternal: true,
+    featured: false,
+    technologies: ["React", "Node.js", "Express", "Firebase", "NetSuite", "E-commerce"]
   },
   {
     id: 8,
-    title: "Password Manager Extension",
+    title: "UnlockShipping - Logistics Platform",
     description:
-      "Secure password management browser extension with encryption.",
-    image: "/thumb2.jpg",
-    categories: ["chrome extensions"],
-    link: "/work/password-manager",
-  },
+      "Comprehensive shipping and logistics management platform for e-commerce businesses. Features real-time tracking and automated workflows.",
+    image: "/work/unlockshipping.webp",
+    categories: ["e-commerce", "logistics"],
+    link: "https://unlockcommerce.co/products/unlockshipping/",
+    isExternal: true,
+    featured: false,
+    technologies: ["React", "Node.js", "Express", "Firebase", "NetSuite", "Logistics API"]
+  }
 ];
 
 const categories = [
   { id: "all", name: "All Projects", count: workData.length },
   {
-    id: "chrome extensions",
-    name: "Chrome Extensions",
-    count: workData.filter((item) =>
-      item.categories.includes("chrome extensions")
-    ).length,
-  },
-  {
-    id: "netsuite apps",
-    name: "NetSuite Apps",
-    count: workData.filter((item) => item.categories.includes("netsuite apps"))
-      .length,
+    id: "trading-bots",
+    name: "Trading Systems",
+    count: workData.filter((item) => item.categories.includes("trading-bots")).length,
   },
   {
     id: "financial apps",
     name: "Financial Apps",
-    count: workData.filter((item) => item.categories.includes("financial apps"))
-      .length,
+    count: workData.filter((item) => item.categories.includes("financial apps")).length,
   },
   {
-    id: "trading-bots",
-    name: "Trading Systems",
-    count: workData.filter((item) => item.categories.includes("trading-bots"))
-      .length,
+    id: "web3",
+    name: "Web3 & Blockchain",
+    count: workData.filter((item) => item.categories.includes("web3")).length,
   },
   {
-    id: "website",
-    name: "Websites",
-    count: workData.filter((item) => item.categories.includes("website"))
-      .length,
+    id: "gaming",
+    name: "Gaming",
+    count: workData.filter((item) => item.categories.includes("gaming")).length,
   },
+  {
+    id: "enterprise",
+    name: "Enterprise",
+    count: workData.filter((item) => item.categories.includes("enterprise")).length,
+  },
+  {
+    id: "mobile apps",
+    name: "Mobile Apps",
+    count: workData.filter((item) => item.categories.includes("mobile apps")).length,
+  },
+  {
+    id: "e-commerce",
+    name: "E-commerce",
+    count: workData.filter((item) => item.categories.includes("e-commerce")).length,
+  },
+  {
+    id: "serverless",
+    name: "Serverless",
+    count: workData.filter((item) => item.categories.includes("serverless")).length,
+  }
 ];
 
 const WorkCards = () => {
@@ -223,7 +253,7 @@ const WorkCards = () => {
                               key={category}
                               className="px-3 py-1 text-xs rounded-full bg-accent/20 text-accent border border-accent/30"
                             >
-                              {category}
+                              {category.replace("-", " ")}
                             </span>
                           ))}
                         </div>
@@ -234,35 +264,35 @@ const WorkCards = () => {
                         </h3>
 
                         {/* Description */}
-                        <p className="text-white/70 text-sm leading-relaxed mb-6">
+                        <p className="text-white/70 text-sm leading-relaxed mb-4">
                           {project.description}
                         </p>
 
+                        {/* Technologies */}
+                        <div className="flex flex-wrap gap-2 mb-6">
+                          {project.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-2 py-1 text-xs rounded bg-white/10 text-white/80"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+
                         {/* Button */}
-                        {project.isExternal ? (
-                          <a
-                            href={project.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
-                                      bg-gradient-to-r from-accent to-accent/80 text-white
-                                      hover:from-accent/90 hover:to-accent/70
-                                      transition-all duration-300 group/btn"
-                          >
-                            <span className="text-sm font-medium">View Live Demo</span>
-                            <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                          </a>
-                        ) : (
-                          <Link href={project.link}>
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
-                                          bg-gradient-to-r from-accent to-accent/80 text-white
-                                          hover:from-accent/90 hover:to-accent/70
-                                          transition-all duration-300 group/btn">
-                              <span className="text-sm font-medium">View Project</span>
-                              <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                            </div>
-                          </Link>
-                        )}
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
+                                    bg-gradient-to-r from-accent to-accent/80 text-white
+                                    hover:from-accent/90 hover:to-accent/70
+                                    transition-all duration-300 group/btn"
+                        >
+                          <span className="text-sm font-medium">View Project</span>
+                          <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -318,35 +348,40 @@ const WorkCards = () => {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-white/70 text-sm leading-relaxed mb-6 line-clamp-3">
+                  <p className="text-white/70 text-sm leading-relaxed mb-4 line-clamp-3">
                     {project.description}
                   </p>
 
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-1 mb-6">
+                    {project.technologies.slice(0, 4).map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-1 text-xs rounded bg-white/10 text-white/80"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 4 && (
+                      <span className="px-2 py-1 text-xs rounded bg-white/10 text-white/60">
+                        +{project.technologies.length - 4}
+                      </span>
+                    )}
+                  </div>
+
                   {/* Button */}
-                  {project.isExternal ? (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
-                                bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30
-                                text-accent hover:from-accent hover:to-accent/80 hover:text-white
-                                transition-all duration-300 group/btn"
-                    >
-                      <span className="text-sm font-medium">View Live Demo</span>
-                      <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                    </a>
-                  ) : (
-                    <Link href={project.link}>
-                      <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
-                                    bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30
-                                    text-accent hover:from-accent hover:to-accent/80 hover:text-white
-                                    transition-all duration-300 group/btn">
-                        <span className="text-sm font-medium">View Project</span>
-                        <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                      </div>
-                    </Link>
-                  )}
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg
+                              bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30
+                              text-accent hover:from-accent hover:to-accent/80 hover:text-white
+                              transition-all duration-300 group/btn"
+                  >
+                    <span className="text-sm font-medium">View Project</span>
+                    <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                  </a>
                 </div>
               </div>
             </motion.div>
