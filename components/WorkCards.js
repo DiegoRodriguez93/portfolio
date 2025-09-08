@@ -32,6 +32,18 @@ const workData = [
   },
   {
     id: 3,
+    title: "BC.Game - Web3 Casino Platform",
+    description:
+      "Leading Web3 crypto casino platform with blockchain integration, real-time gaming, and cryptocurrency payment systems. Built scalable backend services and modern frontend interfaces.",
+    image: "/thumb1.jpg",
+    categories: ["web3", "gaming", "financial apps"],
+    link: "https://bc.game/",
+    isExternal: true,
+    featured: false,
+    technologies: ["Node.js", "NestJS", "Next.js", "Web3", "Blockchain", "Casino Gaming"]
+  },
+  {
+    id: 4,
     title: "MeridianLink - Banking Platform",
     description:
       "Enterprise banking and lending platform serving financial institutions. Developed scalable microservices architecture and modern React interfaces.",
@@ -43,7 +55,7 @@ const workData = [
     technologies: ["React", "Python", "Node.js", "Docker", "Microservices", "PostgreSQL"]
   },
   {
-    id: 4,
+    id: 5,
     title: "VidaApp - Companion Services Management",
     description:
       "Hybrid mobile application for managing companion and care services. Built with React Native for cross-platform compatibility.",
@@ -55,7 +67,7 @@ const workData = [
     technologies: ["React Native", "Mobile Development", "Healthcare", "Cross-platform"]
   },
   {
-    id: 5,
+    id: 6,
     title: "Allstate - Insurance Platform",
     description:
       "Serverless insurance platform built on AWS infrastructure. Developed scalable backend services and modern React frontend applications.",
@@ -67,7 +79,7 @@ const workData = [
     technologies: ["AWS Lambda", "EC2", "React", "TypeScript", "Express", "Hono", "Serverless"]
   },
   {
-    id: 6,
+    id: 7,
     title: "UnlockReturns - E-commerce Returns Management",
     description:
       "Advanced returns management system for e-commerce platforms. Integrated with NetSuite ERP and built with modern web technologies.",
@@ -79,7 +91,7 @@ const workData = [
     technologies: ["React", "Node.js", "Express", "Firebase", "NetSuite", "E-commerce"]
   },
   {
-    id: 7,
+    id: 8,
     title: "UnlockShipping - Logistics Platform",
     description:
       "Comprehensive shipping and logistics management platform for e-commerce businesses. Features real-time tracking and automated workflows.",
@@ -103,6 +115,16 @@ const categories = [
     id: "financial apps",
     name: "Financial Apps",
     count: workData.filter((item) => item.categories.includes("financial apps")).length,
+  },
+  {
+    id: "web3",
+    name: "Web3 & Blockchain",
+    count: workData.filter((item) => item.categories.includes("web3")).length,
+  },
+  {
+    id: "gaming",
+    name: "Gaming",
+    count: workData.filter((item) => item.categories.includes("gaming")).length,
   },
   {
     id: "enterprise",
