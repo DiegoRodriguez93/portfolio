@@ -38,6 +38,7 @@ const workData = [
     image: "/work/bc-game.jpg",
     categories: ["web3", "gaming", "financial apps"],
     link: "https://bc.game/",
+    link: "https://bc.game/",
     isExternal: true,
     featured: false,
     technologies: ["Node.js", "NestJS", "Next.js", "Web3", "Blockchain", "Casino Gaming"]
