@@ -24,7 +24,7 @@ import AuthorBio from "../../components/AuthorBio";
 import { fadeIn } from "../../variants";
 
 const AICodingProblemsArticle = () => {
-  const publishDate = "2025-01-21";
+  const publishDate = "2025-09-08";
   const readTime = "8 min read";
   const articleUrl = "https://www.diego-rodriguez.work/blog/ai-coding-problems-project-rescue-services";
 
