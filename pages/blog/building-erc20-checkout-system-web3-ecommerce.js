@@ -605,7 +605,7 @@ export default function HomePage() {
                   </p>
                   <div className="grid md:grid-cols-4 gap-4 text-center">
                     <div>
-                      <div className="text-2xl font-bold text-blue-400">< 2s</div>
+                      <div className="text-2xl font-bold text-blue-400">2s</div>
                       <div className="text-white/80 text-sm">Page Load Time</div>
                     </div>
                     <div>
