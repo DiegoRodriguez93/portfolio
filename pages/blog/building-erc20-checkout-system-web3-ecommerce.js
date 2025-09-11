@@ -617,7 +617,7 @@ export default function HomePage() {
                       <div className="text-white/80 text-sm">Transaction Success</div>
                     </div>
                     <div>
-                      <div className="text-2xl font-bold text-blue-400">< 500KB</div>
+                      <div className="text-2xl font-bold text-blue-400">500KB</div>
                       <div className="text-white/80 text-sm">Bundle Size</div>
                     </div>
                   </div>
