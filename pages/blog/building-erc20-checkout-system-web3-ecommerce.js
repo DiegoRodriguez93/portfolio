@@ -25,7 +25,7 @@ import AuthorBio from "../../components/AuthorBio";
 import { fadeIn } from "../../variants";
 
 const ERC20CheckoutArticle = () => {
-  const publishDate = "2025-01-25";
+  const publishDate = "2025-09-11";
   const readTime = "11 min read";
   const articleUrl = "https://www.diego-rodriguez.work/blog/building-erc20-checkout-system-web3-ecommerce";
 

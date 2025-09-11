@@ -34,7 +34,7 @@ const blogPosts = [
     image: "/work/erc20-checkout.png",
     categories: ["web3", "ecommerce", "nextjs"],
     readTime: "11 min read",
-    publishDate: "2025-01-25",
+    publishDate: "2025-09-11",
     slug: "building-erc20-checkout-system-web3-ecommerce",
     featured: false,
   },
