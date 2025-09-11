@@ -28,6 +28,18 @@ const blogPosts = [
   },
   {
     id: 2,
+    title: "Building a Modern ERC20 Checkout System: Web3 E-commerce with Next.js",
+    excerpt:
+      "Complete guide to building a production-ready Web3 e-commerce checkout system that accepts ERC20 token payments. Learn to integrate wagmi, handle transactions, and create seamless user experiences.",
+    image: "/work/erc20-checkout.png",
+    categories: ["web3", "ecommerce", "nextjs"],
+    readTime: "11 min read",
+    publishDate: "2025-01-25",
+    slug: "building-erc20-checkout-system-web3-ecommerce",
+    featured: false,
+  },
+  {
+    id: 3,
     title: "When AI Coding Goes Wrong: From Prototype to Production Nightmare",
     excerpt:
       "Why 80% of AI-generated projects never see production and how professional developers can rescue your stuck projects. Learn the common pitfalls and get expert help to ship your ideas.",
@@ -39,7 +51,7 @@ const blogPosts = [
     featured: false,
   },
   {
-    id: 3,
+    id: 4,
     title: "Building Professional Cryptocurrency Charts: TradingView Integration & Binance API",
     excerpt:
       "Complete guide to building professional cryptocurrency charting applications with TradingView Lightweight Charts, Binance API integration, and real-time data streaming.",
@@ -51,7 +63,7 @@ const blogPosts = [
     featured: false,
   },
   {
-    id: 4,
+    id: 5,
     title: "How to Build Profitable Trading Bots in 2025: A Complete Guide",
     excerpt:
       "Learn how to develop algorithmic trading systems using Python, Jesse framework, and machine learning algorithms like PPO and SAC for consistent profits.",
@@ -63,7 +75,7 @@ const blogPosts = [
     featured: false,
   },
   {
-    id: 5,
+    id: 6,
     title: "Web3 Development Best Practices for Enterprise Applications",
     excerpt:
       "Discover the essential patterns and security considerations when building enterprise-grade Web3 applications with React and blockchain integration.",
@@ -75,7 +87,7 @@ const blogPosts = [
     featured: false,
   },
   {
-    id: 6,
+    id: 7,
     title: "Chrome Extension Development: From Idea to Chrome Store",
     excerpt:
       "Step-by-step guide to building, testing, and publishing Chrome extensions that solve real problems and generate revenue.",
@@ -87,7 +99,7 @@ const blogPosts = [
     featured: false,
   },
   {
-    id: 7,
+    id: 8,
     title: "Fintech API Development: Security and Scalability",
     excerpt:
       "Building secure and scalable financial APIs with Node.js, implementing proper authentication, rate limiting, and compliance standards.",
@@ -102,6 +114,20 @@ const blogPosts = [
 
 const categories = [
   { id: "all", name: "All Posts", count: blogPosts.length },
+  {
+    id: "ecommerce",
+    name: "E-commerce",
+    count: blogPosts.filter((post) =>
+      post.categories.includes("ecommerce")
+    ).length,
+  },
+  {
+    id: "nextjs",
+    name: "Next.js",
+    count: blogPosts.filter((post) =>
+      post.categories.includes("nextjs")
+    ).length,
+  },
   {
     id: "ai-development",
     name: "AI Development",
