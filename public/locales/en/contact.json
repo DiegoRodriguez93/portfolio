@@ -1,0 +1,33 @@
+{
+  "seo": {
+    "title": "Contact Diego Rodriguez - Hire Full Stack Developer",
+    "description": "Get in touch with Diego Rodriguez for your next project. Available for Web3 development, trading systems, chrome extensions, and custom software solutions. Let's discuss your ideas.",
+    "keywords": "hire full stack developer, web3 developer for hire, trading bot developer, chrome extension developer, contact diego rodriguez, freelance developer, custom software development"
+  },
+  "heading": "Let's <accent>connect.</accent>",
+  "form": {
+    "name": "name",
+    "email": "email",
+    "subject": "subject",
+    "message": "message",
+    "captchaLabel": "Please solve this math problem to verify you're human:",
+    "sending": "Sending...",
+    "submit": "Let's talk"
+  },
+  "messages": {
+    "success": "Message sent successfully! I'll get back to you soon.",
+    "captchaError": "Please solve the math problem correctly before submitting.",
+    "error": "Error sending message. Please try again."
+  },
+  "serviceCategories": {
+    "web-applications": "Web Applications Development",
+    "trading-bots": "Trading Bots Development",
+    "chrome-extensions": "Chrome Extensions Development",
+    "mobile-apps": "Mobile Apps Development",
+    "web3-development": "Web3 Development",
+    "financial-solutions": "Financial Solutions Development"
+  },
+  "interestedIn": "Interested in:",
+  "inquiryAbout": "Inquiry about {{service}}",
+  "serviceTemplate": "Hi Diego,\n\nI'm interested in your {{service}} services.\n\nI'd like to discuss:\n- \n\nLooking forward to hearing from you.\n\nBest regards."
+}

@@ -1,0 +1,60 @@
+{
+  "seo": {
+    "title": "Portfolio & Projects - Web Applications, Extensions & Trading Systems",
+    "description": "Explore Diego Rodriguez's portfolio featuring web applications, browser extensions, algorithmic trading systems, and enterprise solutions built with React, Next.js, Web3, and modern technologies.",
+    "keywords": "portfolio projects, web application portfolio, chrome extensions portfolio, trading bot projects, web3 projects, react projects, next.js portfolio, developer work examples, algorithmic trading systems, fintech applications"
+  },
+  "heading": "My work",
+  "subtitle": "Explore my portfolio of web applications, browser extensions, and enterprise solutions. Each project represents a unique challenge solved with modern technologies and creative thinking.",
+  "searchPlaceholder": "Search projects...",
+  "viewProject": "View Project",
+  "featured": "Featured",
+  "featuredProjects": "Featured Projects",
+  "noResults": "No projects found matching your criteria.",
+  "clearFilters": "Clear filters",
+  "categories": {
+    "all": "All Projects",
+    "tradingSystems": "Trading Systems",
+    "financialApps": "Financial Apps",
+    "web3": "Web3 & Blockchain",
+    "gaming": "Gaming",
+    "enterprise": "Enterprise",
+    "mobileApps": "Mobile Apps",
+    "ecommerce": "E-commerce",
+    "serverless": "Serverless"
+  },
+  "projects": {
+    "cryptoChart": {
+      "title": "CryptoChart - Professional Trading Charts",
+      "description": "Professional cryptocurrency charting application with real-time data powered by Binance API and TradingView Lightweight Charts."
+    },
+    "dexScanner": {
+      "title": "DEX CLMM Pool Scanner",
+      "description": "Advanced Rust application that analyzes Concentrated Liquidity Market Maker pools across Raydium, Orca, and Meteor DEXs on Solana blockchain."
+    },
+    "bcGame": {
+      "title": "BC.Game - Web3 Casino Platform",
+      "description": "Leading Web3 crypto casino platform with blockchain integration, real-time gaming, and cryptocurrency payment systems. Built scalable backend services and modern frontend interfaces."
+    },
+    "meridianLink": {
+      "title": "MeridianLink - Banking Platform",
+      "description": "Enterprise banking and lending platform serving financial institutions. Developed scalable microservices architecture and modern React interfaces."
+    },
+    "vidaApp": {
+      "title": "VidaApp - Companion Services Management",
+      "description": "Hybrid mobile application for managing companion and care services. Built with React Native for cross-platform compatibility."
+    },
+    "allstate": {
+      "title": "Allstate - Insurance Platform",
+      "description": "Serverless insurance platform built on AWS infrastructure. Developed scalable backend services and modern React frontend applications."
+    },
+    "unlockReturns": {
+      "title": "UnlockReturns - E-commerce Returns Management",
+      "description": "Advanced returns management system for e-commerce platforms. Integrated with NetSuite ERP and built with modern web technologies."
+    },
+    "unlockShipping": {
+      "title": "UnlockShipping - Logistics Platform",
+      "description": "Comprehensive shipping and logistics management platform for e-commerce businesses. Features real-time tracking and automated workflows."
+    }
+  }
+}

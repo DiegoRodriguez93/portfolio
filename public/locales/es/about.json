@@ -1,0 +1,129 @@
+{
+  "seo": {
+    "title": "Sobre Diego Rodriguez - Desarrollador Full Stack Senior y Especialista en Trading con ML",
+    "description": "Conoce a Diego Rodriguez, desarrollador full stack senior con mas de 9 anos de experiencia en Web3, fintech, sistemas de trading algoritmico con Python/Flask, framework Jesse y machine learning (algoritmos PPO, SAC). Graduado universitario con multiples certificaciones en blockchain e ingenieria de software.",
+    "keywords": "diego rodriguez sobre, experiencia desarrollador full stack, experiencia web3, desarrollador python flask, framework jesse, machine learning trading, algoritmos PPO SAC, desarrollador sistemas trading, ingeniero software uruguay, experiencia desarrollador blockchain, experiencia desarrollador fintech"
+  },
+  "heading": "Transformando <accent>ideas</accent> en realidad digital.",
+  "bio": "Soy un desarrollador full-stack emprendedor que ama los desafios y nunca se rinde facilmente. Con experiencia en Web3, fintech, trading algoritmico usando Python/Flask, framework Jesse y machine learning (algoritmos PPO, SAC), me especializo en crear aplicaciones financieras inteligentes que impulsan el crecimiento empresarial.",
+  "counters": {
+    "experience": "Anos de experiencia",
+    "projects": "Proyectos completados",
+    "technologies": "Tecnologias dominadas",
+    "certifications": "Certificaciones obtenidas"
+  },
+  "viewCertificate": "Ver Certificado",
+  "sections": {
+    "skills": "habilidades",
+    "experience": "experiencia",
+    "financialExpertise": "experiencia financiera",
+    "productsCanBuild": "productos que puedo crear",
+    "education": "educacion"
+  },
+  "skillItems": {
+    "frontend": "Desarrollo Frontend",
+    "backend": "Desarrollo Backend",
+    "ml": "Machine Learning y Ciencia de Datos (Trading)",
+    "devops": "DevOps y Servicios Cloud"
+  },
+  "experienceItems": {
+    "vipclub": {
+      "title": "Desarrollador Fullstack Senior - VIPCLUB.LV",
+      "stage": "2024 - 2025",
+      "description": "Desarrollo de plataforma Web3 de casino crypto con integracion blockchain y analiticas basadas en Python"
+    },
+    "encora": {
+      "title": "Desarrollador Frontend Senior - ENCORA",
+      "stage": "2021 - 2023",
+      "description": "Startup SaaS Fintech - Lidere la arquitectura frontend y mentore a desarrolladores junior"
+    },
+    "codigo": {
+      "title": "Desarrollador Full Stack - CODIGO DEL SUR",
+      "stage": "2020 - 2021",
+      "description": "Plataforma SaaS de seguros - Desarrollo de nuevas funcionalidades y mantenimiento de sistemas en produccion"
+    },
+    "vida": {
+      "title": "Desarrollador Full Stack - VIDA SERVICIO",
+      "stage": "2016 - 2020",
+      "description": "Desarrollo de aplicaciones empresariales personalizadas y mantenimiento de sistemas legacy"
+    }
+  },
+  "financialItems": {
+    "algoTrading": {
+      "title": "Sistemas de Trading Algoritmico",
+      "description": "Desarrollo de bots de trading automatizados usando Python, framework Jesse y algoritmos avanzados de ML (PPO, SAC)"
+    },
+    "mlTrading": {
+      "title": "Trading con Machine Learning",
+      "description": "Implementacion de algoritmos de aprendizaje por refuerzo (PPO, SAC) para estrategias de trading adaptativas y prediccion de mercado"
+    },
+    "dataAnalysis": {
+      "title": "Analisis de Datos Financieros",
+      "description": "Procesamiento de datos de mercado en tiempo real usando Python, APIs Flask, indicadores tecnicos y sistemas de gestion de riesgo"
+    },
+    "tradingPlatform": {
+      "title": "Desarrollo de Plataformas de Trading",
+      "description": "Interfaces de trading personalizadas, herramientas de gestion de portafolio y dashboards de analisis de mercado con backends en Python"
+    },
+    "defi": {
+      "title": "DeFi y Yield Farming",
+      "description": "Integracion de smart contracts para protocolos de finanzas descentralizadas y estrategias de optimizacion de rendimiento"
+    }
+  },
+  "productItems": {
+    "aiTrading": {
+      "title": "Sistemas de Trading con IA",
+      "description": "Plataformas avanzadas de trading algoritmico usando framework Jesse con modelos de aprendizaje por refuerzo PPO/SAC"
+    },
+    "financialApis": {
+      "title": "APIs Financieras",
+      "description": "APIs RESTful construidas con Flask para procesamiento de datos de mercado, senales de trading y gestion de portafolio"
+    },
+    "chromeExtensions": {
+      "title": "Extensiones de Chrome",
+      "description": "Extensiones de navegador para automatizacion, productividad, asistencia en trading e integracion Web3"
+    },
+    "webApps": {
+      "title": "Aplicaciones Web",
+      "description": "Aplicaciones web modernas y responsivas usando React, Next.js y backends en Python con Flask"
+    },
+    "hybridMobile": {
+      "title": "Apps Moviles Hibridas",
+      "description": "Aplicaciones moviles multiplataforma usando React Native con integracion de APIs en Python"
+    },
+    "mlBots": {
+      "title": "Bots de Trading con ML",
+      "description": "Sistemas de trading inteligentes con capacidades de aprendizaje adaptativo usando algoritmos de aprendizaje por refuerzo"
+    }
+  },
+  "educationItems": {
+    "udelar": {
+      "title": "Ingenieria de Software - UDELAR",
+      "stage": "Titulo Universitario"
+    },
+    "blockchain": {
+      "title": "Blockchain y Smart Contracts - Universidad de Buffalo",
+      "stage": "Certificacion Coursera"
+    },
+    "docker": {
+      "title": "Fundamentos de Docker",
+      "stage": "Certificacion Coursera"
+    },
+    "oop": {
+      "title": "Programacion Orientada a Objetos JavaScript",
+      "stage": "Certificacion Udemy"
+    },
+    "react": {
+      "title": "React y React Native",
+      "stage": "Certificacion Udemy"
+    },
+    "nativescript": {
+      "title": "Desarrollo con NativeScript",
+      "stage": "Certificacion Udemy"
+    },
+    "linux": {
+      "title": "Administracion y Seguridad de Servidores Linux",
+      "stage": "Certificacion Udemy"
+    }
+  }
+}

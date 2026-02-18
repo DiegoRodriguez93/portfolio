@@ -68,7 +68,7 @@ const SEO = ({
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={finalTitle} />
       <meta property="og:site_name" content={siteName} />
-      <meta property="og:locale" content="en_US" />
+      <meta property="og:locale" content={router.locale === "es" ? "es_ES" : "en_US"} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

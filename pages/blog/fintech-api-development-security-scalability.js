@@ -23,7 +23,15 @@ import AuthorBio from "../../components/AuthorBio";
 // framer motion
 import { fadeIn } from "../../variants";
 
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
+
 const FintechAPIArticle = () => {
+  const { t } = useTranslation(["blog", "common"]);
+  const { locale } = useRouter();
+  const dateLocale = locale === "es" ? "es-ES" : "en-US";
+
   const publishDate = "2025-01-01";
   const readTime = "15 min read";
   const articleUrl = "https://www.diego-rodriguez.work/blog/fintech-api-development-security-scalability";
@@ -54,7 +62,7 @@ const FintechAPIArticle = () => {
               className="inline-flex items-center gap-2 text-white/70 hover:text-accent transition-colors duration-300"
             >
               <BsArrowLeft className="w-4 h-4" />
-              <span>Back to Blog</span>
+              <span>{t("blog:backToBlog")}</span>
             </Link>
           </motion.div>
 
@@ -89,7 +97,7 @@ const FintechAPIArticle = () => {
               <div className="flex items-center gap-2">
                 <BsCalendar className="w-4 h-4" />
                 <span>
-                  {new Date(publishDate).toLocaleDateString("en-US", {
+                  {new Date(publishDate).toLocaleDateString(dateLocale, {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
@@ -101,7 +109,7 @@ const FintechAPIArticle = () => {
                 <span>{readTime}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span>By</span>
+                <span>{t("blog:by")}</span>
                 <Link
                   href="/about"
                   className="text-accent hover:text-white transition-colors"
@@ -127,7 +135,7 @@ const FintechAPIArticle = () => {
 
             {/* Share Buttons */}
             <div className="flex items-center gap-4">
-              <span className="text-white/60 text-sm">Share:</span>
+              <span className="text-white/60 text-sm">{t("blog:share")}</span>
               <div className="flex gap-3">
                 <a
                   href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent("Fintech API Development: Security and Scalability")}`}
@@ -720,5 +728,13 @@ class AuditLogger {
     </>
   );
 };
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "blog"])),
+    },
+  };
+}
 
 export default FintechAPIArticle;

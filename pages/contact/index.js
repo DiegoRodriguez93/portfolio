@@ -18,17 +18,11 @@ import SEO from "../../components/SEO";
 // Google Analytics
 import { trackContactForm, trackServiceInterest } from "../../lib/gtag";
 
-// service categories mapping
-const serviceCategories = {
-  "web-applications": "Web Applications Development",
-  "trading-bots": "Trading Bots Development",
-  "chrome-extensions": "Chrome Extensions Development",
-  "mobile-apps": "Mobile Apps Development",
-  "web3-development": "Web3 Development",
-  "financial-solutions": "Financial Solutions Development",
-};
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Contact = () => {
+  const { t } = useTranslation(["contact", "common"]);
   const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
@@ -43,6 +37,16 @@ const Contact = () => {
   const [captchaAnswer, setCaptchaAnswer] = useState("");
   const [captchaReset, setCaptchaReset] = useState(false);
 
+  // service categories mapping
+  const serviceCategories = {
+    "web-applications": t("contact:serviceCategories.web-applications"),
+    "trading-bots": t("contact:serviceCategories.trading-bots"),
+    "chrome-extensions": t("contact:serviceCategories.chrome-extensions"),
+    "mobile-apps": t("contact:serviceCategories.mobile-apps"),
+    "web3-development": t("contact:serviceCategories.web3-development"),
+    "financial-solutions": t("contact:serviceCategories.financial-solutions"),
+  };
+
   // Load service parameter from URL - solo una vez cuando el router esté listo
   useEffect(() => {
     if (router.isReady && !selectedService) {
@@ -51,10 +55,8 @@ const Contact = () => {
         setSelectedService(service);
         setFormData((prev) => ({
           ...prev,
-          subject: `Inquiry about ${serviceCategories[service]}`,
-          message: `Hi Diego,\n\nI'm interested in your ${serviceCategories[
-            service
-          ].toLowerCase()} services.\n\nI'd like to discuss:\n- \n\nLooking forward to hearing from you.\n\nBest regards.`,
+          subject: t("contact:inquiryAbout", { service: serviceCategories[service] }),
+          message: t("contact:serviceTemplate", { service: serviceCategories[service].toLowerCase() }),
         }));
 
         // Track service interest
@@ -160,9 +162,9 @@ const Contact = () => {
   return (
     <>
       <SEO
-        title="Contact Diego Rodriguez - Hire Full Stack Developer"
-        description="Get in touch with Diego Rodriguez for your next project. Available for Web3 development, trading systems, chrome extensions, and custom software solutions. Let's discuss your ideas."
-        keywords="hire full stack developer, web3 developer for hire, trading bot developer, chrome extension developer, contact diego rodriguez, freelance developer, custom software development"
+        title={t("contact:seo.title")}
+        description={t("contact:seo.description")}
+        keywords={t("contact:seo.keywords")}
         image="/og-contact.jpg"
       />
       <div className="h-full bg-primary/30">
@@ -178,7 +180,13 @@ const Contact = () => {
               exit="hidden"
               className="h2 text-center mb-12"
             >
-              Let&apos;s <span className="text-accent">connect.</span>
+              {t("contact:heading").split(/<accent>(.*?)<\/accent>/).map((part, i) =>
+                i % 2 === 1 ? (
+                  <span key={i} className="text-accent">{part}</span>
+                ) : (
+                  <span key={i}>{part}</span>
+                )
+              )}
             </motion.h2>
 
             {/* Success/Error Messages */}
@@ -206,10 +214,10 @@ const Contact = () => {
                   }`}
                 >
                   {submitStatus === "success"
-                    ? "Message sent successfully! I'll get back to you soon."
+                    ? t("contact:messages.success")
                     : submitStatus === "captcha_error"
-                      ? "Please solve the math problem correctly before submitting."
-                      : "Error sending message. Please try again."}
+                      ? t("contact:messages.captchaError")
+                      : t("contact:messages.error")}
                 </p>
               </motion.div>
             )}
@@ -224,7 +232,7 @@ const Contact = () => {
                 className="mb-6 p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-center relative"
               >
                 <p className="text-green-400 font-medium">
-                  Interested in: {serviceCategories[selectedService]}
+                  {t("contact:interestedIn")} {serviceCategories[selectedService]}
                 </p>
               </motion.div>
             )}
@@ -243,7 +251,7 @@ const Contact = () => {
                 <input
                   type="text"
                   name="name"
-                  placeholder="name"
+                  placeholder={t("contact:form.name")}
                   className="input"
                   value={formData.name}
                   onChange={handleInputChange}
@@ -252,7 +260,7 @@ const Contact = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="email"
+                  placeholder={t("contact:form.email")}
                   className="input"
                   value={formData.email}
                   onChange={handleInputChange}
@@ -262,7 +270,7 @@ const Contact = () => {
               <input
                 type="text"
                 name="subject"
-                placeholder="subject"
+                placeholder={t("contact:form.subject")}
                 className="input"
                 value={formData.subject}
                 onChange={handleInputChange}
@@ -270,7 +278,7 @@ const Contact = () => {
               />
               <textarea
                 name="message"
-                placeholder="message"
+                placeholder={t("contact:form.message")}
                 className="textarea"
                 value={formData.message}
                 onChange={handleInputChange}
@@ -286,7 +294,7 @@ const Contact = () => {
                 className="w-full"
               >
                 <label className="block text-white/80 text-sm mb-2">
-                  Please solve this math problem to verify you&apos;re human:
+                  {t("contact:form.captchaLabel")}
                 </label>
                 <MathCaptcha
                   onValidationChange={handleCaptchaValidation}
@@ -304,7 +312,7 @@ const Contact = () => {
                 }`}
               >
                 <span className="group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500">
-                  {isSubmitting ? "Sending..." : "Let's talk"}
+                  {isSubmitting ? t("contact:form.sending") : t("contact:form.submit")}
                 </span>
                 <BsArrowRight className="-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute text-[22px]" />
               </button>
@@ -315,5 +323,13 @@ const Contact = () => {
     </>
   );
 };
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "contact"])),
+    },
+  };
+}
 
 export default Contact;

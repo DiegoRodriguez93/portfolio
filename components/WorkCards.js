@@ -3,14 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { BsArrowRight, BsSearch } from "react-icons/bs";
+import { useTranslation } from "next-i18next";
 
-// Datos de proyectos reales
-const workData = [
+const getWorkData = (t) => [
   {
     id: 1,
-    title: "CryptoChart - Professional Trading Charts",
-    description:
-      "Professional cryptocurrency charting application with real-time data powered by Binance API and TradingView Lightweight Charts.",
+    title: t("work:projects.cryptoChart.title"),
+    description: t("work:projects.cryptoChart.description"),
     image: "/work/image.png",
     categories: ["trading-bots", "financial apps", "website"],
     link: "https://celadon-arithmetic-9db35a.netlify.app/",
@@ -20,9 +19,8 @@ const workData = [
   },
   {
     id: 2,
-    title: "DEX CLMM Pool Scanner",
-    description:
-      "Advanced Rust application that analyzes Concentrated Liquidity Market Maker pools across Raydium, Orca, and Meteor DEXs on Solana blockchain.",
+    title: t("work:projects.dexScanner.title"),
+    description: t("work:projects.dexScanner.description"),
     image: "/work/blog-clmm-1.png",
     categories: ["trading-bots", "financial apps"],
     link: "https://github.com/DiegoRodriguez93/dex-clmm-scanner",
@@ -32,12 +30,10 @@ const workData = [
   },
   {
     id: 3,
-    title: "BC.Game - Web3 Casino Platform",
-    description:
-      "Leading Web3 crypto casino platform with blockchain integration, real-time gaming, and cryptocurrency payment systems. Built scalable backend services and modern frontend interfaces.",
+    title: t("work:projects.bcGame.title"),
+    description: t("work:projects.bcGame.description"),
     image: "/work/bc-game.jpg",
     categories: ["web3", "gaming", "financial apps"],
-    link: "https://bc.game/",
     link: "https://bc.game/",
     isExternal: true,
     featured: false,
@@ -45,9 +41,8 @@ const workData = [
   },
   {
     id: 4,
-    title: "MeridianLink - Banking Platform",
-    description:
-      "Enterprise banking and lending platform serving financial institutions. Developed scalable microservices architecture and modern React interfaces.",
+    title: t("work:projects.meridianLink.title"),
+    description: t("work:projects.meridianLink.description"),
     image: "/work/meridianlink.jpg",
     categories: ["financial apps", "enterprise"],
     link: "https://www.meridianlink.com/",
@@ -57,9 +52,8 @@ const workData = [
   },
   {
     id: 5,
-    title: "VidaApp - Companion Services Management",
-    description:
-      "Hybrid mobile application for managing companion and care services. Built with React Native for cross-platform compatibility.",
+    title: t("work:projects.vidaApp.title"),
+    description: t("work:projects.vidaApp.description"),
     image: "/work/vida.webp",
     categories: ["mobile apps", "healthcare"],
     link: "https://play.google.com/store/apps/details?id=uy.com.vida.vidaapp&hl=es_UY&pli=1",
@@ -69,9 +63,8 @@ const workData = [
   },
   {
     id: 6,
-    title: "Allstate - Insurance Platform",
-    description:
-      "Serverless insurance platform built on AWS infrastructure. Developed scalable backend services and modern React frontend applications.",
+    title: t("work:projects.allstate.title"),
+    description: t("work:projects.allstate.description"),
     image: "/work/allstate.webp",
     categories: ["financial apps", "enterprise", "serverless"],
     link: "https://www.allstate.com/",
@@ -81,9 +74,8 @@ const workData = [
   },
   {
     id: 7,
-    title: "UnlockReturns - E-commerce Returns Management",
-    description:
-      "Advanced returns management system for e-commerce platforms. Integrated with NetSuite ERP and built with modern web technologies.",
+    title: t("work:projects.unlockReturns.title"),
+    description: t("work:projects.unlockReturns.description"),
     image: "/work/unlockreturns.png",
     categories: ["e-commerce", "enterprise"],
     link: "https://unlockcommerce.co/products/unlockreturns/",
@@ -93,9 +85,8 @@ const workData = [
   },
   {
     id: 8,
-    title: "UnlockShipping - Logistics Platform",
-    description:
-      "Comprehensive shipping and logistics management platform for e-commerce businesses. Features real-time tracking and automated workflows.",
+    title: t("work:projects.unlockShipping.title"),
+    description: t("work:projects.unlockShipping.description"),
     image: "/work/unlockshipping.webp",
     categories: ["e-commerce", "logistics"],
     link: "https://unlockcommerce.co/products/unlockshipping/",
@@ -105,53 +96,57 @@ const workData = [
   }
 ];
 
-const categories = [
-  { id: "all", name: "All Projects", count: workData.length },
+const getCategories = (t, workData) => [
+  { id: "all", name: t("work:categories.all"), count: workData.length },
   {
     id: "trading-bots",
-    name: "Trading Systems",
+    name: t("work:categories.tradingSystems"),
     count: workData.filter((item) => item.categories.includes("trading-bots")).length,
   },
   {
     id: "financial apps",
-    name: "Financial Apps",
+    name: t("work:categories.financialApps"),
     count: workData.filter((item) => item.categories.includes("financial apps")).length,
   },
   {
     id: "web3",
-    name: "Web3 & Blockchain",
+    name: t("work:categories.web3"),
     count: workData.filter((item) => item.categories.includes("web3")).length,
   },
   {
     id: "gaming",
-    name: "Gaming",
+    name: t("work:categories.gaming"),
     count: workData.filter((item) => item.categories.includes("gaming")).length,
   },
   {
     id: "enterprise",
-    name: "Enterprise",
+    name: t("work:categories.enterprise"),
     count: workData.filter((item) => item.categories.includes("enterprise")).length,
   },
   {
     id: "mobile apps",
-    name: "Mobile Apps",
+    name: t("work:categories.mobileApps"),
     count: workData.filter((item) => item.categories.includes("mobile apps")).length,
   },
   {
     id: "e-commerce",
-    name: "E-commerce",
+    name: t("work:categories.ecommerce"),
     count: workData.filter((item) => item.categories.includes("e-commerce")).length,
   },
   {
     id: "serverless",
-    name: "Serverless",
+    name: t("work:categories.serverless"),
     count: workData.filter((item) => item.categories.includes("serverless")).length,
   }
 ];
 
 const WorkCards = () => {
+  const { t } = useTranslation(["work", "common"]);
   const [activeFilter, setActiveFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+
+  const workData = getWorkData(t);
+  const categories = getCategories(t, workData);
 
   // Filtrar proyectos basado en categoría y búsqueda
   const filteredProjects = workData.filter((project) => {
@@ -177,10 +172,10 @@ const WorkCards = () => {
           </div>
           <input
             type="text"
-            placeholder="Search projects..."
+            placeholder={t("work:searchPlaceholder")}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="block w-full pl-10 pr-3 py-3 border border-white/10 rounded-lg 
+            className="block w-full pl-10 pr-3 py-3 border border-white/10 rounded-lg
                      bg-white/5 backdrop-blur-sm text-white placeholder-white/40
                      focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent
                      transition-all duration-300"
@@ -213,7 +208,7 @@ const WorkCards = () => {
       {/* Featured Projects */}
       {featuredProjects.length > 0 && (
         <div className="mb-12">
-          <h3 className="text-2xl font-bold text-white mb-8 text-center">Featured Projects</h3>
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">{t("work:featuredProjects")}</h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
             <AnimatePresence>
               {featuredProjects.map((project, index) => (
@@ -238,7 +233,7 @@ const WorkCards = () => {
                         />
                         <div className="absolute top-4 left-4">
                           <span className="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium">
-                            Featured
+                            {t("work:featured")}
                           </span>
                         </div>
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -290,7 +285,7 @@ const WorkCards = () => {
                                     hover:from-accent/90 hover:to-accent/70
                                     transition-all duration-300 group/btn"
                         >
-                          <span className="text-sm font-medium">View Project</span>
+                          <span className="text-sm font-medium">{t("work:viewProject")}</span>
                           <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                         </a>
                       </div>
@@ -379,7 +374,7 @@ const WorkCards = () => {
                               text-accent hover:from-accent hover:to-accent/80 hover:text-white
                               transition-all duration-300 group/btn"
                   >
-                    <span className="text-sm font-medium">View Project</span>
+                    <span className="text-sm font-medium">{t("work:viewProject")}</span>
                     <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                   </a>
                 </div>
@@ -397,7 +392,7 @@ const WorkCards = () => {
           className="text-center py-12"
         >
           <div className="text-white/60 text-lg">
-            No projects found matching your criteria.
+            {t("work:noResults")}
           </div>
           <button
             onClick={() => {
@@ -406,7 +401,7 @@ const WorkCards = () => {
             }}
             className="mt-4 px-6 py-2 text-accent hover:text-white transition-colors duration-300"
           >
-            Clear filters
+            {t("work:clearFilters")}
           </button>
         </motion.div>
       )}

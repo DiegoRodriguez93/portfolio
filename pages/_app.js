@@ -11,9 +11,12 @@ import Head from "next/head";
 // framer motion
 import { AnimatePresence, motion } from "framer-motion";
 
+// i18n
+import { appWithTranslation } from "next-i18next";
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  
+
   return (
     <>
       <Head>
@@ -69,4 +72,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

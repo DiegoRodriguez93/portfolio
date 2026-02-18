@@ -14,6 +14,9 @@ import {
   BsShield,
 } from "react-icons/bs";
 import { FaTwitter, FaLinkedin, FaFacebook, FaChartLine } from "react-icons/fa";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useRouter } from "next/router";
 
 // components
 import SEO from "../../components/SEO";
@@ -24,6 +27,10 @@ import AuthorBio from "../../components/AuthorBio";
 import { fadeIn } from "../../variants";
 
 const CryptochartingArticle = () => {
+  const { t } = useTranslation(["blog", "common"]);
+  const { locale } = useRouter();
+  const dateLocale = locale === "es" ? "es-ES" : "en-US";
+
   const publishDate = "2025-01-20";
   const readTime = "14 min read";
   const articleUrl = "https://www.diego-rodriguez.work/blog/cryptocurrency-charting-trading-api-integration";
@@ -54,7 +61,7 @@ const CryptochartingArticle = () => {
               className="inline-flex items-center gap-2 text-white/70 hover:text-accent transition-colors duration-300"
             >
               <BsArrowLeft className="w-4 h-4" />
-              <span>Back to Blog</span>
+              <span>{t("blog:backToBlog")}</span>
             </Link>
           </motion.div>
 
@@ -89,7 +96,7 @@ const CryptochartingArticle = () => {
               <div className="flex items-center gap-2">
                 <BsCalendar className="w-4 h-4" />
                 <span>
-                  {new Date(publishDate).toLocaleDateString("en-US", {
+                  {new Date(publishDate).toLocaleDateString(dateLocale, {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
@@ -101,7 +108,7 @@ const CryptochartingArticle = () => {
                 <span>{readTime}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span>By</span>
+                <span>{t("blog:by")}</span>
                 <Link
                   href="/about"
                   className="text-accent hover:text-white transition-colors"
@@ -147,7 +154,7 @@ const CryptochartingArticle = () => {
 
             {/* Share Buttons */}
             <div className="flex items-center gap-4">
-              <span className="text-white/60 text-sm">Share:</span>
+              <span className="text-white/60 text-sm">{t("blog:share")}</span>
               <div className="flex gap-3">
                 <a
                   href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent("Building Professional Cryptocurrency Charts")}`}
@@ -899,5 +906,13 @@ export default ChartControls;`}
     </>
   );
 };
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "blog"])),
+    },
+  };
+}
 
 export default CryptochartingArticle;

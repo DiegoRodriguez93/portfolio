@@ -4,11 +4,15 @@ import Link from "next/link";
 // icons
 import { RiLinkedinLine, RiMailLine } from "react-icons/ri";
 
+import { useTranslation } from "next-i18next";
+
 const Socials = () => {
+  const { t } = useTranslation("common");
+
   const mailtoLink = `mailto:Diego Rodriguez <diegorodriguezpaiva1993@gmail.com>?subject=${encodeURIComponent(
-    "Freelance Services Inquiry"
+    t("socials.emailSubject")
   )}&body=${encodeURIComponent(
-    "Hi Diego,\n\nI'm interested in hiring your freelance services.\n\nI'd like to discuss:\n- \n\nLooking forward to your response.\n\nBest regards."
+    t("socials.emailBody")
   )}`;
 
   return (
@@ -18,7 +22,7 @@ const Socials = () => {
         target="_blank"
         rel="noopener noreferrer"
         className="hover:text-accent transition-all duration-300"
-        aria-label="Visit Diego Rodriguez's LinkedIn profile"
+        aria-label={t("socials.linkedinAria")}
         title="LinkedIn Profile"
       >
         <RiLinkedinLine className="text-2xl" aria-hidden="true" />
@@ -26,7 +30,7 @@ const Socials = () => {
       <Link
         href={mailtoLink}
         className="hover:text-accent transition-all duration-300"
-        aria-label="Send email to Diego Rodriguez"
+        aria-label={t("socials.emailAria")}
         title="Send Email"
       >
         <RiMailLine className="text-2xl" aria-hidden="true" />

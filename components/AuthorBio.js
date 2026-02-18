@@ -1,10 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
-const AuthorBio = ({ 
-  specialization = "Senior Full Stack Developer",
-  description = "Diego has 9+ years of experience developing scalable applications and helping businesses transform their ideas into digital reality."
+const AuthorBio = ({
+  specialization,
+  description,
 }) => {
+  const { t } = useTranslation("common");
+
+  const displaySpecialization = specialization || t("authorBio.specialization");
+  const displayDescription = description || t("authorBio.description");
+
   return (
     <div className="bg-white/5 border border-white/10 rounded-xl p-8 my-12">
       <div className="flex flex-col md:flex-row gap-6 items-start">
@@ -19,12 +25,12 @@ const AuthorBio = ({
         </div>
         <div className="flex-1">
           <h3 className="text-xl font-bold text-white mb-2">Diego Rodriguez</h3>
-          <p className="text-accent mb-4">{specialization}</p>
+          <p className="text-accent mb-4">{displaySpecialization}</p>
           <p className="text-white/80 mb-4">
-            {description}
+            {displayDescription}
           </p>
           <Link href="/about" className="text-accent hover:text-white transition-colors">
-            Learn more about Diego →
+            {t("authorBio.learnMore")} →
           </Link>
         </div>
       </div>

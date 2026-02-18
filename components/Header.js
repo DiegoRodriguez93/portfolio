@@ -6,6 +6,7 @@ import Link from "next/link";
 
 // components
 import Socials from "../components/Socials";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 
 const Header = () => {
   return (
@@ -21,8 +22,11 @@ const Header = () => {
               </span>
             </span>
           </Link>
-          {/* socials */}
-          <Socials />
+          {/* socials + language switcher */}
+          <div className="flex items-center gap-x-6">
+            <Socials />
+            <LanguageSwitcher />
+          </div>
         </div>
       </div>
     </header>

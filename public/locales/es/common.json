@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "inicio",
+    "about": "sobre mi",
+    "services": "servicios",
+    "work": "trabajos",
+    "blog": "blog",
+    "testimonials": "testimonios",
+    "contact": "contacto"
+  },
+  "language": {
+    "en": "EN",
+    "es": "ES"
+  },
+  "cookie": {
+    "title": "Configuracion de Cookies",
+    "description": "Usamos cookies para mejorar tu experiencia y analizar nuestro trafico. Elige tus preferencias a continuacion.",
+    "acceptAll": "Aceptar Todas",
+    "rejectAll": "Rechazar Todas",
+    "customize": "Personalizar Configuracion",
+    "savePreferences": "Guardar Preferencias",
+    "necessary": "Necesarias",
+    "necessaryDesc": "Esenciales para el funcionamiento del sitio",
+    "analytics": "Analiticas",
+    "analyticsDesc": "Nos ayudan a entender el uso del sitio",
+    "functional": "Funcionales",
+    "functionalDesc": "Recuerdan tus preferencias",
+    "marketing": "Marketing",
+    "marketingDesc": "Muestran anuncios relevantes",
+    "required": "(Requeridas)",
+    "privacyPolicy": "Politica de Privacidad"
+  },
+  "projectsBtn": {
+    "alt": "Mi trabajo - texto circular",
+    "ariaLabel": "Ver mi portafolio y proyectos",
+    "srOnly": "Ver Portafolio"
+  },
+  "socials": {
+    "emailSubject": "Consulta de Servicios Freelance",
+    "emailBody": "Hola Diego,\n\nEstoy interesado en contratar tus servicios freelance.\n\nMe gustaria discutir:\n- \n\nEspero tu respuesta.\n\nSaludos cordiales.",
+    "linkedinAria": "Visitar el perfil de LinkedIn de Diego Rodriguez",
+    "emailAria": "Enviar email a Diego Rodriguez"
+  },
+  "authorBio": {
+    "specialization": "Desarrollador Full Stack Senior",
+    "description": "Diego tiene mas de 9 anos de experiencia desarrollando aplicaciones escalables y ayudando a empresas a transformar sus ideas en realidad digital.",
+    "learnMore": "Conoce mas sobre Diego"
+  }
+}

@@ -1,8 +1,11 @@
+const { i18n } = require('./next-i18next.config');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  
+  i18n,
+
   // Optimización de performance
   experimental: {
     optimizeCss: true,
@@ -74,32 +77,6 @@ const nextConfig = {
   // Redirects para SEO
   async redirects() {
     return [
-      // Redirect trailing slashes
-      {
-        source: "/about/",
-        destination: "/about",
-        permanent: true,
-      },
-      {
-        source: "/services/",
-        destination: "/services",
-        permanent: true,
-      },
-      {
-        source: "/work/",
-        destination: "/work",
-        permanent: true,
-      },
-      {
-        source: "/contact/",
-        destination: "/contact",
-        permanent: true,
-      },
-      {
-        source: "/blog/",
-        destination: "/blog",
-        permanent: true,
-      },
       // Blog article redirects
       {
         source: "/blog/trading-bots-guide",
@@ -139,7 +116,7 @@ const nextConfig = {
         },
       };
     }
-    
+
     return config;
   },
 };

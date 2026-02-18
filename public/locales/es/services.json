@@ -1,0 +1,35 @@
+{
+  "seo": {
+    "title": "Servicios de Desarrollo - Web3, Trading Bots y Extensiones Chrome",
+    "description": "Servicios profesionales de desarrollo incluyendo aplicaciones Web3, sistemas de trading algoritmico, extensiones de Chrome, apps moviles y soluciones fintech. Desarrollo de software personalizado con tecnologias modernas.",
+    "keywords": "servicios desarrollo web, desarrollo trading bots, desarrollo extensiones chrome, servicios desarrollo web3, desarrollo apps moviles, soluciones fintech, desarrollo software personalizado, servicios desarrollo react"
+  },
+  "heading": "Mis servicios",
+  "subtitle": "Me especializo en crear soluciones digitales innovadoras que impulsan el crecimiento empresarial. Desde aplicaciones Web3 hasta sistemas de trading, entrego soluciones tecnologicas escalables y seguras.",
+  "items": {
+    "webApps": {
+      "title": "Aplicaciones Web",
+      "description": "Aplicaciones web modernas y responsivas usando React, Next.js y tecnologias de vanguardia para un rendimiento optimo."
+    },
+    "tradingBots": {
+      "title": "Bots de Trading",
+      "description": "Sistemas de trading algoritmico automatizados para mercados de criptomonedas y forex con gestion avanzada de riesgo."
+    },
+    "chromeExtensions": {
+      "title": "Extensiones de Chrome",
+      "description": "Extensiones de navegador personalizadas para automatizacion, productividad, asistencia en trading e integracion Web3."
+    },
+    "mobileApps": {
+      "title": "Apps Moviles",
+      "description": "Aplicaciones moviles hibridas multiplataforma usando React Native o React/Capacitor.js para iOS y Android."
+    },
+    "web3": {
+      "title": "Desarrollo Web3",
+      "description": "Integracion blockchain, smart contracts, protocolos DeFi y desarrollo de aplicaciones descentralizadas."
+    },
+    "financial": {
+      "title": "Soluciones Financieras",
+      "description": "Aplicaciones fintech, sistemas de pago, herramientas de gestion de portafolio y plataformas de trading algoritmico."
+    }
+  }
+}

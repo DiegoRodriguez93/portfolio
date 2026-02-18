@@ -1,0 +1,33 @@
+{
+  "seo": {
+    "title": "Contactar a Diego Rodriguez - Contratar Desarrollador Full Stack",
+    "description": "Contacta a Diego Rodriguez para tu proximo proyecto. Disponible para desarrollo Web3, sistemas de trading, extensiones de Chrome y soluciones de software personalizado. Hablemos de tus ideas.",
+    "keywords": "contratar desarrollador full stack, desarrollador web3, desarrollador trading bots, desarrollador extensiones chrome, contactar diego rodriguez, desarrollador freelance, desarrollo software personalizado"
+  },
+  "heading": "Hablemos<accent>.</accent>",
+  "form": {
+    "name": "nombre",
+    "email": "email",
+    "subject": "asunto",
+    "message": "mensaje",
+    "captchaLabel": "Por favor resuelve este problema matematico para verificar que eres humano:",
+    "sending": "Enviando...",
+    "submit": "Hablemos"
+  },
+  "messages": {
+    "success": "Mensaje enviado exitosamente! Te respondere pronto.",
+    "captchaError": "Por favor resuelve el problema matematico correctamente antes de enviar.",
+    "error": "Error al enviar el mensaje. Por favor intenta de nuevo."
+  },
+  "serviceCategories": {
+    "web-applications": "Desarrollo de Aplicaciones Web",
+    "trading-bots": "Desarrollo de Bots de Trading",
+    "chrome-extensions": "Desarrollo de Extensiones de Chrome",
+    "mobile-apps": "Desarrollo de Apps Moviles",
+    "web3-development": "Desarrollo Web3",
+    "financial-solutions": "Desarrollo de Soluciones Financieras"
+  },
+  "interestedIn": "Interesado en:",
+  "inquiryAbout": "Consulta sobre {{service}}",
+  "serviceTemplate": "Hola Diego,\n\nEstoy interesado en tus servicios de {{service}}.\n\nMe gustaria discutir:\n- \n\nEspero tu respuesta.\n\nSaludos cordiales."
+}

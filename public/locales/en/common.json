@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "home",
+    "about": "about",
+    "services": "services",
+    "work": "work",
+    "blog": "blog",
+    "testimonials": "testimonials",
+    "contact": "contact"
+  },
+  "language": {
+    "en": "EN",
+    "es": "ES"
+  },
+  "cookie": {
+    "title": "Cookie Settings",
+    "description": "We use cookies to enhance your experience and analyze our traffic. Choose your preferences below.",
+    "acceptAll": "Accept All",
+    "rejectAll": "Reject All",
+    "customize": "Customize Settings",
+    "savePreferences": "Save Preferences",
+    "necessary": "Necessary",
+    "necessaryDesc": "Essential for website functionality",
+    "analytics": "Analytics",
+    "analyticsDesc": "Help us understand website usage",
+    "functional": "Functional",
+    "functionalDesc": "Remember your preferences",
+    "marketing": "Marketing",
+    "marketingDesc": "Show relevant advertisements",
+    "required": "(Required)",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "projectsBtn": {
+    "alt": "My work - circular text",
+    "ariaLabel": "View my portfolio and projects",
+    "srOnly": "View Portfolio"
+  },
+  "socials": {
+    "emailSubject": "Freelance Services Inquiry",
+    "emailBody": "Hi Diego,\n\nI'm interested in hiring your freelance services.\n\nI'd like to discuss:\n- \n\nLooking forward to your response.\n\nBest regards.",
+    "linkedinAria": "Visit Diego Rodriguez's LinkedIn profile",
+    "emailAria": "Send email to Diego Rodriguez"
+  },
+  "authorBio": {
+    "specialization": "Senior Full Stack Developer",
+    "description": "Diego has 9+ years of experience developing scalable applications and helping businesses transform their ideas into digital reality.",
+    "learnMore": "Learn more about Diego"
+  }
+}

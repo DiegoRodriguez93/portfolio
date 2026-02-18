@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BsCookie, BsX, BsShield, BsGear, BsChevronDown, BsChevronUp } from 'react-icons/bs';
+import { useTranslation } from 'next-i18next';
 
 const CookieConsent = () => {
+  const { t } = useTranslation('common');
   const [showModal, setShowModal] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [preferences, setPreferences] = useState({
@@ -53,14 +55,14 @@ const CookieConsent = () => {
       marketing: true,
       functional: true,
     };
-    
+
     setPreferences(allAccepted);
     localStorage.setItem('cookie-consent', JSON.stringify(allAccepted));
     localStorage.setItem('cookie-consent-date', new Date().toISOString());
-    
+
     // Initialize analytics
     initializeAnalytics();
-    
+
     setShowModal(false);
   };
 
@@ -71,11 +73,11 @@ const CookieConsent = () => {
       marketing: false,
       functional: false,
     };
-    
+
     setPreferences(onlyNecessary);
     localStorage.setItem('cookie-consent', JSON.stringify(onlyNecessary));
     localStorage.setItem('cookie-consent-date', new Date().toISOString());
-    
+
     // Disable analytics
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('consent', 'update', {
@@ -83,14 +85,14 @@ const CookieConsent = () => {
         ad_storage: 'denied',
       });
     }
-    
+
     setShowModal(false);
   };
 
   const handleSavePreferences = () => {
     localStorage.setItem('cookie-consent', JSON.stringify(preferences));
     localStorage.setItem('cookie-consent-date', new Date().toISOString());
-    
+
     // Update analytics consent
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('consent', 'update', {
@@ -98,17 +100,17 @@ const CookieConsent = () => {
         ad_storage: preferences.marketing ? 'granted' : 'denied',
       });
     }
-    
+
     if (preferences.analytics) {
       initializeAnalytics();
     }
-    
+
     setShowModal(false);
   };
 
   const handlePreferenceChange = (type) => {
     if (type === 'necessary') return; // Can't disable necessary cookies
-    
+
     setPreferences(prev => ({
       ...prev,
       [type]: !prev[type]
@@ -118,26 +120,26 @@ const CookieConsent = () => {
   const cookieTypes = [
     {
       id: 'necessary',
-      name: 'Necessary',
-      description: 'Essential for website functionality',
+      name: t('cookie.necessary'),
+      description: t('cookie.necessaryDesc'),
       required: true,
     },
     {
       id: 'analytics',
-      name: 'Analytics',
-      description: 'Help us understand website usage',
+      name: t('cookie.analytics'),
+      description: t('cookie.analyticsDesc'),
       required: false,
     },
     {
       id: 'functional',
-      name: 'Functional',
-      description: 'Remember your preferences',
+      name: t('cookie.functional'),
+      description: t('cookie.functionalDesc'),
       required: false,
     },
     {
       id: 'marketing',
-      name: 'Marketing',
-      description: 'Show relevant advertisements',
+      name: t('cookie.marketing'),
+      description: t('cookie.marketingDesc'),
       required: false,
     },
   ];
@@ -160,7 +162,7 @@ const CookieConsent = () => {
             <div className="flex items-center justify-between p-4 border-b border-white/10">
               <div className="flex items-center gap-2">
                 <BsCookie className="w-5 h-5 text-accent" aria-hidden="true" />
-                <h3 id="cookie-consent-title" className="text-sm font-semibold text-white">Cookie Settings</h3>
+                <h3 id="cookie-consent-title" className="text-sm font-semibold text-white">{t('cookie.title')}</h3>
               </div>
               <button
                 onClick={() => setShowModal(false)}
@@ -175,8 +177,7 @@ const CookieConsent = () => {
             {/* Content */}
             <div className="p-4">
               <p id="cookie-consent-description" className="text-xs text-white/70 mb-4 leading-relaxed">
-                We use cookies to enhance your experience and analyze our traffic. 
-                Choose your preferences below.
+                {t('cookie.description')}
               </p>
 
               {/* Quick Actions */}
@@ -184,17 +185,17 @@ const CookieConsent = () => {
                 <button
                   onClick={handleRejectAll}
                   className="flex-1 px-3 py-2 text-xs rounded-lg border border-white/20 text-white/80 hover:text-white hover:bg-white/5 transition-all duration-300"
-                  aria-label="Reject all non-essential cookies"
+                  aria-label={t('cookie.rejectAll')}
                 >
-                  Reject All
+                  {t('cookie.rejectAll')}
                 </button>
                 <button
                   onClick={handleAcceptAll}
                   className="flex-1 px-3 py-2 text-xs rounded-lg bg-accent text-white hover:bg-accent/90 transition-all duration-300 font-medium"
                   style={{ backgroundColor: '#F13024' }}
-                  aria-label="Accept all cookies"
+                  aria-label={t('cookie.acceptAll')}
                 >
-                  Accept All
+                  {t('cookie.acceptAll')}
                 </button>
               </div>
 
@@ -204,11 +205,10 @@ const CookieConsent = () => {
                 className="flex items-center justify-between w-full p-2 text-xs text-accent hover:text-white hover:bg-white/5 rounded-lg transition-all duration-300"
                 aria-expanded={showDetails}
                 aria-controls="cookie-details"
-                aria-label={showDetails ? "Hide cookie settings" : "Show cookie settings"}
               >
                 <span className="flex items-center gap-2">
                   <BsGear className="w-3 h-3" aria-hidden="true" />
-                  Customize Settings
+                  {t('cookie.customize')}
                 </span>
                 {showDetails ? (
                   <BsChevronUp className="w-3 h-3" aria-hidden="true" />
@@ -251,7 +251,7 @@ const CookieConsent = () => {
                             >
                               {cookie.name}
                               {cookie.required && (
-                                <span className="ml-1 text-[10px] text-accent">(Required)</span>
+                                <span className="ml-1 text-[10px] text-accent">{t('cookie.required')}</span>
                               )}
                             </label>
                             <p id={`${cookie.id}-description`} className="text-[10px] text-white/50 leading-relaxed">
@@ -266,9 +266,9 @@ const CookieConsent = () => {
                     <button
                       onClick={handleSavePreferences}
                       className="w-full mt-3 px-3 py-2 text-xs rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all duration-300"
-                      aria-label="Save cookie preferences"
+                      aria-label={t('cookie.savePreferences')}
                     >
-                      Save Preferences
+                      {t('cookie.savePreferences')}
                     </button>
                   </motion.div>
                 )}
@@ -284,7 +284,7 @@ const CookieConsent = () => {
                   aria-label="Read our privacy policy (opens in new tab)"
                 >
                   <BsShield className="w-3 h-3" aria-hidden="true" />
-                  Privacy Policy
+                  {t('cookie.privacyPolicy')}
                 </a>
               </div>
             </div>

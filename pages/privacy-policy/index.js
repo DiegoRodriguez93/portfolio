@@ -3,6 +3,8 @@ import { fadeIn } from "../../variants";
 import SEO from "../../components/SEO";
 import Circles from "../../components/Circles";
 
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 const PrivacyPolicy = () => {
   return (
     <>
@@ -27,10 +29,10 @@ const PrivacyPolicy = () => {
               Privacy <span className="text-accent">Policy</span>
             </h1>
             <p className="text-white/70">
-              Last updated: {new Date().toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
+              Last updated: {new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
               })}
             </p>
           </motion.div>
@@ -101,8 +103,8 @@ const PrivacyPolicy = () => {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">5. Data Security</h2>
                 <p>
-                  We implement appropriate security measures to protect your personal information against 
-                  unauthorized access, alteration, disclosure, or destruction. However, no method of 
+                  We implement appropriate security measures to protect your personal information against
+                  unauthorized access, alteration, disclosure, or destruction. However, no method of
                   transmission over the internet is 100% secure.
                 </p>
               </section>
@@ -140,15 +142,15 @@ const PrivacyPolicy = () => {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">8. International Data Transfers</h2>
                 <p>
-                  Your information may be transferred to and processed in countries other than your own. 
+                  Your information may be transferred to and processed in countries other than your own.
                   We ensure appropriate safeguards are in place to protect your data during such transfers.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold text-white mb-4">9. Children's Privacy</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">9. Children&apos;s Privacy</h2>
                 <p>
-                  Our website is not intended for children under 13 years of age. We do not knowingly 
+                  Our website is not intended for children under 13 years of age. We do not knowingly
                   collect personal information from children under 13.
                 </p>
               </section>
@@ -156,8 +158,8 @@ const PrivacyPolicy = () => {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">10. Changes to This Policy</h2>
                 <p>
-                  We may update this privacy policy from time to time. We will notify you of any 
-                  changes by posting the new policy on this page and updating the "Last updated" date.
+                  We may update this privacy policy from time to time. We will notify you of any
+                  changes by posting the new policy on this page and updating the &quot;Last updated&quot; date.
                 </p>
               </section>
 
@@ -178,5 +180,13 @@ const PrivacyPolicy = () => {
     </>
   );
 };
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
+}
 
 export default PrivacyPolicy;

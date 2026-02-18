@@ -1,0 +1,35 @@
+{
+  "seo": {
+    "title": "Development Services - Web3, Trading Bots & Chrome Extensions",
+    "description": "Professional development services including Web3 applications, algorithmic trading systems, chrome extensions, mobile apps, and fintech solutions. Custom software development with modern technologies.",
+    "keywords": "web development services, trading bot development, chrome extension development, web3 development services, mobile app development, fintech solutions, custom software development, react development services"
+  },
+  "heading": "My services",
+  "subtitle": "I specialize in creating innovative digital solutions that drive business growth. From Web3 applications to trading systems, I deliver scalable and secure technology solutions.",
+  "items": {
+    "webApps": {
+      "title": "Web Applications",
+      "description": "Modern responsive web applications using React, Next.js, and cutting-edge technologies for optimal performance."
+    },
+    "tradingBots": {
+      "title": "Trading Bots",
+      "description": "Automated algorithmic trading systems for cryptocurrency and forex markets with advanced risk management."
+    },
+    "chromeExtensions": {
+      "title": "Chrome Extensions",
+      "description": "Custom browser extensions for automation, productivity, trading assistance, and Web3 integration."
+    },
+    "mobileApps": {
+      "title": "Mobile Apps",
+      "description": "Cross-platform hybrid mobile applications using React Native or React/Capacitor.js for iOS and Android."
+    },
+    "web3": {
+      "title": "Web3 Development",
+      "description": "Blockchain integration, smart contracts, DeFi protocols, and decentralized application development."
+    },
+    "financial": {
+      "title": "Financial Solutions",
+      "description": "Fintech applications, payment systems, portfolio management tools, and algorithmic trading platforms."
+    }
+  }
+}

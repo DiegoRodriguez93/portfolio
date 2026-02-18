@@ -5,6 +5,8 @@ import TestimonialSlider from '../../components/TestimonialSlider';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../variants';
 
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
 const Testimonials = () => {
   return (
     <div className='h-full bg-primary/30 py-32 text-center'>
@@ -32,5 +34,13 @@ const Testimonials = () => {
     </div>
   );
 };
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
+}
 
 export default Testimonials;

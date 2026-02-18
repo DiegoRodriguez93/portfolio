@@ -11,13 +11,18 @@ import { fadeIn } from "../variants";
 import SEO from "../components/SEO";
 import { PersonJsonLd } from "../components/JsonLd";
 
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
 const Home = () => {
+  const { t } = useTranslation(["home", "common"]);
+
   return (
     <>
       <SEO
-        title="Diego Rodriguez - Senior Full Stack Developer | Web3, Trading Bots & Chrome Extensions"
-        description="Senior Full Stack Developer with 9+ years experience specializing in Web3, algorithmic trading systems, chrome extensions, and fintech solutions. Transform your ideas into digital reality with modern technologies like React, Next.js, and blockchain."
-        keywords="diego rodriguez, full stack developer, web3 developer, trading bots, chrome extensions, algorithmic trading, react developer, next.js developer, blockchain developer, fintech developer, uruguay developer, senior developer, custom software development"
+        title={t("home:seo.title")}
+        description={t("home:seo.description")}
+        keywords={t("home:seo.keywords")}
       />
 
       {/* Structured Data para la homepage */}
@@ -33,8 +38,8 @@ const Home = () => {
               exit="hidden"
               className="h1"
             >
-              Transforming Ideas <br /> Into{" "}
-              <span className="text-accent">Digital Reality</span>
+              {t("home:hero.title1")} <br /> {t("home:hero.title2")}
+              <span className="text-accent">{t("home:hero.titleAccent")}</span>
             </motion.h1>
 
             <motion.p
@@ -44,10 +49,7 @@ const Home = () => {
               exit="hidden"
               className="max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16"
             >
-              I create powerful digital solutions that drive results. From
-              stunning websites to custom applications, I help businesses
-              establish their online presence and connect with their audience
-              through innovative technology and compelling design.
+              {t("home:hero.subtitle")}
             </motion.p>
 
             <div className="flex justify-center xl:hidden relative">
@@ -85,5 +87,13 @@ const Home = () => {
     </>
   );
 };
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "home"])),
+    },
+  };
+}
 
 export default Home;

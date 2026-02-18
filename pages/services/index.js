@@ -11,52 +11,6 @@ import {
 // next link
 import Link from "next/link";
 
-// service data - actualizado con tus servicios reales
-export const serviceData = [
-  {
-    icon: <RxDesktop />,
-    title: "Web Applications",
-    description:
-      "Modern responsive web applications using React, Next.js, and cutting-edge technologies for optimal performance.",
-    category: "web-applications",
-  },
-  {
-    icon: <RxRocket />,
-    title: "Trading Bots",
-    description:
-      "Automated algorithmic trading systems for cryptocurrency and forex markets with advanced risk management.",
-    category: "trading-bots",
-  },
-  {
-    icon: <RxCrop />,
-    title: "Chrome Extensions",
-    description:
-      "Custom browser extensions for automation, productivity, trading assistance, and Web3 integration.",
-    category: "chrome-extensions",
-  },
-  {
-    icon: <RxPencil2 />,
-    title: "Mobile Apps",
-    description:
-      "Cross-platform hybrid mobile applications using React Native or React/Capacitor.js for iOS and Android.",
-    category: "mobile-apps",
-  },
-  {
-    icon: <RxReader />,
-    title: "Web3 Development",
-    description:
-      "Blockchain integration, smart contracts, DeFi protocols, and decentralized application development.",
-    category: "web3-development",
-  },
-  {
-    icon: <RxRocket />,
-    title: "Financial Solutions",
-    description:
-      "Fintech applications, payment systems, portfolio management tools, and algorithmic trading platforms.",
-    category: "financial-solutions",
-  },
-];
-
 // components
 import Bulb from "../../components/Bulb";
 import Circles from "../../components/Circles";
@@ -67,13 +21,58 @@ import { fadeIn } from "../../variants";
 import SEO from "../../components/SEO";
 import { OrganizationJsonLd } from "../../components/JsonLd";
 
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+const getServiceData = (t) => [
+  {
+    icon: <RxDesktop />,
+    title: t("services:items.webApps.title"),
+    description: t("services:items.webApps.description"),
+    category: "web-applications",
+  },
+  {
+    icon: <RxRocket />,
+    title: t("services:items.tradingBots.title"),
+    description: t("services:items.tradingBots.description"),
+    category: "trading-bots",
+  },
+  {
+    icon: <RxCrop />,
+    title: t("services:items.chromeExtensions.title"),
+    description: t("services:items.chromeExtensions.description"),
+    category: "chrome-extensions",
+  },
+  {
+    icon: <RxPencil2 />,
+    title: t("services:items.mobileApps.title"),
+    description: t("services:items.mobileApps.description"),
+    category: "mobile-apps",
+  },
+  {
+    icon: <RxReader />,
+    title: t("services:items.web3.title"),
+    description: t("services:items.web3.description"),
+    category: "web3-development",
+  },
+  {
+    icon: <RxRocket />,
+    title: t("services:items.financial.title"),
+    description: t("services:items.financial.description"),
+    category: "financial-solutions",
+  },
+];
+
 const Services = () => {
+  const { t } = useTranslation(["services", "common"]);
+  const serviceData = getServiceData(t);
+
   return (
     <>
       <SEO
-        title="Development Services - Web3, Trading Bots & Chrome Extensions"
-        description="Professional development services including Web3 applications, algorithmic trading systems, chrome extensions, mobile apps, and fintech solutions. Custom software development with modern technologies."
-        keywords="web development services, trading bot development, chrome extension development, web3 development services, mobile app development, fintech solutions, custom software development, react development services"
+        title={t("services:seo.title")}
+        description={t("services:seo.description")}
+        keywords={t("services:seo.keywords")}
         image="/og-services.jpg"
       />
       <OrganizationJsonLd />
@@ -90,7 +89,7 @@ const Services = () => {
                 exit="hidden"
                 className="h2"
               >
-                My services <span className="text-accent">.</span>
+                {t("services:heading")} <span className="text-accent">.</span>
               </motion.h2>
               <motion.p
                 variants={fadeIn("up", 0.4)}
@@ -99,9 +98,7 @@ const Services = () => {
                 exit="hidden"
                 className="mb-4 max-w-[600px] mx-auto text-center"
               >
-                I specialize in creating innovative digital solutions that drive
-                business growth. From Web3 applications to trading systems, I
-                deliver scalable and secure technology solutions.
+                {t("services:subtitle")}
               </motion.p>
             </div>
 
@@ -152,5 +149,13 @@ const Services = () => {
     </>
   );
 };
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "services"])),
+    },
+  };
+}
 
 export default Services;
