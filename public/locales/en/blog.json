@@ -1,0 +1,67 @@
+{
+  "seo": {
+    "title": "Development Blog - Trading Bots, Web3 & Chrome Extensions",
+    "description": "Expert insights on algorithmic trading, Web3 development, Chrome extensions, and fintech solutions. Learn from 9+ years of full-stack development experience.",
+    "keywords": "trading bot development blog, web3 development tutorials, chrome extension guides, fintech development, algorithmic trading, python trading, blockchain development, full stack developer blog"
+  },
+  "heading": "Development <accent>Blog</accent>",
+  "subtitle": "Expert insights on algorithmic trading, Web3 development, and modern software engineering. Learn from real-world experience building scalable applications.",
+  "searchPlaceholder": "Search articles...",
+  "readMore": "Read More",
+  "readFullArticle": "Read Full Article",
+  "featured": "Featured",
+  "backToBlog": "Back to Blog",
+  "share": "Share:",
+  "by": "By",
+  "noResults": "No articles found matching your criteria.",
+  "clearFilters": "Clear filters",
+  "minRead": "min read",
+  "categories": {
+    "all": "All Posts",
+    "aiDevelopment": "AI Development",
+    "projectRescue": "Project Rescue",
+    "defi": "DeFi & Blockchain",
+    "rust": "Rust Development",
+    "tradingBots": "Trading Bots",
+    "cryptocurrency": "Cryptocurrency",
+    "web3": "Web3 & Blockchain",
+    "chromeExtensions": "Chrome Extensions",
+    "fintech": "Fintech",
+    "geo": "GEO & AI Search",
+    "seo": "SEO"
+  },
+  "posts": {
+    "dexScanner": {
+      "title": "Building a DEX Pool Scanner: Analyzing CLMM Pools on Solana with Rust",
+      "excerpt": "Learn how to build a sophisticated DeFi analytics tool using Rust to scan and analyze Concentrated Liquidity Market Maker pools across multiple Solana DEXs like Raydium, Orca, and Meteor."
+    },
+    "aiCoding": {
+      "title": "When AI Coding Goes Wrong: From Prototype to Production Nightmare",
+      "excerpt": "Why 80% of AI-generated projects never see production and how professional developers can rescue your stuck projects. Learn the common pitfalls and get expert help to ship your ideas."
+    },
+    "cryptoCharts": {
+      "title": "Building Professional Cryptocurrency Charts: TradingView Integration & Binance API",
+      "excerpt": "Complete guide to building professional cryptocurrency charting applications with TradingView Lightweight Charts, Binance API integration, and real-time data streaming."
+    },
+    "tradingBots": {
+      "title": "How to Build Profitable Trading Bots in 2025: A Complete Guide",
+      "excerpt": "Learn how to develop algorithmic trading systems using Python, Jesse framework, and machine learning algorithms like PPO and SAC for consistent profits."
+    },
+    "web3": {
+      "title": "Web3 Development Best Practices for Enterprise Applications",
+      "excerpt": "Discover the essential patterns and security considerations when building enterprise-grade Web3 applications with React and blockchain integration."
+    },
+    "chromeExtensions": {
+      "title": "Chrome Extension Development: From Idea to Chrome Store",
+      "excerpt": "Step-by-step guide to building, testing, and publishing Chrome extensions that solve real problems and generate revenue."
+    },
+    "fintechApi": {
+      "title": "Fintech API Development: Security and Scalability",
+      "excerpt": "Building secure and scalable financial APIs with Node.js, implementing proper authentication, rate limiting, and compliance standards."
+    },
+    "geo": {
+      "title": "GEO: Why Generative Engine Optimization Is the Future of Online Visibility",
+      "excerpt": "Traditional SEO is no longer enough. Learn how Generative Engine Optimization (GEO) helps your business get cited by AI search engines like ChatGPT, Perplexity, and Google AI Overviews."
+    }
+  }
+}

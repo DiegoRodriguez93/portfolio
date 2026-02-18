@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { motion, AnimatePresence } from "framer-motion";
 import { BsArrowRight, BsSearch, BsClock, BsCalendar } from "react-icons/bs";
 
@@ -12,161 +13,168 @@ import SEO from "../../components/SEO";
 // framer motion
 import { fadeIn } from "../../variants";
 
-// Blog posts data
-const blogPosts = [
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+const getBlogPosts = (t) => [
   {
     id: 1,
-    title: "Building a DEX Pool Scanner: Analyzing CLMM Pools on Solana with Rust",
-    excerpt:
-      "Learn how to build a sophisticated DeFi analytics tool using Rust to scan and analyze Concentrated Liquidity Market Maker pools across multiple Solana DEXs like Raydium, Orca, and Meteor.",
+    title: t("blog:posts.dexScanner.title"),
+    excerpt: t("blog:posts.dexScanner.excerpt"),
     image: "/work/blog-clmm-1.png",
     categories: ["defi", "rust", "solana"],
-    readTime: "12 min read",
+    readTime: "12",
     publishDate: "2025-08-22",
     slug: "building-dex-pool-scanner-clmm-solana-rust",
     featured: true,
   },
   {
     id: 2,
-    title: "When AI Coding Goes Wrong: From Prototype to Production Nightmare",
-    excerpt:
-      "Why 80% of AI-generated projects never see production and how professional developers can rescue your stuck projects. Learn the common pitfalls and get expert help to ship your ideas.",
+    title: t("blog:posts.aiCoding.title"),
+    excerpt: t("blog:posts.aiCoding.excerpt"),
     image: "/thumb2.jpg",
     categories: ["ai-development", "project-rescue", "consulting"],
-    readTime: "8 min read",
+    readTime: "8",
     publishDate: "2025-09-08",
     slug: "ai-coding-problems-project-rescue-services",
     featured: false,
   },
   {
     id: 3,
-    title: "Building Professional Cryptocurrency Charts: TradingView Integration & Binance API",
-    excerpt:
-      "Complete guide to building professional cryptocurrency charting applications with TradingView Lightweight Charts, Binance API integration, and real-time data streaming.",
+    title: t("blog:posts.cryptoCharts.title"),
+    excerpt: t("blog:posts.cryptoCharts.excerpt"),
     image: "/work/image.png",
     categories: ["cryptocurrency", "trading-apis", "charts"],
-    readTime: "14 min read",
+    readTime: "14",
     publishDate: "2025-01-20",
     slug: "cryptocurrency-charting-trading-api-integration",
     featured: false,
   },
   {
     id: 4,
-    title: "How to Build Profitable Trading Bots in 2025: A Complete Guide",
-    excerpt:
-      "Learn how to develop algorithmic trading systems using Python, Jesse framework, and machine learning algorithms like PPO and SAC for consistent profits.",
+    title: t("blog:posts.tradingBots.title"),
+    excerpt: t("blog:posts.tradingBots.excerpt"),
     image: "/thumb1.jpg",
     categories: ["trading-bots", "python", "machine-learning"],
-    readTime: "12 min read",
+    readTime: "12",
     publishDate: "2025-01-15",
     slug: "how-to-build-profitable-trading-bots-2025",
     featured: false,
   },
   {
     id: 5,
-    title: "Web3 Development Best Practices for Enterprise Applications",
-    excerpt:
-      "Discover the essential patterns and security considerations when building enterprise-grade Web3 applications with React and blockchain integration.",
+    title: t("blog:posts.web3.title"),
+    excerpt: t("blog:posts.web3.excerpt"),
     image: "/thumb2.jpg",
     categories: ["web3", "blockchain", "enterprise"],
-    readTime: "8 min read",
+    readTime: "8",
     publishDate: "2025-01-10",
     slug: "web3-development-best-practices-enterprise",
     featured: false,
   },
   {
     id: 6,
-    title: "Chrome Extension Development: From Idea to Chrome Store",
-    excerpt:
-      "Step-by-step guide to building, testing, and publishing Chrome extensions that solve real problems and generate revenue.",
+    title: t("blog:posts.chromeExtensions.title"),
+    excerpt: t("blog:posts.chromeExtensions.excerpt"),
     image: "/thumb3.jpg",
     categories: ["chrome-extensions", "javascript", "monetization"],
-    readTime: "10 min read",
+    readTime: "10",
     publishDate: "2025-01-05",
     slug: "chrome-extension-development-guide",
     featured: false,
   },
   {
     id: 7,
-    title: "Fintech API Development: Security and Scalability",
-    excerpt:
-      "Building secure and scalable financial APIs with Node.js, implementing proper authentication, rate limiting, and compliance standards.",
+    title: t("blog:posts.fintechApi.title"),
+    excerpt: t("blog:posts.fintechApi.excerpt"),
     image: "/thumb4.jpg",
     categories: ["fintech", "api-development", "security"],
-    readTime: "15 min read",
+    readTime: "15",
     publishDate: "2025-01-01",
     slug: "fintech-api-development-security-scalability",
     featured: false,
   },
+  {
+    id: 8,
+    title: t("blog:posts.geo.title"),
+    excerpt: t("blog:posts.geo.excerpt"),
+    image: "/work/blog-geo2.jpg",
+    categories: ["geo", "seo", "ai-development"],
+    readTime: "10",
+    publishDate: "2026-02-18",
+    slug: "geo-generative-engine-optimization-guide",
+    featured: false,
+  },
 ];
 
-const categories = [
-  { id: "all", name: "All Posts", count: blogPosts.length },
+const getCategories = (t, blogPosts) => [
+  { id: "all", name: t("blog:categories.all"), count: blogPosts.length },
   {
     id: "ai-development",
-    name: "AI Development",
-    count: blogPosts.filter((post) =>
-      post.categories.includes("ai-development")
-    ).length,
+    name: t("blog:categories.aiDevelopment"),
+    count: blogPosts.filter((post) => post.categories.includes("ai-development")).length,
   },
   {
     id: "project-rescue",
-    name: "Project Rescue",
-    count: blogPosts.filter((post) =>
-      post.categories.includes("project-rescue")
-    ).length,
+    name: t("blog:categories.projectRescue"),
+    count: blogPosts.filter((post) => post.categories.includes("project-rescue")).length,
   },
   {
     id: "defi",
-    name: "DeFi & Blockchain",
-    count: blogPosts.filter((post) =>
-      post.categories.includes("defi")
-    ).length,
+    name: t("blog:categories.defi"),
+    count: blogPosts.filter((post) => post.categories.includes("defi")).length,
   },
   {
     id: "rust",
-    name: "Rust Development",
-    count: blogPosts.filter((post) => post.categories.includes("rust"))
-      .length,
+    name: t("blog:categories.rust"),
+    count: blogPosts.filter((post) => post.categories.includes("rust")).length,
   },
   {
     id: "trading-bots",
-    name: "Trading Bots",
-    count: blogPosts.filter((post) =>
-      post.categories.includes("trading-bots")
-    ).length,
+    name: t("blog:categories.tradingBots"),
+    count: blogPosts.filter((post) => post.categories.includes("trading-bots")).length,
   },
   {
     id: "cryptocurrency",
-    name: "Cryptocurrency",
-    count: blogPosts.filter((post) =>
-      post.categories.includes("cryptocurrency")
-    ).length,
+    name: t("blog:categories.cryptocurrency"),
+    count: blogPosts.filter((post) => post.categories.includes("cryptocurrency")).length,
   },
   {
     id: "web3",
-    name: "Web3 & Blockchain",
-    count: blogPosts.filter((post) => post.categories.includes("web3"))
-      .length,
+    name: t("blog:categories.web3"),
+    count: blogPosts.filter((post) => post.categories.includes("web3")).length,
   },
   {
     id: "chrome-extensions",
-    name: "Chrome Extensions",
-    count: blogPosts.filter((post) =>
-      post.categories.includes("chrome-extensions")
-    ).length,
+    name: t("blog:categories.chromeExtensions"),
+    count: blogPosts.filter((post) => post.categories.includes("chrome-extensions")).length,
   },
   {
     id: "fintech",
-    name: "Fintech",
-    count: blogPosts.filter((post) => post.categories.includes("fintech"))
-      .length,
+    name: t("blog:categories.fintech"),
+    count: blogPosts.filter((post) => post.categories.includes("fintech")).length,
+  },
+  {
+    id: "geo",
+    name: t("blog:categories.geo"),
+    count: blogPosts.filter((post) => post.categories.includes("geo")).length,
+  },
+  {
+    id: "seo",
+    name: t("blog:categories.seo"),
+    count: blogPosts.filter((post) => post.categories.includes("seo")).length,
   },
 ];
 
 const Blog = () => {
+  const { t } = useTranslation(["blog", "common"]);
+  const { locale } = useRouter();
   const [activeFilter, setActiveFilter] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+
+  const blogPosts = getBlogPosts(t);
+  const categories = getCategories(t, blogPosts);
+  const dateLocale = locale === "es" ? "es-ES" : "en-US";
 
   // Filter posts based on category and search
   const filteredPosts = blogPosts.filter((post) => {
@@ -181,12 +189,15 @@ const Blog = () => {
   const featuredPost = blogPosts.find((post) => post.featured);
   const regularPosts = filteredPosts.filter((post) => !post.featured);
 
+  // Parse heading with accent
+  const headingParts = t("blog:heading").split(/<accent>(.*?)<\/accent>/);
+
   return (
     <>
       <SEO
-        title="Development Blog - Trading Bots, Web3 & Chrome Extensions"
-        description="Expert insights on algorithmic trading, Web3 development, Chrome extensions, and fintech solutions. Learn from 9+ years of full-stack development experience."
-        keywords="trading bot development blog, web3 development tutorials, chrome extension guides, fintech development, algorithmic trading, python trading, blockchain development, full stack developer blog"
+        title={t("blog:seo.title")}
+        description={t("blog:seo.description")}
+        keywords={t("blog:seo.keywords")}
         image="/og-blog.jpg"
       />
 
@@ -202,7 +213,13 @@ const Blog = () => {
               exit="hidden"
               className="h2 mb-6"
             >
-              Development <span className="text-accent">Blog</span>
+              {headingParts.map((part, i) =>
+                i % 2 === 1 ? (
+                  <span key={i} className="text-accent">{part}</span>
+                ) : (
+                  <span key={i}>{part}</span>
+                )
+              )}
             </motion.h1>
             <motion.p
               variants={fadeIn("up", 0.4)}
@@ -211,9 +228,7 @@ const Blog = () => {
               exit="hidden"
               className="text-lg max-w-[600px] mx-auto text-white/80 leading-relaxed"
             >
-              Expert insights on algorithmic trading, Web3 development, and
-              modern software engineering. Learn from real-world experience
-              building scalable applications.
+              {t("blog:subtitle")}
             </motion.p>
           </div>
 
@@ -238,7 +253,7 @@ const Blog = () => {
                       />
                       <div className="absolute top-4 left-4">
                         <span className="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium">
-                          Featured
+                          {t("blog:featured")}
                         </span>
                       </div>
                     </div>
@@ -264,7 +279,7 @@ const Blog = () => {
                           <BsCalendar className="w-4 h-4" />
                           <span>
                             {new Date(featuredPost.publishDate).toLocaleDateString(
-                              "en-US",
+                              dateLocale,
                               {
                                 year: "numeric",
                                 month: "long",
@@ -275,12 +290,12 @@ const Blog = () => {
                         </div>
                         <div className="flex items-center gap-2">
                           <BsClock className="w-4 h-4" />
-                          <span>{featuredPost.readTime}</span>
+                          <span>{featuredPost.readTime} {t("blog:minRead")}</span>
                         </div>
                       </div>
                       <Link href={`/blog/${featuredPost.slug}`}>
                         <div className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-accent to-accent/80 text-white hover:from-accent/90 hover:to-accent/70 transition-all duration-300 group/btn">
-                          <span className="font-medium">Read Full Article</span>
+                          <span className="font-medium">{t("blog:readFullArticle")}</span>
                           <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                         </div>
                       </Link>
@@ -306,10 +321,10 @@ const Blog = () => {
               </div>
               <input
                 type="text"
-                placeholder="Search articles..."
+                placeholder={t("blog:searchPlaceholder")}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="block w-full pl-10 pr-3 py-3 border border-white/10 rounded-lg 
+                className="block w-full pl-10 pr-3 py-3 border border-white/10 rounded-lg
                          bg-white/5 backdrop-blur-sm text-white placeholder-white/40
                          focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent
                          transition-all duration-300"
@@ -399,19 +414,19 @@ const Blog = () => {
                         <div className="flex items-center gap-2">
                           <BsCalendar className="w-3 h-3" />
                           <span>
-                            {new Date(post.publishDate).toLocaleDateString()}
+                            {new Date(post.publishDate).toLocaleDateString(dateLocale)}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">
                           <BsClock className="w-3 h-3" />
-                          <span>{post.readTime}</span>
+                          <span>{post.readTime} {t("blog:minRead")}</span>
                         </div>
                       </div>
 
                       {/* Button */}
                       <Link href={`/blog/${post.slug}`}>
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-accent/20 to-accent/10 border border-accent/30 text-accent hover:from-accent hover:to-accent/80 hover:text-white transition-all duration-300 group/btn">
-                          <span className="text-sm font-medium">Read More</span>
+                          <span className="text-sm font-medium">{t("blog:readMore")}</span>
                           <BsArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                         </div>
                       </Link>
@@ -430,7 +445,7 @@ const Blog = () => {
               className="text-center py-12"
             >
               <div className="text-white/60 text-lg">
-                No articles found matching your criteria.
+                {t("blog:noResults")}
               </div>
               <button
                 onClick={() => {
@@ -439,7 +454,7 @@ const Blog = () => {
                 }}
                 className="mt-4 px-6 py-2 text-accent hover:text-white transition-colors duration-300"
               >
-                Clear filters
+                {t("blog:clearFilters")}
               </button>
             </motion.div>
           )}
@@ -449,5 +464,13 @@ const Blog = () => {
     </>
   );
 };
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "blog"])),
+    },
+  };
+}
 
 export default Blog;

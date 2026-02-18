@@ -1,0 +1,67 @@
+{
+  "seo": {
+    "title": "Blog de Desarrollo - Trading Bots, Web3 y Extensiones Chrome",
+    "description": "Conocimientos expertos sobre trading algoritmico, desarrollo Web3, extensiones de Chrome y soluciones fintech. Aprende de mas de 9 anos de experiencia en desarrollo full-stack.",
+    "keywords": "blog desarrollo trading bots, tutoriales desarrollo web3, guias extensiones chrome, desarrollo fintech, trading algoritmico, python trading, desarrollo blockchain, blog desarrollador full stack"
+  },
+  "heading": "<accent>Blog</accent> de Desarrollo",
+  "subtitle": "Conocimientos expertos sobre trading algoritmico, desarrollo Web3 e ingenieria de software moderna. Aprende de experiencia real construyendo aplicaciones escalables.",
+  "searchPlaceholder": "Buscar articulos...",
+  "readMore": "Leer Mas",
+  "readFullArticle": "Leer Articulo Completo",
+  "featured": "Destacado",
+  "backToBlog": "Volver al Blog",
+  "share": "Compartir:",
+  "by": "Por",
+  "noResults": "No se encontraron articulos que coincidan con tu busqueda.",
+  "clearFilters": "Limpiar filtros",
+  "minRead": "min de lectura",
+  "categories": {
+    "all": "Todos los Articulos",
+    "aiDevelopment": "Desarrollo IA",
+    "projectRescue": "Rescate de Proyectos",
+    "defi": "DeFi y Blockchain",
+    "rust": "Desarrollo en Rust",
+    "tradingBots": "Bots de Trading",
+    "cryptocurrency": "Criptomonedas",
+    "web3": "Web3 y Blockchain",
+    "chromeExtensions": "Extensiones Chrome",
+    "fintech": "Fintech",
+    "geo": "GEO y Busqueda IA",
+    "seo": "SEO"
+  },
+  "posts": {
+    "dexScanner": {
+      "title": "Construyendo un DEX Pool Scanner: Analizando CLMM Pools en Solana con Rust",
+      "excerpt": "Aprende a construir una herramienta sofisticada de analiticas DeFi usando Rust para escanear y analizar pools de Concentrated Liquidity Market Maker en multiples DEXs de Solana como Raydium, Orca y Meteor."
+    },
+    "aiCoding": {
+      "title": "Cuando la IA Falla al Programar: De Prototipo a Pesadilla en Produccion",
+      "excerpt": "Por que el 80% de los proyectos generados con IA nunca llegan a produccion y como los desarrolladores profesionales pueden rescatar tus proyectos atascados. Conoce los errores comunes y obtene ayuda experta."
+    },
+    "cryptoCharts": {
+      "title": "Construyendo Graficos Profesionales de Criptomonedas: Integracion TradingView y API de Binance",
+      "excerpt": "Guia completa para construir aplicaciones profesionales de graficos de criptomonedas con TradingView Lightweight Charts, integracion de API de Binance y streaming de datos en tiempo real."
+    },
+    "tradingBots": {
+      "title": "Como Construir Bots de Trading Rentables en 2025: Guia Completa",
+      "excerpt": "Aprende a desarrollar sistemas de trading algoritmico usando Python, framework Jesse y algoritmos de machine learning como PPO y SAC para ganancias consistentes."
+    },
+    "web3": {
+      "title": "Mejores Practicas de Desarrollo Web3 para Aplicaciones Empresariales",
+      "excerpt": "Descubre los patrones esenciales y consideraciones de seguridad al construir aplicaciones Web3 de nivel empresarial con React e integracion blockchain."
+    },
+    "chromeExtensions": {
+      "title": "Desarrollo de Extensiones Chrome: De la Idea a Chrome Store",
+      "excerpt": "Guia paso a paso para construir, probar y publicar extensiones de Chrome que resuelven problemas reales y generan ingresos."
+    },
+    "fintechApi": {
+      "title": "Desarrollo de APIs Fintech: Seguridad y Escalabilidad",
+      "excerpt": "Construyendo APIs financieras seguras y escalables con Node.js, implementando autenticacion adecuada, limitacion de tasa y estandares de cumplimiento."
+    },
+    "geo": {
+      "title": "GEO: Por Que la Optimizacion para Motores Generativos Es el Futuro de la Visibilidad Online",
+      "excerpt": "El SEO tradicional ya no es suficiente. Descubre como la Optimizacion para Motores Generativos (GEO) ayuda a tu negocio a ser citado por buscadores IA como ChatGPT, Perplexity y Google AI Overviews."
+    }
+  }
+}
