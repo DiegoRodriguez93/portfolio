@@ -62,6 +62,26 @@
     "geo": {
       "title": "GEO: Por Que la Optimizacion para Motores Generativos Es el Futuro de la Visibilidad Online",
       "excerpt": "El SEO tradicional ya no es suficiente. Descubre como la Optimizacion para Motores Generativos (GEO) ayuda a tu negocio a ser citado por buscadores IA como ChatGPT, Perplexity y Google AI Overviews."
+    },
+    "vibeCoding": {
+      "title": "Vibe Coding: Por Que el 90% de los Proyectos Construidos con IA Nunca Llegan a Produccion",
+      "excerpt": "Vibe coding fue nombrada la palabra del ano 2025. Es increible para prototipar pero devastador para produccion. Descubri por que el 90% de los proyectos vibe-coded fallan y como cerrar la brecha del prototipo IA a la aplicacion lista para produccion."
+    },
+    "mcpProtocol": {
+      "title": "MCP Explicado: El Protocolo Que Conecta Tus Agentes de IA al Mundo Real",
+      "excerpt": "Model Context Protocol (MCP) de Anthropic es el estandar USB para la IA. Aprende como MCP conecta agentes de IA a herramientas, bases de datos, APIs y entornos de desarrollo con una guia practica."
+    },
+    "aiReplacingDevs": {
+      "title": "No, la IA No Reemplazara a los Desarrolladores. Pero los Desarrolladores que Usan IA Reemplazaran a los que No",
+      "excerpt": "El 84% de los desarrolladores ya usan IA a diario. La verdadera pregunta no es si la IA reemplazara a los programadores, sino si te adaptaras. Descubri que hace bien la IA, que no puede hacer y como preparar tu carrera para el futuro."
+    },
+    "apiSecurity": {
+      "title": "Tu API Esta Expuesta: 5 Vulnerabilidades Que la IA Encuentra en Segundos y los Desarrolladores Ignoran",
+      "excerpt": "La mayoria de las APIs llegan a produccion con vulnerabilidades criticas. Conoce las 5 fallas de seguridad mas comunes — autenticacion rota, exposicion excesiva de datos, falta de rate limiting, ataques de inyeccion y control de acceso roto — y como las herramientas de seguridad con IA las detectan en segundos."
+    },
+    "aiAgents": {
+      "title": "Agentes IA en Produccion: Como Construir Sistemas Multi-Agente Que Realmente Funcionen",
+      "excerpt": "Solo el 11% de las empresas tienen agentes IA en produccion. Aprende como cerrar la brecha entre demo y despliegue con guia practica sobre sistemas multi-agente, protocolos MCP, A2A y arquitecturas del mundo real."
     }
   }
 }

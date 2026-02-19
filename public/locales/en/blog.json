@@ -62,6 +62,26 @@
     "geo": {
       "title": "GEO: Why Generative Engine Optimization Is the Future of Online Visibility",
       "excerpt": "Traditional SEO is no longer enough. Learn how Generative Engine Optimization (GEO) helps your business get cited by AI search engines like ChatGPT, Perplexity, and Google AI Overviews."
+    },
+    "vibeCoding": {
+      "title": "Vibe Coding: Why 90% of AI-Built Projects Never Make It to Production",
+      "excerpt": "Vibe coding was named 2025's word of the year. It's incredible for prototyping but devastating for production. Discover why 90% of vibe-coded projects fail and how to bridge the gap from AI prototype to production-ready app."
+    },
+    "mcpProtocol": {
+      "title": "MCP Explained: The Protocol That Connects Your AI Agents to the Real World",
+      "excerpt": "Model Context Protocol (MCP) by Anthropic is the USB standard for AI. Learn how MCP connects AI agents to tools, databases, APIs, and development environments with a practical guide."
+    },
+    "aiReplacingDevs": {
+      "title": "No, AI Won't Replace Developers. But Developers Using AI Will Replace Those Who Don't",
+      "excerpt": "84% of developers already use AI daily. The real question isn't whether AI will replace programmers, but whether you'll adapt. Discover what AI does well, what it can't do, and how to future-proof your career."
+    },
+    "apiSecurity": {
+      "title": "Your API Is Exposed: 5 Vulnerabilities AI Finds in Seconds That Developers Ignore",
+      "excerpt": "Most APIs ship to production with critical vulnerabilities. Learn the 5 most common security flaws — broken authentication, excessive data exposure, missing rate limiting, injection attacks, and broken access control — and how AI security tools catch them in seconds."
+    },
+    "aiAgents": {
+      "title": "AI Agents in Production: How to Build Multi-Agent Systems That Actually Work",
+      "excerpt": "Only 11% of companies have AI agents in production. Learn how to close the gap between demo and deployment with practical guidance on multi-agent systems, MCP protocols, A2A, and real-world architectures."
     }
   }
 }
