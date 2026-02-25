@@ -1,12 +1,22 @@
 User-agent: *
 Allow: /
+Disallow: /api/
 
-# Disallow admin or private pages if any
-# Disallow: /admin/
-# Disallow: /api/
+# AI Crawlers (allow for GEO - Generative Engine Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
 
 # Sitemap
 Sitemap: https://www.diego-rodriguez.work/sitemap.xml
-
-# Crawl delay
-Crawl-delay: 1

@@ -1,40 +1,59 @@
 function generateSiteMap() {
   const baseUrl = "https://www.diego-rodriguez.work";
+  const today = new Date().toISOString().split("T")[0];
+
   const pages = [
-    "",
-    "/about",
-    "/services", 
-    "/work",
-    "/blog",
-    "/contact",
-    "/privacy-policy"
+    { url: "", priority: "1.0", changefreq: "weekly" },
+    { url: "/about", priority: "0.9", changefreq: "monthly" },
+    { url: "/services", priority: "0.9", changefreq: "monthly" },
+    { url: "/work", priority: "0.8", changefreq: "monthly" },
+    { url: "/blog", priority: "0.9", changefreq: "weekly" },
+    { url: "/testimonials", priority: "0.7", changefreq: "monthly" },
+    { url: "/contact", priority: "0.8", changefreq: "monthly" },
+    { url: "/privacy-policy", priority: "0.3", changefreq: "yearly" },
   ];
 
   const blogPosts = [
-    "/blog/how-to-build-profitable-trading-bots-2025",
-    "/blog/web3-development-best-practices-enterprise",
-    "/blog/chrome-extension-development-guide",
-    "/blog/fintech-api-development-security-scalability"
+    { url: "/blog/ai-agents-production-multi-agent-systems", date: "2026-02-18" },
+    { url: "/blog/mcp-model-context-protocol-ai-agents-guide", date: "2026-02-18" },
+    { url: "/blog/vibe-coding-ai-projects-production-guide", date: "2026-02-18" },
+    { url: "/blog/ai-replacing-developers-reality-vs-hype", date: "2026-02-18" },
+    { url: "/blog/api-security-ai-vulnerabilities-prevention-guide", date: "2026-02-18" },
+    { url: "/blog/geo-generative-engine-optimization-guide", date: "2026-02-18" },
+    { url: "/blog/ai-coding-problems-project-rescue-services", date: "2025-09-08" },
+    { url: "/blog/building-dex-pool-scanner-clmm-solana-rust", date: "2025-08-22" },
+    { url: "/blog/cryptocurrency-charting-trading-api-integration", date: "2025-01-20" },
+    { url: "/blog/how-to-build-profitable-trading-bots-2025", date: "2025-01-15" },
+    { url: "/blog/web3-development-best-practices-enterprise", date: "2025-01-10" },
+    { url: "/blog/chrome-extension-development-guide", date: "2025-01-05" },
+    { url: "/blog/fintech-api-development-security-scalability", date: "2025-01-01" },
   ];
-
-  const allPages = [...pages, ...blogPosts];
 
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-     ${allPages
-       .map((page) => {
-         const isBlogPost = page.startsWith("/blog/") && page !== "/blog";
-         const isHomePage = page === "";
-         
-         return `
+     ${pages
+       .map(
+         (page) => `
        <url>
-           <loc>${baseUrl}${page}</loc>
-           <lastmod>${new Date().toISOString()}</lastmod>
-           <changefreq>${isHomePage ? "weekly" : isBlogPost ? "monthly" : "monthly"}</changefreq>
-           <priority>${isHomePage ? "1.0" : isBlogPost ? "0.7" : "0.8"}</priority>
+           <loc>${baseUrl}${page.url}</loc>
+           <lastmod>${today}</lastmod>
+           <changefreq>${page.changefreq}</changefreq>
+           <priority>${page.priority}</priority>
        </url>
-     `;
-       })
+     `
+       )
+       .join("")}
+     ${blogPosts
+       .map(
+         (post) => `
+       <url>
+           <loc>${baseUrl}${post.url}</loc>
+           <lastmod>${post.date}</lastmod>
+           <changefreq>monthly</changefreq>
+           <priority>0.7</priority>
+       </url>
+     `
+       )
        .join("")}
    </urlset>
  `;
@@ -44,6 +63,7 @@ export async function getServerSideProps({ res }) {
   const sitemap = generateSiteMap();
 
   res.setHeader("Content-Type", "text/xml");
+  res.setHeader("Cache-Control", "public, s-maxage=86400, stale-while-revalidate");
   res.write(sitemap);
   res.end();
 
