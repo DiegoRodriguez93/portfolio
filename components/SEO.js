@@ -11,18 +11,18 @@ const SEO = ({
   canonicalUrl,
 }) => {
   const router = useRouter();
-  const siteName = "Diego Rodriguez - Full Stack Developer";
+  const siteName = "Diego Rodriguez - Senior Full-Stack & AI Engineer";
   const siteUrl = "https://www.diego-rodriguez.work";
   const currentUrl = `${siteUrl}${router.asPath}`;
   const canonical = canonicalUrl || currentUrl;
 
   // Default meta data
   const defaultTitle =
-    "Diego Rodriguez - Senior Full Stack Developer | Web3, Trading Bots & Chrome Extensions";
+    "Diego Rodriguez - Senior Full-Stack & AI Engineer | LLM, RAG & ML Systems";
   const defaultDescription =
-    "Senior Full Stack Developer specializing in Web3, algorithmic trading systems, chrome extensions, and fintech solutions. 9+ years experience building scalable applications.";
+    "Senior Full-Stack & AI Engineer specializing in LLM orchestration, RAG pipelines, AI agent systems, ML-driven risk detection, and algorithmic trading. 9+ years building production-grade AI-powered applications.";
   const defaultKeywords =
-    "full stack developer, web3 developer, chrome extensions, trading bots, algorithmic trading, react developer, next.js developer, blockchain developer, fintech developer, diego rodriguez";
+    "full stack AI engineer, LLM orchestration, RAG pipelines, AI agent systems, ML risk detection, prompt engineering, Python, TypeScript, FastAPI, react developer, next.js developer, diego rodriguez";
 
   const finalTitle = title ? `${title} | Diego Rodriguez` : defaultTitle;
   const finalDescription = description || defaultDescription;
@@ -114,7 +114,7 @@ const SEO = ({
             author: {
               "@type": "Person",
               name: "Diego Rodriguez",
-              jobTitle: "Senior Full Stack Developer",
+              jobTitle: "Senior Full-Stack & AI Engineer",
               url: siteUrl,
               sameAs: [
                 "https://github.com/diego-rodriguez",

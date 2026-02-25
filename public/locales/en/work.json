@@ -1,11 +1,11 @@
 {
   "seo": {
-    "title": "Portfolio & Projects - Web Applications, Extensions & Trading Systems",
-    "description": "Explore Diego Rodriguez's portfolio featuring web applications, browser extensions, algorithmic trading systems, and enterprise solutions built with React, Next.js, Web3, and modern technologies.",
-    "keywords": "portfolio projects, web application portfolio, chrome extensions portfolio, trading bot projects, web3 projects, react projects, next.js portfolio, developer work examples, algorithmic trading systems, fintech applications"
+    "title": "Portfolio & Projects - AI-Powered Applications, ML Systems & Full-Stack Development",
+    "description": "Explore Diego Rodriguez's portfolio featuring AI-powered SaaS platforms, ML risk detection systems, algorithmic trading with reinforcement learning, and enterprise solutions built with Python, TypeScript, React, and modern AI/ML technologies.",
+    "keywords": "AI portfolio projects, AI-powered applications, ML systems portfolio, full stack AI projects, react projects, next.js portfolio, Python AI development, algorithmic trading systems, fintech applications, LLM applications"
   },
   "heading": "My work",
-  "subtitle": "Explore my portfolio of web applications, browser extensions, and enterprise solutions. Each project represents a unique challenge solved with modern technologies and creative thinking.",
+  "subtitle": "Explore my portfolio of AI-powered applications, ML systems, and enterprise solutions. Each project represents a unique challenge solved with modern technologies, AI/ML capabilities, and creative engineering.",
   "searchPlaceholder": "Search projects...",
   "viewProject": "View Project",
   "featured": "Featured",

@@ -1,35 +1,35 @@
 {
   "seo": {
-    "title": "Development Services - Web3, Trading Bots & Chrome Extensions",
-    "description": "Professional development services including Web3 applications, algorithmic trading systems, chrome extensions, mobile apps, and fintech solutions. Custom software development with modern technologies.",
-    "keywords": "web development services, trading bot development, chrome extension development, web3 development services, mobile app development, fintech solutions, custom software development, react development services"
+    "title": "Development Services - AI-Powered SaaS, LLM Applications & ML Systems",
+    "description": "Professional development services including AI-powered SaaS platforms, LLM applications with RAG pipelines, AI agent systems, ML risk detection, web applications, and algorithmic trading systems. Custom AI and full-stack development with modern technologies.",
+    "keywords": "AI development services, LLM application development, RAG pipeline development, AI agent systems, ML risk detection, web application development, algorithmic trading systems, AI SaaS platform, prompt engineering, custom AI solutions, full stack AI developer"
   },
   "heading": "My services",
-  "subtitle": "I specialize in creating innovative digital solutions that drive business growth. From Web3 applications to trading systems, I deliver scalable and secure technology solutions.",
+  "subtitle": "I specialize in bridging AI/ML capabilities with real-world products. From LLM-powered SaaS platforms to ML-driven risk detection systems, I deliver production-grade AI solutions that drive business growth.",
   "items": {
+    "aiSaas": {
+      "title": "AI-Powered SaaS Platforms",
+      "description": "Full-stack SaaS platforms with LLM integration, dynamic content generation, intelligent recommendation engines, and automated business workflows powered by AI."
+    },
+    "aiAgents": {
+      "title": "AI Agent Systems",
+      "description": "Autonomous AI agents with tool/function calling, structured outputs, and machine-to-machine protocols for payment processing, automation, and business intelligence."
+    },
+    "llmApps": {
+      "title": "LLM Applications & RAG",
+      "description": "Production RAG pipelines with LangChain/LangGraph, vector databases, chatbots, document processing, and domain-specific retrieval-augmented generation systems."
+    },
+    "riskDetection": {
+      "title": "ML Risk Detection & Fraud Prevention",
+      "description": "Real-time risk scoring engines, anomaly detection pipelines, behavioral analysis, and automated fraud prevention systems using scikit-learn and feature engineering."
+    },
     "webApps": {
       "title": "Web Applications",
-      "description": "Modern responsive web applications using React, Next.js, and cutting-edge technologies for optimal performance."
+      "description": "Modern full-stack web applications using React, Next.js, TypeScript, Node.js, and Python backends with real-time features, data visualization, and scalable architecture."
     },
-    "tradingBots": {
-      "title": "Trading Bots",
-      "description": "Automated algorithmic trading systems for cryptocurrency and forex markets with advanced risk management."
-    },
-    "chromeExtensions": {
-      "title": "Chrome Extensions",
-      "description": "Custom browser extensions for automation, productivity, trading assistance, and Web3 integration."
-    },
-    "mobileApps": {
-      "title": "Mobile Apps",
-      "description": "Cross-platform hybrid mobile applications using React Native or React/Capacitor.js for iOS and Android."
-    },
-    "web3": {
-      "title": "Web3 Development",
-      "description": "Blockchain integration, smart contracts, DeFi protocols, and decentralized application development."
-    },
-    "financial": {
-      "title": "Financial Solutions",
-      "description": "Fintech applications, payment systems, portfolio management tools, and algorithmic trading platforms."
+    "tradingSystems": {
+      "title": "Algorithmic Trading Systems",
+      "description": "Automated trading platforms with reinforcement learning (PPO, SAC), real-time data pipelines, technical indicators, and portfolio management dashboards."
     }
   }
 }

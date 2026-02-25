@@ -1,11 +1,11 @@
 {
   "seo": {
-    "title": "Portafolio y Proyectos - Aplicaciones Web, Extensiones y Sistemas de Trading",
-    "description": "Explora el portafolio de Diego Rodriguez con aplicaciones web, extensiones de navegador, sistemas de trading algoritmico y soluciones empresariales construidas con React, Next.js, Web3 y tecnologias modernas.",
-    "keywords": "portafolio proyectos, portafolio aplicaciones web, portafolio extensiones chrome, proyectos trading bots, proyectos web3, proyectos react, portafolio next.js, ejemplos trabajo desarrollador, sistemas trading algoritmico, aplicaciones fintech"
+    "title": "Portafolio y Proyectos - Aplicaciones con IA, Sistemas ML y Desarrollo Full-Stack",
+    "description": "Explora el portafolio de Diego Rodriguez con plataformas SaaS potenciadas por IA, sistemas de deteccion de riesgos con ML, trading algoritmico con aprendizaje por refuerzo y soluciones empresariales construidas con Python, TypeScript, React y tecnologias modernas de AI/ML.",
+    "keywords": "portafolio proyectos IA, aplicaciones potenciadas por IA, portafolio sistemas ML, proyectos full stack IA, proyectos react, portafolio next.js, desarrollo Python IA, sistemas trading algoritmico, aplicaciones fintech, aplicaciones LLM"
   },
   "heading": "Mi trabajo",
-  "subtitle": "Explora mi portafolio de aplicaciones web, extensiones de navegador y soluciones empresariales. Cada proyecto representa un desafio unico resuelto con tecnologias modernas y pensamiento creativo.",
+  "subtitle": "Explora mi portafolio de aplicaciones potenciadas por IA, sistemas ML y soluciones empresariales. Cada proyecto representa un desafio unico resuelto con tecnologias modernas, capacidades AI/ML e ingenieria creativa.",
   "searchPlaceholder": "Buscar proyectos...",
   "viewProject": "Ver Proyecto",
   "featured": "Destacado",

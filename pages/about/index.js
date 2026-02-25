@@ -15,13 +15,13 @@ import {
   SiPandas,
   SiNumpy,
   SiScikitlearn,
-  SiTensorflow,
+  SiPytorch,
   SiKubernetes,
   SiVercel,
   SiNestjs,
   SiGooglecloud,
-  SiExpress,
-  SiPhp,
+  SiFastapi,
+  SiRedis,
 } from "react-icons/si";
 
 // components
@@ -61,16 +61,22 @@ const getAboutData = (t) => [
         icons: [
           <SiNodedotjs key="node" />,
           <FaPython key="python" />,
+          <SiFastapi key="fastapi" />,
           <SiFlask key="flask" />,
           <SiNestjs key="nest" />,
-          <SiPhp key="php" />,
-          <SiMongodb key="mongo" />,
           <SiPostgresql key="postgres" />,
+          <SiMongodb key="mongo" />,
+          <SiRedis key="redis" />,
         ],
       },
       {
         title: t("about:skillItems.ml"),
-        icons: [<SiPandas key="pandas" />, <SiNumpy key="numpy" />, <SiScikitlearn key="sklearn" />, <SiTensorflow key="tf" />],
+        icons: [
+          <SiPytorch key="pytorch" />,
+          <SiScikitlearn key="sklearn" />,
+          <SiPandas key="pandas" />,
+          <SiNumpy key="numpy" />,
+        ],
       },
       {
         title: t("about:skillItems.devops"),
@@ -88,9 +94,19 @@ const getAboutData = (t) => [
     title: t("about:sections.experience"),
     info: [
       {
-        title: t("about:experienceItems.vipclub.title"),
-        stage: t("about:experienceItems.vipclub.stage"),
-        description: t("about:experienceItems.vipclub.description"),
+        title: t("about:experienceItems.idelsoft.title"),
+        stage: t("about:experienceItems.idelsoft.stage"),
+        description: t("about:experienceItems.idelsoft.description"),
+      },
+      {
+        title: t("about:experienceItems.proxify.title"),
+        stage: t("about:experienceItems.proxify.stage"),
+        description: t("about:experienceItems.proxify.description"),
+      },
+      {
+        title: t("about:experienceItems.gaming.title"),
+        stage: t("about:experienceItems.gaming.stage"),
+        description: t("about:experienceItems.gaming.description"),
       },
       {
         title: t("about:experienceItems.encora.title"),
@@ -110,27 +126,27 @@ const getAboutData = (t) => [
     ],
   },
   {
-    title: t("about:sections.financialExpertise"),
+    title: t("about:sections.aiExpertise"),
     info: [
       {
-        title: t("about:financialItems.algoTrading.title"),
-        description: t("about:financialItems.algoTrading.description"),
+        title: t("about:aiExpertiseItems.llmOrchestration.title"),
+        description: t("about:aiExpertiseItems.llmOrchestration.description"),
       },
       {
-        title: t("about:financialItems.mlTrading.title"),
-        description: t("about:financialItems.mlTrading.description"),
+        title: t("about:aiExpertiseItems.aiAgents.title"),
+        description: t("about:aiExpertiseItems.aiAgents.description"),
       },
       {
-        title: t("about:financialItems.dataAnalysis.title"),
-        description: t("about:financialItems.dataAnalysis.description"),
+        title: t("about:aiExpertiseItems.promptEngineering.title"),
+        description: t("about:aiExpertiseItems.promptEngineering.description"),
       },
       {
-        title: t("about:financialItems.tradingPlatform.title"),
-        description: t("about:financialItems.tradingPlatform.description"),
+        title: t("about:aiExpertiseItems.riskDetection.title"),
+        description: t("about:aiExpertiseItems.riskDetection.description"),
       },
       {
-        title: t("about:financialItems.defi.title"),
-        description: t("about:financialItems.defi.description"),
+        title: t("about:aiExpertiseItems.algoTrading.title"),
+        description: t("about:aiExpertiseItems.algoTrading.description"),
       },
     ],
   },
@@ -138,28 +154,28 @@ const getAboutData = (t) => [
     title: t("about:sections.productsCanBuild"),
     info: [
       {
-        title: t("about:productItems.aiTrading.title"),
-        description: t("about:productItems.aiTrading.description"),
+        title: t("about:productItems.aiSaas.title"),
+        description: t("about:productItems.aiSaas.description"),
       },
       {
-        title: t("about:productItems.financialApis.title"),
-        description: t("about:productItems.financialApis.description"),
+        title: t("about:productItems.llmApps.title"),
+        description: t("about:productItems.llmApps.description"),
       },
       {
-        title: t("about:productItems.chromeExtensions.title"),
-        description: t("about:productItems.chromeExtensions.description"),
+        title: t("about:productItems.aiAgentSystems.title"),
+        description: t("about:productItems.aiAgentSystems.description"),
       },
       {
-        title: t("about:productItems.webApps.title"),
-        description: t("about:productItems.webApps.description"),
+        title: t("about:productItems.riskSystems.title"),
+        description: t("about:productItems.riskSystems.description"),
       },
       {
-        title: t("about:productItems.hybridMobile.title"),
-        description: t("about:productItems.hybridMobile.description"),
+        title: t("about:productItems.recommendationEngines.title"),
+        description: t("about:productItems.recommendationEngines.description"),
       },
       {
-        title: t("about:productItems.mlBots.title"),
-        description: t("about:productItems.mlBots.description"),
+        title: t("about:productItems.tradingSystems.title"),
+        description: t("about:productItems.tradingSystems.description"),
       },
     ],
   },

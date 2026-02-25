@@ -1,35 +1,35 @@
 {
   "seo": {
-    "title": "Servicios de Desarrollo - Web3, Trading Bots y Extensiones Chrome",
-    "description": "Servicios profesionales de desarrollo incluyendo aplicaciones Web3, sistemas de trading algoritmico, extensiones de Chrome, apps moviles y soluciones fintech. Desarrollo de software personalizado con tecnologias modernas.",
-    "keywords": "servicios desarrollo web, desarrollo trading bots, desarrollo extensiones chrome, servicios desarrollo web3, desarrollo apps moviles, soluciones fintech, desarrollo software personalizado, servicios desarrollo react"
+    "title": "Servicios de Desarrollo - SaaS con IA, Aplicaciones LLM y Sistemas ML",
+    "description": "Servicios profesionales de desarrollo incluyendo plataformas SaaS potenciadas por IA, aplicaciones LLM con pipelines RAG, sistemas de agentes IA, deteccion de riesgos con ML, aplicaciones web y sistemas de trading algoritmico. Desarrollo personalizado de IA y full-stack con tecnologias modernas.",
+    "keywords": "servicios desarrollo IA, desarrollo aplicaciones LLM, desarrollo pipelines RAG, sistemas agentes IA, deteccion riesgos ML, desarrollo aplicaciones web, sistemas trading algoritmico, plataforma SaaS IA, prompt engineering, soluciones IA personalizadas, desarrollador full stack IA"
   },
   "heading": "Mis servicios",
-  "subtitle": "Me especializo en crear soluciones digitales innovadoras que impulsan el crecimiento empresarial. Desde aplicaciones Web3 hasta sistemas de trading, entrego soluciones tecnologicas escalables y seguras.",
+  "subtitle": "Me especializo en conectar capacidades de AI/ML con productos reales. Desde plataformas SaaS potenciadas por LLM hasta sistemas de deteccion de riesgos con ML, entrego soluciones de IA de produccion que impulsan el crecimiento empresarial.",
   "items": {
+    "aiSaas": {
+      "title": "Plataformas SaaS con IA",
+      "description": "Plataformas SaaS full-stack con integracion LLM, generacion de contenido dinamico, motores de recomendacion inteligentes y flujos de negocio automatizados potenciados por IA."
+    },
+    "aiAgents": {
+      "title": "Sistemas de Agentes IA",
+      "description": "Agentes IA autonomos con tool/function calling, outputs estructurados y protocolos machine-to-machine para procesamiento de pagos, automatizacion e inteligencia de negocio."
+    },
+    "llmApps": {
+      "title": "Aplicaciones LLM y RAG",
+      "description": "Pipelines RAG en produccion con LangChain/LangGraph, bases de datos vectoriales, chatbots, procesamiento de documentos y sistemas de generacion aumentada por recuperacion."
+    },
+    "riskDetection": {
+      "title": "Deteccion de Riesgos y Fraude con ML",
+      "description": "Motores de scoring de riesgo en tiempo real, pipelines de deteccion de anomalias, analisis de comportamiento y sistemas de prevencion de fraude con scikit-learn e ingenieria de features."
+    },
     "webApps": {
       "title": "Aplicaciones Web",
-      "description": "Aplicaciones web modernas y responsivas usando React, Next.js y tecnologias de vanguardia para un rendimiento optimo."
+      "description": "Aplicaciones web full-stack modernas usando React, Next.js, TypeScript, Node.js y backends Python con funcionalidades en tiempo real, visualizacion de datos y arquitectura escalable."
     },
-    "tradingBots": {
-      "title": "Bots de Trading",
-      "description": "Sistemas de trading algoritmico automatizados para mercados de criptomonedas y forex con gestion avanzada de riesgo."
-    },
-    "chromeExtensions": {
-      "title": "Extensiones de Chrome",
-      "description": "Extensiones de navegador personalizadas para automatizacion, productividad, asistencia en trading e integracion Web3."
-    },
-    "mobileApps": {
-      "title": "Apps Moviles",
-      "description": "Aplicaciones moviles hibridas multiplataforma usando React Native o React/Capacitor.js para iOS y Android."
-    },
-    "web3": {
-      "title": "Desarrollo Web3",
-      "description": "Integracion blockchain, smart contracts, protocolos DeFi y desarrollo de aplicaciones descentralizadas."
-    },
-    "financial": {
-      "title": "Soluciones Financieras",
-      "description": "Aplicaciones fintech, sistemas de pago, herramientas de gestion de portafolio y plataformas de trading algoritmico."
+    "tradingSystems": {
+      "title": "Sistemas de Trading Algoritmico",
+      "description": "Plataformas de trading automatizado con aprendizaje por refuerzo (PPO, SAC), pipelines de datos en tiempo real, indicadores tecnicos y dashboards de gestion de portafolio."
     }
   }
 }

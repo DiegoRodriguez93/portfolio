@@ -26,40 +26,40 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const getServiceData = (t) => [
   {
+    icon: <RxRocket />,
+    title: t("services:items.aiSaas.title"),
+    description: t("services:items.aiSaas.description"),
+    category: "ai-saas-platforms",
+  },
+  {
     icon: <RxDesktop />,
+    title: t("services:items.aiAgents.title"),
+    description: t("services:items.aiAgents.description"),
+    category: "ai-agent-systems",
+  },
+  {
+    icon: <RxReader />,
+    title: t("services:items.llmApps.title"),
+    description: t("services:items.llmApps.description"),
+    category: "llm-applications",
+  },
+  {
+    icon: <RxCrop />,
+    title: t("services:items.riskDetection.title"),
+    description: t("services:items.riskDetection.description"),
+    category: "ml-risk-detection",
+  },
+  {
+    icon: <RxPencil2 />,
     title: t("services:items.webApps.title"),
     description: t("services:items.webApps.description"),
     category: "web-applications",
   },
   {
     icon: <RxRocket />,
-    title: t("services:items.tradingBots.title"),
-    description: t("services:items.tradingBots.description"),
-    category: "trading-bots",
-  },
-  {
-    icon: <RxCrop />,
-    title: t("services:items.chromeExtensions.title"),
-    description: t("services:items.chromeExtensions.description"),
-    category: "chrome-extensions",
-  },
-  {
-    icon: <RxPencil2 />,
-    title: t("services:items.mobileApps.title"),
-    description: t("services:items.mobileApps.description"),
-    category: "mobile-apps",
-  },
-  {
-    icon: <RxReader />,
-    title: t("services:items.web3.title"),
-    description: t("services:items.web3.description"),
-    category: "web3-development",
-  },
-  {
-    icon: <RxRocket />,
-    title: t("services:items.financial.title"),
-    description: t("services:items.financial.description"),
-    category: "financial-solutions",
+    title: t("services:items.tradingSystems.title"),
+    description: t("services:items.tradingSystems.description"),
+    category: "algorithmic-trading",
   },
 ];
 

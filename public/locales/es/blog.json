@@ -1,11 +1,11 @@
 {
   "seo": {
-    "title": "Blog de Desarrollo - Trading Bots, Web3 y Extensiones Chrome",
-    "description": "Conocimientos expertos sobre trading algoritmico, desarrollo Web3, extensiones de Chrome y soluciones fintech. Aprende de mas de 9 anos de experiencia en desarrollo full-stack.",
-    "keywords": "blog desarrollo trading bots, tutoriales desarrollo web3, guias extensiones chrome, desarrollo fintech, trading algoritmico, python trading, desarrollo blockchain, blog desarrollador full stack"
+    "title": "Blog de Desarrollo - Agentes IA, Aplicaciones LLM y Sistemas ML",
+    "description": "Conocimientos expertos sobre sistemas de agentes IA, orquestacion de LLMs, pipelines RAG, prompt engineering, deteccion de riesgos con ML e ingenieria de software moderna. Aprende de mas de 9 anos de experiencia en desarrollo full-stack e IA.",
+    "keywords": "blog desarrollo IA, tutoriales aplicaciones LLM, sistemas agentes IA, guias pipelines RAG, prompt engineering, deteccion riesgos ML, desarrollo Python IA, blog desarrollador full stack IA, trading algoritmico, machine learning"
   },
   "heading": "<accent>Blog</accent> de Desarrollo",
-  "subtitle": "Conocimientos expertos sobre trading algoritmico, desarrollo Web3 e ingenieria de software moderna. Aprende de experiencia real construyendo aplicaciones escalables.",
+  "subtitle": "Conocimientos expertos sobre sistemas de agentes IA, aplicaciones LLM, prompt engineering e ingenieria de software moderna. Aprende de experiencia real construyendo aplicaciones potenciadas por IA de produccion.",
   "searchPlaceholder": "Buscar articulos...",
   "readMore": "Leer Mas",
   "readFullArticle": "Leer Articulo Completo",

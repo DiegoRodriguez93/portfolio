@@ -39,12 +39,12 @@ const Contact = () => {
 
   // service categories mapping
   const serviceCategories = {
+    "ai-saas-platforms": t("contact:serviceCategories.ai-saas-platforms"),
+    "ai-agent-systems": t("contact:serviceCategories.ai-agent-systems"),
+    "llm-applications": t("contact:serviceCategories.llm-applications"),
+    "ml-risk-detection": t("contact:serviceCategories.ml-risk-detection"),
     "web-applications": t("contact:serviceCategories.web-applications"),
-    "trading-bots": t("contact:serviceCategories.trading-bots"),
-    "chrome-extensions": t("contact:serviceCategories.chrome-extensions"),
-    "mobile-apps": t("contact:serviceCategories.mobile-apps"),
-    "web3-development": t("contact:serviceCategories.web3-development"),
-    "financial-solutions": t("contact:serviceCategories.financial-solutions"),
+    "algorithmic-trading": t("contact:serviceCategories.algorithmic-trading"),
   };
 
   // Load service parameter from URL - solo una vez cuando el router esté listo

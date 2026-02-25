@@ -1,8 +1,8 @@
 {
   "seo": {
-    "title": "Contact Diego Rodriguez - Hire Full Stack Developer",
-    "description": "Get in touch with Diego Rodriguez for your next project. Available for Web3 development, trading systems, chrome extensions, and custom software solutions. Let's discuss your ideas.",
-    "keywords": "hire full stack developer, web3 developer for hire, trading bot developer, chrome extension developer, contact diego rodriguez, freelance developer, custom software development"
+    "title": "Contact Diego Rodriguez - Hire Senior Full-Stack & AI Engineer",
+    "description": "Get in touch with Diego Rodriguez for your next project. Available for AI-powered SaaS platforms, LLM applications, AI agent systems, ML risk detection, and full-stack development. Let's discuss your ideas.",
+    "keywords": "hire AI engineer, full stack AI developer for hire, LLM application developer, AI agent developer, contact diego rodriguez, freelance AI developer, custom AI solutions"
   },
   "heading": "Let's <accent>connect.</accent>",
   "form": {
@@ -20,12 +20,12 @@
     "error": "Error sending message. Please try again."
   },
   "serviceCategories": {
+    "ai-saas-platforms": "AI-Powered SaaS Platforms",
+    "ai-agent-systems": "AI Agent Systems",
+    "llm-applications": "LLM Applications & RAG",
+    "ml-risk-detection": "ML Risk Detection & Fraud Prevention",
     "web-applications": "Web Applications Development",
-    "trading-bots": "Trading Bots Development",
-    "chrome-extensions": "Chrome Extensions Development",
-    "mobile-apps": "Mobile Apps Development",
-    "web3-development": "Web3 Development",
-    "financial-solutions": "Financial Solutions Development"
+    "algorithmic-trading": "Algorithmic Trading Systems"
   },
   "interestedIn": "Interested in:",
   "inquiryAbout": "Inquiry about {{service}}",

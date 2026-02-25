@@ -42,8 +42,8 @@
     "emailAria": "Enviar email a Diego Rodriguez"
   },
   "authorBio": {
-    "specialization": "Desarrollador Full Stack Senior",
-    "description": "Diego tiene mas de 9 anos de experiencia desarrollando aplicaciones escalables y ayudando a empresas a transformar sus ideas en realidad digital.",
+    "specialization": "Ingeniero Senior Full-Stack & AI",
+    "description": "Diego tiene mas de 9 anos de experiencia construyendo aplicaciones potenciadas por IA de produccion, desde orquestacion de LLMs y pipelines RAG hasta deteccion de riesgos con ML y sistemas de trading algoritmico.",
     "learnMore": "Conoce mas sobre Diego"
   }
 }

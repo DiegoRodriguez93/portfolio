@@ -1,8 +1,8 @@
 {
   "seo": {
-    "title": "Contactar a Diego Rodriguez - Contratar Desarrollador Full Stack",
-    "description": "Contacta a Diego Rodriguez para tu proximo proyecto. Disponible para desarrollo Web3, sistemas de trading, extensiones de Chrome y soluciones de software personalizado. Hablemos de tus ideas.",
-    "keywords": "contratar desarrollador full stack, desarrollador web3, desarrollador trading bots, desarrollador extensiones chrome, contactar diego rodriguez, desarrollador freelance, desarrollo software personalizado"
+    "title": "Contactar a Diego Rodriguez - Contratar Ingeniero Senior Full-Stack & AI",
+    "description": "Contacta a Diego Rodriguez para tu proximo proyecto. Disponible para plataformas SaaS con IA, aplicaciones LLM, sistemas de agentes IA, deteccion de riesgos con ML y desarrollo full-stack. Hablemos de tus ideas.",
+    "keywords": "contratar ingeniero IA, desarrollador full stack IA, desarrollador aplicaciones LLM, desarrollador agentes IA, contactar diego rodriguez, desarrollador freelance IA, soluciones IA personalizadas"
   },
   "heading": "Hablemos<accent>.</accent>",
   "form": {
@@ -20,12 +20,12 @@
     "error": "Error al enviar el mensaje. Por favor intenta de nuevo."
   },
   "serviceCategories": {
+    "ai-saas-platforms": "Plataformas SaaS con IA",
+    "ai-agent-systems": "Sistemas de Agentes IA",
+    "llm-applications": "Aplicaciones LLM y RAG",
+    "ml-risk-detection": "Deteccion de Riesgos y Fraude con ML",
     "web-applications": "Desarrollo de Aplicaciones Web",
-    "trading-bots": "Desarrollo de Bots de Trading",
-    "chrome-extensions": "Desarrollo de Extensiones de Chrome",
-    "mobile-apps": "Desarrollo de Apps Moviles",
-    "web3-development": "Desarrollo Web3",
-    "financial-solutions": "Desarrollo de Soluciones Financieras"
+    "algorithmic-trading": "Sistemas de Trading Algoritmico"
   },
   "interestedIn": "Interesado en:",
   "inquiryAbout": "Consulta sobre {{service}}",

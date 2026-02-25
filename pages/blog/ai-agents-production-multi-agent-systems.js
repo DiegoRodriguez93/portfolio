@@ -7,10 +7,9 @@ import {
   BsClock,
   BsArrowRight,
   BsCheckCircle,
+  BsXCircle,
   BsLightning,
-  BsGraphUp,
-  BsSearch,
-  BsGlobe,
+  BsExclamationTriangle,
   BsShield,
   BsRobot,
 } from "react-icons/bs";
@@ -31,184 +30,232 @@ const content = {
   en: {
     seo: {
       title: "AI Agents in Production: How to Build Multi-Agent Systems That Actually Work",
-      description: "Only 11% of companies have AI agents in production. Learn how to bridge the gap between demo and deployment with practical guidance on building production-ready multi-agent systems, MCP, A2A protocols, and real-world architectures.",
-      keywords: "ai agents production, multi agent systems, agentic ai, MCP protocol, ai agents architecture, production ready ai agents, autonomous ai systems, ai agent development",
+      description: "Only 11% of companies have AI agents in production despite 38% piloting. Learn the 5 pillars of production-ready agents, MCP and A2A protocols, orchestration patterns, and how to build multi-agent systems that actually work in the real world.",
+      keywords: "ai agents production, multi agent systems, agentic ai, MCP protocol, ai agents architecture, production ready ai agents",
     },
     categories: ["AI Development", "Consulting"],
     title: "AI Agents in Production: How to Build Multi-Agent Systems That Actually Work",
-    shareText: "AI Agents in Production: Building Multi-Agent Systems That Work",
+    shareText: "AI Agents in Production: How to Build Multi-Agent Systems That Actually Work",
     readTime: "12 min read",
     intro: {
-      hook: "Everyone Has an AI Agent Demo. Almost Nobody Has One in Production.",
-      p1: "The gap between an impressive AI agent demo and a reliable production system is enormous. According to recent industry surveys, 38% of companies are actively piloting AI agents \u2014 but only 11% have actually deployed them in production. That means roughly 70% of pilot projects are stalling somewhere between \u201Clook what it can do\u201D and \u201Cwe trust it to run our business.\u201D",
-      p2: "The demo-to-production gap is where AI agents go to die.",
-      stat: { value: "11%", label: "of companies have AI agents running in production despite 38% actively piloting them" },
-      p3: "The problem isn\u2019t the technology. Large language models are more capable than ever. The problem is engineering: most teams treat agent development like prompt engineering when it\u2019s actually systems engineering. Building an agent that works in a demo is easy. Building one that works at 3 AM when your on-call engineer is asleep \u2014 that\u2019s the real challenge.",
-      p4: "This guide covers what it actually takes to build AI agents that survive contact with production.",
+      hook: "Everyone Is Building AI Agents. Almost Nobody Is Shipping Them.",
+      p1: "The hype around AI agents is deafening. Every tech company, startup, and consulting firm is talking about autonomous AI systems that can reason, plan, and execute tasks without human intervention. The promise is revolutionary: AI that doesn\u2019t just answer questions but actually gets things done.",
+      p2: "But here\u2019s the uncomfortable truth the industry doesn\u2019t want to talk about: the gap between demo and production is a chasm.",
+      stat: { value: "11%", label: "of companies have AI agents running in production \u2014 despite 38% actively piloting them" },
+      p3: "That means for every company that has successfully deployed an AI agent system, there are roughly three more stuck in pilot purgatory \u2014 burning budget on experiments that never graduate to production. The agents work in demos, impress stakeholders in controlled environments, and then completely fall apart when they encounter the chaos of real-world data and real users.",
+      p4: "Let\u2019s break down why this happens and, more importantly, how to build AI agent systems that actually survive contact with production.",
     },
     whatAreAgents: {
-      heading: "What AI Agents Actually Are (And Aren\u2019t)",
-      p1: "An AI agent is an autonomous system that can reason about a goal, create a plan, execute actions using tools, and adapt based on results. It\u2019s not just a chatbot with a system prompt. It\u2019s not a simple API chain. It\u2019s a system that makes decisions.",
-      comparison: [
-        "Chatbot = responds to user input with pre-defined or generated text",
-        "AI Pipeline = executes a fixed sequence of LLM calls and transformations",
-        "AI Agent = autonomously reasons, plans, uses tools, and adapts to achieve a goal",
+      heading: "What AI Agents Actually Are (And What They\u2019re Not)",
+      p1: "Before we go further, let\u2019s clear up the biggest misconception in the industry right now: an AI agent is not a chatbot with a better prompt. A chatbot responds to a single input with a single output. An agent observes its environment, reasons about what to do, creates a plan, executes actions using tools, and iterates based on results.",
+      p2: "The fundamental difference is autonomy and tool use. An agent doesn\u2019t just generate text \u2014 it takes actions in the real world: querying databases, calling APIs, writing files, sending emails, executing code, and making decisions based on the outcomes of those actions.",
+      characteristics: [
+        "Reasoning \u2014 The agent can analyze a situation, break down complex problems, and determine the best approach before acting",
+        "Planning \u2014 It creates multi-step plans to achieve goals, adjusting the plan as new information becomes available",
+        "Tool Use \u2014 It can call external APIs, query databases, search the web, execute code, and interact with any system it has access to",
+        "Memory \u2014 It maintains context across interactions, remembering previous actions and their outcomes to inform future decisions",
+        "Autonomy \u2014 It can operate with minimal human intervention, making decisions and executing tasks independently within defined guardrails",
       ],
-      p2: "The key distinction is autonomy. A chatbot waits for input. A pipeline follows a script. An agent decides what to do next based on what it observes. This autonomy is what makes agents powerful \u2014 and what makes them dangerous in production if not properly constrained.",
-      callout: "The most common mistake teams make is calling everything an \u201Cagent\u201D when most of what they\u2019ve built are sophisticated pipelines. True agents have a reasoning loop: Observe \u2192 Think \u2192 Act \u2192 Observe. If your system doesn\u2019t have this loop, it\u2019s not an agent \u2014 and that\u2019s often fine. Not every problem needs an agent.",
-      howTitle: "The Agent Reasoning Loop",
-      howSteps: [
-        "Observe: Gather context from the environment, user input, and tool outputs",
-        "Think: Reason about the current state and decide what action to take next",
-        "Act: Execute the chosen action \u2014 call an API, query a database, write code, send a message",
-        "Evaluate: Assess the result, determine if the goal is met or if another iteration is needed",
-      ],
-      howConclusion: "This loop runs continuously until the agent achieves its goal, hits a limit, or encounters an unrecoverable error. Production agents need guardrails at every stage of this loop.",
+      characteristicsTitle: "The 5 Core Characteristics of a True AI Agent",
+      p3: "Think of it this way: ChatGPT is a brilliant advisor who can answer any question. An AI agent is a brilliant employee who can actually go do the work. The advisor tells you what SQL query to run. The agent runs the query, analyzes the results, generates a report, and emails it to your team \u2014 all autonomously.",
     },
     singleVsMulti: {
-      heading: "Single Agent vs Multi-Agent: When to Use What",
-      p1: "Not every problem needs a fleet of agents. In fact, one of the biggest mistakes teams make is over-engineering with multi-agent architectures when a single agent (or even a simple pipeline) would suffice.",
-      stats: [
-        { value: "1 Agent", label: "handles 80% of real-world use cases effectively" },
-        { value: "2-3 Agents", label: "needed for complex workflows with distinct roles" },
-        { value: "4+ Agents", label: "only justified for enterprise orchestration scenarios" },
-      ],
+      heading: "Single Agent vs. Multi-Agent: When to Use Each",
+      p1: "One of the most common mistakes I see teams make is jumping straight to multi-agent architectures when a single agent would be more than sufficient. The complexity of multi-agent systems is not just additive \u2014 it\u2019s multiplicative. Every additional agent introduces new failure modes, coordination overhead, and debugging nightmares.",
       single: {
-        title: "When a Single Agent Is Enough",
-        text: "Use a single agent when: the task has a clear scope (customer support, code review, data analysis), the agent needs access to 5-10 tools maximum, the reasoning chain is linear or has simple branching, and latency matters (multi-agent coordination adds overhead). Most production agents today are single agents with well-defined tool sets.",
+        title: "Single Agent \u2014 When One Is Enough",
+        items: [
+          "The task has a clear, linear workflow that doesn\u2019t require parallel processing",
+          "The domain is narrow enough that one model can handle all the reasoning",
+          "Latency matters \u2014 single agents respond faster with no coordination overhead",
+          "The tool set is manageable (under 10-15 tools) for one agent to reason about effectively",
+          "You\u2019re building an MVP and need to validate the core concept before adding complexity",
+        ],
       },
       multi: {
-        title: "When You Need Multi-Agent Systems",
-        text: "Use multiple agents when: different parts of the task require fundamentally different expertise or models, you need separation of concerns for safety (e.g., one agent proposes, another validates), the workflow involves parallel independent subtasks, or you need different trust levels for different operations (read-only vs write agents).",
+        title: "Multi-Agent \u2014 When You Need a Team",
+        items: [
+          "The task requires fundamentally different expertise (e.g., code review + security audit + documentation)",
+          "Parallel processing would significantly reduce end-to-end latency",
+          "The tool set is too large for a single agent to reason about effectively",
+          "Different subtasks require different models (e.g., GPT-4 for reasoning, Claude for coding, a fine-tuned model for classification)",
+          "You need separation of concerns for security \u2014 different agents should have access to different systems",
+        ],
       },
       patterns: {
-        title: "Common Multi-Agent Patterns",
-        text: "The three dominant patterns in production are: Orchestrator-Worker (a coordinator agent delegates to specialist agents), Pipeline (agents pass results sequentially like an assembly line), and Debate/Verification (multiple agents propose and critique solutions to improve quality). Choose based on your specific workflow, not on what looks impressive in a blog post.",
+        title: "Common Multi-Agent Orchestration Patterns",
+        items: [
+          {
+            title: "Orchestrator-Worker",
+            text: "A central orchestrator agent breaks down tasks and delegates to specialized worker agents. The orchestrator maintains the overall plan and synthesizes results. This is the most common and most reliable pattern.",
+          },
+          {
+            title: "Pipeline (Sequential)",
+            text: "Agents are arranged in a chain where the output of one agent becomes the input of the next. Great for tasks with clear stages: data extraction \u2192 analysis \u2192 report generation \u2192 quality review.",
+          },
+          {
+            title: "Debate / Consensus",
+            text: "Multiple agents independently analyze the same problem and then compare their conclusions. A judge agent resolves disagreements. Excellent for high-stakes decisions where accuracy matters more than speed.",
+          },
+          {
+            title: "Hierarchical",
+            text: "A tree structure where manager agents delegate to sub-manager agents, which delegate to worker agents. Useful for very complex workflows with many subtasks, but adds significant latency.",
+          },
+        ],
       },
     },
     pillars: {
-      heading: "The 5 Pillars of Production-Ready Agents",
+      heading: "The 5 Pillars of Production-Ready AI Agents",
+      p1: "After building and deploying agent systems across multiple industries, I\u2019ve identified five non-negotiable pillars that separate agents that work in demos from agents that work in production:",
       items: [
         {
-          title: "1. Reliability: Making Agents Predictable in an Unpredictable World",
-          text: "LLMs are non-deterministic by nature. Production agents need deterministic behavior around that non-determinism. This means implementing structured outputs (force JSON schema compliance), retry logic with exponential backoff, idempotent tool calls, state checkpointing so agents can resume after failures, and timeout boundaries for every LLM call and tool execution. If your agent can\u2019t recover from a failed API call gracefully, it\u2019s not production-ready.",
+          title: "1. Reliability \u2014 Agents Must Fail Gracefully",
+          icon: "shield",
+          text: "In a demo, the agent always gets the happy path. In production, everything goes wrong: APIs time out, models hallucinate, tools return unexpected formats, rate limits get hit, and network connections drop. A production agent must handle every failure mode without crashing, losing state, or producing silently wrong results.",
+          consequences: [
+            "Implement retry logic with exponential backoff for all external calls",
+            "Add circuit breakers that stop calling a failing service before it cascades",
+            "Build state checkpoints so agents can resume from the last successful step after a failure",
+            "Validate every tool output before passing it to the next step in the plan",
+          ],
         },
         {
-          title: "2. Observability: You Can\u2019t Fix What You Can\u2019t See",
-          text: "Agent systems are notoriously difficult to debug. A single user request might trigger 15 LLM calls, 8 tool executions, and 3 retry loops. Without proper observability, you\u2019re flying blind. Implement trace-level logging for every reasoning step, track token usage and latency per call, log tool inputs and outputs (redacting sensitive data), build dashboards that show agent decision paths, and set up alerts for anomalous behavior (loops, excessive token usage, repeated errors).",
+          title: "2. Observability \u2014 You Must See What Agents Are Doing",
+          icon: "shield",
+          text: "This is the number one reason agent projects die in production. The team ships an agent, it starts producing wrong results, and nobody can figure out why because there\u2019s no visibility into the agent\u2019s reasoning chain. You need to trace every decision, every tool call, every input and output, every model invocation.",
+          consequences: [
+            "Log the full reasoning trace: what the agent thought, what it planned, what it executed, and what it observed",
+            "Track token usage, latency, and cost per agent run \u2014 these costs can spiral without visibility",
+            "Implement alerting for anomalous behavior: unusually long runs, high error rates, unexpected tool usage patterns",
+            "Build dashboards that let non-technical stakeholders understand what agents are doing",
+          ],
         },
         {
-          title: "3. Guardrails: Constraining Autonomy Without Killing Usefulness",
-          text: "The more autonomous an agent is, the more damage it can do. Production agents need layered guardrails: input validation (reject malicious or out-of-scope requests), output filtering (block harmful, incorrect, or off-brand responses), action limits (cap the number of tool calls per request), scope boundaries (restrict which tools and data an agent can access), and human-in-the-loop gates for high-stakes decisions (financial transactions, data deletion, external communications).",
+          title: "3. Guardrails \u2014 Agents Need Boundaries",
+          icon: "shield",
+          text: "An autonomous agent without guardrails is a liability, not an asset. The agent will eventually encounter a situation it wasn\u2019t designed for, and without proper boundaries, it will confidently take the wrong action. Guardrails define what an agent can do, what it cannot do, and when it must escalate to a human.",
+          consequences: [
+            "Define explicit action boundaries: which tools the agent can call, what data it can access, what operations it can perform",
+            "Implement input validation to reject malicious or malformed requests before the agent processes them",
+            "Add output validation to catch hallucinated data, PII leakage, or responses that violate business rules",
+            "Set up human-in-the-loop checkpoints for high-risk actions (financial transactions, data deletion, external communications)",
+          ],
         },
         {
-          title: "4. Fallbacks: Graceful Degradation Over Catastrophic Failure",
-          text: "Production agents must fail gracefully. When the primary LLM is down, fall back to a secondary model. When a tool times out, return a partial result with context. When the agent enters a reasoning loop, break out after N iterations and escalate. When confidence is low, hand off to a human operator. The goal is never \u201Cperfect or nothing\u201D \u2014 it\u2019s \u201Cbest possible outcome given current constraints.\u201D",
+          title: "4. Fallbacks \u2014 Always Have a Plan B",
+          icon: "shield",
+          text: "Even the best agents will fail at some tasks. The difference between a production system and a demo is what happens when the agent can\u2019t complete the task. A demo just crashes. A production system gracefully degrades to a simpler approach or escalates to a human with full context about what was attempted.",
+          consequences: [
+            "Build tiered fallback chains: primary model \u2192 backup model \u2192 rule-based system \u2192 human escalation",
+            "When escalating to humans, pass the full context: what the agent tried, what failed, and what information has been gathered",
+            "Implement confidence scoring so the agent knows when it\u2019s uncertain and should seek verification",
+            "Design degraded-mode workflows that provide partial value even when the full agent pipeline is unavailable",
+          ],
         },
         {
-          title: "5. Cost Control: Agents Can Burn Money Fast",
-          text: "An uncontrolled agent can rack up thousands of dollars in API costs in minutes. Production deployments need per-request token budgets, model routing (use cheaper models for simple tasks, expensive models for complex reasoning), caching for repeated tool calls and common queries, circuit breakers that stop agents if costs exceed thresholds, and regular analysis of cost-per-task to identify optimization opportunities. Teams that skip cost controls in production consistently report 3-5x higher costs than projected.",
+          title: "5. Cost Control \u2014 Agents Can Burn Money Fast",
+          icon: "shield",
+          text: "Here\u2019s something nobody talks about in agent demos: cost. An agent that makes 15 tool calls, each involving a model invocation, can easily cost $0.50-$2.00 per run. Multiply that by thousands of users and you\u2019re looking at bills that can dwarf your infrastructure costs. Production agents must be cost-aware.",
+          consequences: [
+            "Set hard budget limits per agent run and per user \u2014 kill the run if it exceeds the budget",
+            "Use model routing: send simple tasks to cheaper/faster models, reserve expensive models for complex reasoning",
+            "Cache tool outputs aggressively \u2014 if ten users ask the same question, don\u2019t make ten identical API calls",
+            "Monitor cost trends and set alerts for unexpected spikes before they become invoice surprises",
+          ],
         },
       ],
     },
     protocols: {
-      heading: "MCP and A2A: The Protocols Connecting Agents to the Real World",
-      headers: ["Aspect", "MCP (Model Context Protocol)", "A2A (Agent-to-Agent)"],
-      rows: [
-        ["Purpose", "Connects agents to external tools and data sources", "Enables communication between different agents"],
-        ["Analogy", "USB-C for AI \u2014 universal tool connectivity", "HTTP for agents \u2014 standardized inter-agent communication"],
-        ["Developed By", "Anthropic (open standard)", "Google DeepMind (open standard)"],
-        ["Key Benefit", "One integration standard instead of custom connectors per tool", "Agents from different vendors/frameworks can collaborate"],
-        ["Production Use", "Database access, API calls, file operations, web browsing", "Cross-team agent orchestration, multi-vendor agent ecosystems"],
-        ["Maturity", "Rapidly adopted \u2014 supported by major AI frameworks", "Emerging \u2014 gaining traction in enterprise environments"],
-      ],
-      callout: "MCP and A2A are complementary, not competing. MCP handles the agent-to-tool connection (vertical integration), while A2A handles agent-to-agent communication (horizontal integration). Production systems increasingly use both: MCP to give each agent its tool capabilities, and A2A to let agents coordinate across organizational boundaries.",
-      p1: "MCP (Model Context Protocol) is rapidly becoming the standard for how agents interact with external tools. Instead of writing custom integration code for every API, database, and service, you implement a single MCP server that exposes your tools in a standardized format. Any MCP-compatible agent can then discover and use those tools.",
-      p2: "A2A (Agent-to-Agent protocol) solves the problem of agent interoperability. When your customer service agent needs to hand off to a billing agent built by a different team (or even a different company), A2A provides the standard communication layer. It handles capability discovery, task delegation, and result passing between agents that may have no knowledge of each other\u2019s internals.",
-    },
-    useCases: {
-      heading: "Real-World Use Cases: Where Agents Are Actually Working",
+      heading: "MCP and A2A: How Agents Connect to the Real World",
+      p1: "Two protocols are rapidly emerging as the standards for how AI agents interact with external systems and with each other. Understanding these protocols is critical for anyone building production agent systems.",
       items: [
         {
+          title: "MCP (Model Context Protocol)",
+          text: "Developed by Anthropic, MCP is an open standard that defines how AI models connect to external tools and data sources. Think of it as USB-C for AI \u2014 a universal connector that lets any AI model talk to any tool through a standardized interface. Before MCP, every integration between an AI model and an external tool required custom code. MCP standardizes this with a client-server architecture where MCP servers expose tools and resources, and MCP clients (the AI model\u2019s runtime) consume them.",
+          benefits: [
+            "Write a tool integration once, use it with any MCP-compatible model",
+            "Standardized error handling and authentication across all tool connections",
+            "Growing ecosystem of pre-built MCP servers for common services (databases, APIs, file systems)",
+            "Security model with explicit capability declarations \u2014 the model can only access what the server exposes",
+          ],
+        },
+        {
+          title: "A2A (Agent-to-Agent Protocol)",
+          text: "Introduced by Google, A2A defines how AI agents communicate with each other. While MCP handles agent-to-tool communication, A2A handles agent-to-agent communication. This is essential for multi-agent systems where agents built by different teams, using different models, and running on different infrastructure need to collaborate on tasks.",
+          benefits: [
+            "Agents can discover each other\u2019s capabilities dynamically through Agent Cards",
+            "Standardized task delegation and status reporting between agents",
+            "Support for long-running tasks with streaming updates",
+            "Enterprise-ready authentication and authorization between agent systems",
+          ],
+        },
+      ],
+      p2: "The combination of MCP + A2A creates a powerful foundation: MCP lets agents interact with tools and data, while A2A lets agents interact with each other. Together, they enable truly distributed, interoperable agent ecosystems.",
+    },
+    useCases: {
+      heading: "Real Production Use Cases: Where Agents Are Actually Delivering Value",
+      p1: "Let\u2019s cut through the hype and look at where AI agents are actually working in production today, delivering measurable business value:",
+      cases: [
+        {
           title: "Customer Service Automation",
-          text: "Multi-agent systems where a triage agent classifies incoming requests, specialist agents handle specific domains (billing, technical support, returns), and a quality agent reviews responses before sending. Companies report 40-60% reduction in human ticket volume with properly implemented agent systems, while maintaining or improving customer satisfaction scores.",
-          points: [
-            "Triage agent routes to the right specialist in under 2 seconds",
-            "Specialist agents have access to CRM, order history, and knowledge bases via MCP",
-            "Quality agent catches errors, policy violations, and tone issues before responses go out",
-            "Human escalation triggers automatically for complex or sensitive cases",
-          ],
+          text: "Multi-agent systems where a triage agent classifies incoming tickets, a knowledge agent searches documentation and past resolutions, and a response agent drafts personalized replies. A supervisor agent reviews responses before sending and escalates complex cases to humans. Companies are seeing 40-60% reduction in first-response time with these systems.",
         },
         {
-          title: "Automated Data Analysis",
-          text: "Agents that can query databases, run statistical analysis, generate visualizations, and produce natural language reports. The key is giving the agent well-scoped tools (read-only database access, approved visualization libraries) and clear output templates.",
-          points: [
-            "Analyst agent receives natural language questions and translates to SQL",
-            "Validation agent checks queries for correctness and performance before execution",
-            "Reporting agent transforms raw results into executive-ready summaries",
-            "Particularly effective for recurring reports that previously required analyst time",
-          ],
+          title: "Automated Data Analysis Pipelines",
+          text: "Agents that monitor data sources, detect anomalies, run analysis workflows, and generate reports with actionable insights. A data agent extracts and cleans data, an analysis agent runs statistical models, and a reporting agent creates visualizations and summaries. This turns what used to be a weekly analyst task into a real-time automated pipeline.",
         },
         {
-          title: "Code Review and Development",
-          text: "AI agents integrated into the development workflow for automated code review, bug detection, and even code generation. Production deployments typically use a multi-agent setup: one agent for security analysis, one for performance review, one for style/best practices, with an orchestrator that synthesizes findings.",
-          points: [
-            "Security agent scans for vulnerabilities, injection risks, and dependency issues",
-            "Performance agent identifies bottlenecks, memory leaks, and optimization opportunities",
-            "Style agent ensures consistency with team coding standards and best practices",
-            "Results aggregated into a single, prioritized review that developers actually read",
-          ],
+          title: "Code Review and Quality Assurance",
+          text: "Multi-agent code review systems where a security agent scans for vulnerabilities, a style agent checks coding standards, a logic agent reviews business logic correctness, and a documentation agent verifies that code changes are properly documented. These systems catch 30-40% more issues than single-model code review.",
         },
         {
-          title: "Trading and Financial Analysis",
-          text: "Agents that monitor market data, analyze patterns, execute trades, and manage risk. This is one of the most demanding use cases because of the real-time requirements, financial stakes, and regulatory constraints. Successful deployments always include a separate risk management agent with veto power over trading agents.",
-          points: [
-            "Market monitoring agent processes real-time data feeds and detects signals",
-            "Analysis agent evaluates opportunities against historical patterns and current conditions",
-            "Execution agent places trades with strict position sizing and risk limits",
-            "Risk management agent can override any trade and trigger portfolio-wide stop-losses",
-          ],
+          title: "Financial Operations and Trading",
+          text: "Agents that monitor market conditions, analyze news sentiment, execute trades within predefined risk parameters, and generate compliance reports. The key here is the guardrail system: every action is bounded by strict risk limits and human approval is required for operations above certain thresholds.",
         },
       ],
     },
     techStack: {
-      heading: "Building Your First Production Agent: Tech Stack Recommendations",
-      p1: "You don\u2019t need to build everything from scratch. The ecosystem has matured significantly. Here\u2019s a practical tech stack for production agent development:",
-      items: [
+      heading: "Building Your First Production Agent: Recommended Tech Stack",
+      p1: "If you\u2019re ready to move from experimentation to production, here\u2019s the technology stack I recommend based on what\u2019s actually working in production deployments today:",
+      stack: [
         {
           title: "Agent Frameworks",
-          text: "LangGraph for complex multi-agent workflows with state management. CrewAI for quick multi-agent prototyping. Anthropic\u2019s Claude Agent SDK or OpenAI\u2019s Agents SDK for single-agent systems. Vercel AI SDK for web-integrated agents. Choose based on your complexity needs \u2014 don\u2019t use a multi-agent framework for a single-agent problem.",
+          text: "LangGraph for complex multi-agent workflows with state management. CrewAI for quick multi-agent prototyping. Anthropic\u2019s Claude Agent SDK or OpenAI\u2019s Agents SDK for single-agent systems with strong tool-use capabilities.",
         },
         {
-          title: "LLM Selection",
-          text: "Claude 3.5/4 Opus for complex reasoning tasks. GPT-4o for general-purpose agents with vision. Claude 3.5 Haiku or GPT-4o-mini for high-volume, lower-complexity tasks. Consider running multiple models: a cheap fast model for routing and a powerful model for complex reasoning. This \u201Cmodel router\u201D pattern can cut costs by 60-70%.",
+          title: "Orchestration Layer",
+          text: "LangGraph provides built-in state machines for agent orchestration. For simpler pipelines, a custom orchestrator using async Python with proper retry and circuit breaker patterns is often more maintainable than a framework.",
+        },
+        {
+          title: "Observability",
+          text: "LangSmith or Langfuse for LLM-specific tracing and evaluation. Pair with standard APM tools (Datadog, New Relic) for infrastructure monitoring. Always log full reasoning traces \u2014 you will need them when debugging production issues.",
         },
         {
           title: "Tool Integration",
-          text: "MCP servers for standardized tool access. Build your own MCP servers for internal APIs and databases. Use community MCP servers for common integrations (GitHub, Slack, databases). Implement proper authentication, rate limiting, and audit logging on every tool endpoint.",
-        },
-        {
-          title: "Observability and Monitoring",
-          text: "LangSmith or LangFuse for agent trace visualization. OpenTelemetry for distributed tracing across agent systems. Custom dashboards in Grafana or Datadog for business metrics. Set up PagerDuty alerts for agent failures, cost spikes, and quality degradation.",
+          text: "Build MCP servers for your custom tools. Use existing MCP servers from the growing ecosystem for standard integrations (databases, file systems, web search). This investment pays off as you add more agents that need the same tools.",
         },
         {
           title: "Guardrails and Safety",
-          text: "Guardrails AI or custom validation layers for input/output filtering. Constitutional AI prompting for built-in safety. Separate validation agents for high-stakes outputs. Always implement human-in-the-loop for actions that can\u2019t be undone (financial transactions, external communications, data modifications).",
+          text: "Guardrails AI or custom validation layers for input/output checking. Implement role-based access control (RBAC) at the tool level \u2014 different agents get different permissions. Add rate limiting and budget caps at every layer.",
+        },
+        {
+          title: "Evaluation and Testing",
+          text: "Build evaluation datasets from real production interactions. Use automated eval pipelines to test agent behavior before deployment. Implement A/B testing frameworks to compare agent versions in production with real traffic.",
         },
       ],
     },
     cta: {
-      heading: "Ready to Move Your AI Agents From Demo to Production?",
-      p1: "Building production-ready AI agents requires more than prompt engineering \u2014 it requires systems thinking, careful architecture, and battle-tested patterns. The teams that succeed are the ones that treat agent development as software engineering, not AI magic.",
-      p2: "Whether you\u2019re stuck in pilot purgatory, fighting reliability issues, or starting from scratch and want to do it right the first time \u2014 the path to production is shorter than you think with the right guidance.",
-      boxTitle: "Need Help Building Production AI Agents?",
-      boxText: "I design and build custom AI agent systems that actually work in production \u2014 from architecture design and multi-agent orchestration to MCP integration and deployment. Let\u2019s turn your agent prototype into a production-grade system.",
+      heading: "Ready to Build AI Agents That Actually Work in Production?",
+      p1: "Building production AI agent systems requires a rare combination of AI expertise, software engineering discipline, and systems architecture thinking. The gap between a demo agent and a production agent is enormous \u2014 but it\u2019s a gap that can be bridged with the right approach.",
+      p2: "I design and build custom AI agent systems for businesses \u2014 from single-agent automations to full multi-agent architectures. Whether you\u2019re starting from scratch or trying to get a stuck pilot into production, I can help you build agents that actually work in the real world.",
+      boxTitle: "Let\u2019s Build Your AI Agent System",
+      boxText: "I\u2019ll assess your use case, design the right agent architecture (single or multi-agent), implement production-grade guardrails and observability, and deploy a system that delivers real business value \u2014 not just impressive demos.",
       primaryBtn: "Start a Conversation",
       secondaryBtn: "View My Services",
     },
     authorBio: {
-      specialization: "Full-Stack Developer & AI Systems Engineer",
-      description: "Diego builds production AI agent systems and helps teams bridge the gap between impressive demos and reliable deployments. With hands-on experience in multi-agent architectures, MCP integrations, and LLM-powered automation, he helps businesses turn AI prototypes into production-grade systems.",
+      specialization: "Full-Stack Developer & AI Systems Architect",
+      description: "Diego specializes in designing and building production AI agent systems that go beyond demos and prototypes. With hands-on experience implementing multi-agent architectures, MCP integrations, and production-grade guardrail systems, he helps businesses turn AI experiments into reliable, scalable automation.",
     },
     related: {
       heading: "Related Articles",
@@ -219,8 +266,8 @@ const content = {
           link: "/blog/ai-coding-problems-project-rescue-services",
         },
         {
-          title: "Vibe Coding to Production: The Complete Guide to Shipping AI-Built Projects",
-          excerpt: "How to take AI-generated code from prototype to production-ready with proven engineering practices.",
+          title: "Vibe Coding: Why 90% of AI-Built Projects Never Make It to Production",
+          excerpt: "Vibe coding is incredible for prototyping but devastating for production. Learn why most vibe-coded projects fail.",
           link: "/blog/vibe-coding-ai-projects-production-guide",
         },
       ],
@@ -228,197 +275,245 @@ const content = {
   },
   es: {
     seo: {
-      title: "Agentes IA en Producci\u00F3n: C\u00F3mo Construir Sistemas Multi-Agente Que Realmente Funcionen",
-      description: "Solo el 11% de las empresas tienen agentes IA en producci\u00F3n. Aprende c\u00F3mo cerrar la brecha entre demo y despliegue con gu\u00EDa pr\u00E1ctica sobre sistemas multi-agente, protocolos MCP, A2A y arquitecturas del mundo real.",
-      keywords: "agentes ia produccion, sistemas multi agente, ia agentica, protocolo MCP, arquitectura agentes ia, agentes ia produccion, sistemas ia autonomos, desarrollo agentes ia",
+      title: "Agentes IA en Producci\u00f3n: C\u00f3mo Construir Sistemas Multi-Agente Que Realmente Funcionen",
+      description: "Solo el 11% de las empresas tiene agentes IA en producci\u00f3n a pesar de que el 38% los est\u00e1 piloteando. Aprend\u00e9 los 5 pilares de agentes listos para producci\u00f3n, protocolos MCP y A2A, patrones de orquestaci\u00f3n, y c\u00f3mo construir sistemas multi-agente que realmente funcionen en el mundo real.",
+      keywords: "agentes ia produccion, sistemas multi agente, ia agentica, protocolo MCP, arquitectura agentes ia, agentes ia produccion",
     },
-    categories: ["Desarrollo IA", "Consultor\u00EDa"],
-    title: "Agentes IA en Producci\u00F3n: C\u00F3mo Construir Sistemas Multi-Agente Que Realmente Funcionen",
-    shareText: "Agentes IA en Producci\u00F3n: Sistemas Multi-Agente Que Funcionan",
+    categories: ["Desarrollo IA", "Consultor\u00eda"],
+    title: "Agentes IA en Producci\u00f3n: C\u00f3mo Construir Sistemas Multi-Agente Que Realmente Funcionen",
+    shareText: "Agentes IA en Producci\u00f3n: C\u00f3mo Construir Sistemas Multi-Agente Que Realmente Funcionen",
     readTime: "12 min de lectura",
     intro: {
-      hook: "Todos Tienen un Demo de Agente IA. Casi Nadie Lo Tiene en Producci\u00F3n.",
-      p1: "La brecha entre un demo impresionante de agente IA y un sistema confiable en producci\u00F3n es enorme. Seg\u00FAn encuestas recientes de la industria, el 38% de las empresas est\u00E1n piloteando activamente agentes IA \u2014 pero solo el 11% los ha desplegado en producci\u00F3n. Eso significa que aproximadamente el 70% de los proyectos piloto se estancan en alg\u00FAn punto entre \u201Cmir\u00E1 lo que puede hacer\u201D y \u201Cconfiamos en \u00E9l para manejar nuestro negocio.\u201D",
-      p2: "La brecha entre demo y producci\u00F3n es donde los agentes IA van a morir.",
-      stat: { value: "11%", label: "de las empresas tienen agentes IA en producci\u00F3n a pesar de que el 38% los est\u00E1 piloteando" },
-      p3: "El problema no es la tecnolog\u00EDa. Los modelos de lenguaje son m\u00E1s capaces que nunca. El problema es la ingenier\u00EDa: la mayor\u00EDa de los equipos tratan el desarrollo de agentes como ingenier\u00EDa de prompts cuando en realidad es ingenier\u00EDa de sistemas. Construir un agente que funcione en un demo es f\u00E1cil. Construir uno que funcione a las 3 AM cuando tu ingeniero de guardia est\u00E1 dormido \u2014 ese es el verdadero desaf\u00EDo.",
-      p4: "Esta gu\u00EDa cubre lo que realmente se necesita para construir agentes IA que sobrevivan el contacto con producci\u00F3n.",
+      hook: "Todos Est\u00e1n Construyendo Agentes IA. Casi Nadie Los Est\u00e1 Llevando a Producci\u00f3n.",
+      p1: "El hype alrededor de los agentes IA es ensordecedor. Cada empresa tech, startup y consultora est\u00e1 hablando de sistemas aut\u00f3nomos de IA que pueden razonar, planificar y ejecutar tareas sin intervenci\u00f3n humana. La promesa es revolucionaria: IA que no solo responde preguntas sino que realmente hace el trabajo.",
+      p2: "Pero ac\u00e1 est\u00e1 la verdad inc\u00f3moda de la que la industria no quiere hablar: la brecha entre demo y producci\u00f3n es un abismo.",
+      stat: { value: "11%", label: "de las empresas tiene agentes IA corriendo en producci\u00f3n \u2014 a pesar de que el 38% los est\u00e1 piloteando activamente" },
+      p3: "Eso significa que por cada empresa que logr\u00f3 deployar exitosamente un sistema de agentes IA, hay aproximadamente tres m\u00e1s atrapadas en el purgatorio del piloto \u2014 quemando presupuesto en experimentos que nunca se grad\u00faan a producci\u00f3n. Los agentes funcionan en demos, impresionan a stakeholders en entornos controlados, y despu\u00e9s se desmoronan completamente cuando encuentran el caos de datos del mundo real y usuarios reales.",
+      p4: "Analicemos por qu\u00e9 pasa esto y, m\u00e1s importante, c\u00f3mo construir sistemas de agentes IA que realmente sobrevivan el contacto con producci\u00f3n.",
     },
     whatAreAgents: {
-      heading: "Qu\u00E9 Son Realmente los Agentes IA (Y Qu\u00E9 No Son)",
-      p1: "Un agente IA es un sistema aut\u00F3nomo que puede razonar sobre un objetivo, crear un plan, ejecutar acciones usando herramientas y adaptarse en base a los resultados. No es solo un chatbot con un prompt de sistema. No es una cadena simple de APIs. Es un sistema que toma decisiones.",
-      comparison: [
-        "Chatbot = responde a la entrada del usuario con texto predefinido o generado",
-        "Pipeline de IA = ejecuta una secuencia fija de llamadas LLM y transformaciones",
-        "Agente IA = razona aut\u00F3nomamente, planifica, usa herramientas y se adapta para lograr un objetivo",
+      heading: "Qu\u00e9 Son Realmente los Agentes IA (Y Qu\u00e9 No Son)",
+      p1: "Antes de ir m\u00e1s lejos, aclaremos la mayor confusi\u00f3n de la industria en este momento: un agente IA no es un chatbot con un mejor prompt. Un chatbot responde a un input con un output. Un agente observa su entorno, razona sobre qu\u00e9 hacer, crea un plan, ejecuta acciones usando herramientas, e itera basado en los resultados.",
+      p2: "La diferencia fundamental es autonom\u00eda y uso de herramientas. Un agente no solo genera texto \u2014 toma acciones en el mundo real: consultando bases de datos, llamando APIs, escribiendo archivos, enviando emails, ejecutando c\u00f3digo, y tomando decisiones basadas en los resultados de esas acciones.",
+      characteristics: [
+        "Razonamiento \u2014 El agente puede analizar una situaci\u00f3n, descomponer problemas complejos y determinar el mejor enfoque antes de actuar",
+        "Planificaci\u00f3n \u2014 Crea planes de m\u00faltiples pasos para lograr objetivos, ajustando el plan a medida que nueva informaci\u00f3n est\u00e1 disponible",
+        "Uso de Herramientas \u2014 Puede llamar APIs externas, consultar bases de datos, buscar en la web, ejecutar c\u00f3digo e interactuar con cualquier sistema al que tenga acceso",
+        "Memoria \u2014 Mantiene contexto entre interacciones, recordando acciones previas y sus resultados para informar decisiones futuras",
+        "Autonom\u00eda \u2014 Puede operar con m\u00ednima intervenci\u00f3n humana, tomando decisiones y ejecutando tareas independientemente dentro de guardarrieles definidos",
       ],
-      p2: "La distinci\u00F3n clave es la autonom\u00EDa. Un chatbot espera input. Un pipeline sigue un gui\u00F3n. Un agente decide qu\u00E9 hacer a continuaci\u00F3n basado en lo que observa. Esta autonom\u00EDa es lo que hace a los agentes poderosos \u2014 y lo que los hace peligrosos en producci\u00F3n si no est\u00E1n correctamente limitados.",
-      callout: "El error m\u00E1s com\u00FAn es llamar \u201Cagente\u201D a todo cuando la mayor\u00EDa de lo que se construy\u00F3 son pipelines sofisticados. Los verdaderos agentes tienen un bucle de razonamiento: Observar \u2192 Pensar \u2192 Actuar \u2192 Observar. Si tu sistema no tiene este bucle, no es un agente \u2014 y eso est\u00E1 bien. No todos los problemas necesitan un agente.",
-      howTitle: "El Bucle de Razonamiento del Agente",
-      howSteps: [
-        "Observar: Recopilar contexto del entorno, entrada del usuario y salidas de herramientas",
-        "Pensar: Razonar sobre el estado actual y decidir qu\u00E9 acci\u00F3n tomar",
-        "Actuar: Ejecutar la acci\u00F3n elegida \u2014 llamar una API, consultar una base de datos, escribir c\u00F3digo, enviar un mensaje",
-        "Evaluar: Evaluar el resultado, determinar si se logr\u00F3 el objetivo o si se necesita otra iteraci\u00F3n",
-      ],
-      howConclusion: "Este bucle se ejecuta continuamente hasta que el agente logra su objetivo, alcanza un l\u00EDmite o encuentra un error irrecuperable. Los agentes en producci\u00F3n necesitan barreras de protecci\u00F3n en cada etapa de este bucle.",
+      characteristicsTitle: "Las 5 Caracter\u00edsticas Fundamentales de un Verdadero Agente IA",
+      p3: "Pensalo as\u00ed: ChatGPT es un asesor brillante que puede responder cualquier pregunta. Un agente IA es un empleado brillante que realmente puede ir y hacer el trabajo. El asesor te dice qu\u00e9 query SQL ejecutar. El agente ejecuta la query, analiza los resultados, genera un reporte y se lo env\u00eda por email a tu equipo \u2014 todo de forma aut\u00f3noma.",
     },
     singleVsMulti: {
-      heading: "Agente \u00DAnico vs Multi-Agente: Cu\u00E1ndo Usar Qu\u00E9",
-      p1: "No todos los problemas necesitan una flota de agentes. De hecho, uno de los errores m\u00E1s grandes es sobre-ingeniar con arquitecturas multi-agente cuando un solo agente (o incluso un pipeline simple) ser\u00EDa suficiente.",
-      stats: [
-        { value: "1 Agente", label: "maneja el 80% de los casos de uso reales efectivamente" },
-        { value: "2-3 Agentes", label: "necesarios para flujos complejos con roles distintos" },
-        { value: "4+ Agentes", label: "solo justificado para escenarios de orquestaci\u00F3n empresarial" },
-      ],
+      heading: "Agente \u00danico vs. Multi-Agente: Cu\u00e1ndo Usar Cada Uno",
+      p1: "Uno de los errores m\u00e1s comunes que veo en equipos es saltar directamente a arquitecturas multi-agente cuando un agente \u00fanico ser\u00eda m\u00e1s que suficiente. La complejidad de los sistemas multi-agente no es solo aditiva \u2014 es multiplicativa. Cada agente adicional introduce nuevos modos de falla, overhead de coordinaci\u00f3n y pesadillas de debugging.",
       single: {
-        title: "Cu\u00E1ndo un Solo Agente Es Suficiente",
-        text: "Us\u00E1 un solo agente cuando: la tarea tiene un alcance claro (soporte al cliente, revisi\u00F3n de c\u00F3digo, an\u00E1lisis de datos), el agente necesita acceso a 5-10 herramientas m\u00E1ximo, la cadena de razonamiento es lineal o tiene ramificaci\u00F3n simple, y la latencia importa (la coordinaci\u00F3n multi-agente agrega overhead). La mayor\u00EDa de los agentes en producci\u00F3n hoy son agentes \u00FAnicos con conjuntos de herramientas bien definidos.",
+        title: "Agente \u00danico \u2014 Cuando Uno Es Suficiente",
+        items: [
+          "La tarea tiene un flujo de trabajo claro y lineal que no requiere procesamiento paralelo",
+          "El dominio es lo suficientemente estrecho para que un modelo maneje todo el razonamiento",
+          "La latencia importa \u2014 los agentes \u00fanicos responden m\u00e1s r\u00e1pido sin overhead de coordinaci\u00f3n",
+          "El set de herramientas es manejable (menos de 10-15 herramientas) para que un agente razone efectivamente",
+          "Est\u00e1s construyendo un MVP y necesit\u00e1s validar el concepto central antes de agregar complejidad",
+        ],
       },
       multi: {
-        title: "Cu\u00E1ndo Necesit\u00E1s Sistemas Multi-Agente",
-        text: "Us\u00E1 m\u00FAltiples agentes cuando: diferentes partes de la tarea requieren experiencia o modelos fundamentalmente diferentes, necesit\u00E1s separaci\u00F3n de responsabilidades por seguridad (ej: un agente propone, otro valida), el flujo involucra subtareas paralelas independientes, o necesit\u00E1s diferentes niveles de confianza para diferentes operaciones (agentes de solo lectura vs escritura).",
+        title: "Multi-Agente \u2014 Cuando Necesit\u00e1s un Equipo",
+        items: [
+          "La tarea requiere expertise fundamentalmente diferente (ej: revisi\u00f3n de c\u00f3digo + auditor\u00eda de seguridad + documentaci\u00f3n)",
+          "El procesamiento paralelo reducir\u00eda significativamente la latencia end-to-end",
+          "El set de herramientas es demasiado grande para que un agente \u00fanico razone efectivamente",
+          "Diferentes subtareas requieren diferentes modelos (ej: GPT-4 para razonamiento, Claude para c\u00f3digo, un modelo fine-tuned para clasificaci\u00f3n)",
+          "Necesit\u00e1s separaci\u00f3n de responsabilidades por seguridad \u2014 diferentes agentes deber\u00edan tener acceso a diferentes sistemas",
+        ],
       },
       patterns: {
-        title: "Patrones Multi-Agente Comunes",
-        text: "Los tres patrones dominantes en producci\u00F3n son: Orquestador-Trabajador (un agente coordinador delega a agentes especialistas), Pipeline (los agentes pasan resultados secuencialmente como una l\u00EDnea de ensamblaje) y Debate/Verificaci\u00F3n (m\u00FAltiples agentes proponen y critican soluciones para mejorar la calidad). Eleg\u00ED basado en tu flujo espec\u00EDfico, no en lo que se ve impresionante en un blog.",
+        title: "Patrones Comunes de Orquestaci\u00f3n Multi-Agente",
+        items: [
+          {
+            title: "Orquestador-Trabajador",
+            text: "Un agente orquestador central descompone tareas y delega a agentes trabajadores especializados. El orquestador mantiene el plan general y sintetiza resultados. Este es el patr\u00f3n m\u00e1s com\u00fan y m\u00e1s confiable.",
+          },
+          {
+            title: "Pipeline (Secuencial)",
+            text: "Los agentes est\u00e1n organizados en cadena donde la salida de un agente se convierte en la entrada del siguiente. Excelente para tareas con etapas claras: extracci\u00f3n de datos \u2192 an\u00e1lisis \u2192 generaci\u00f3n de reportes \u2192 revisi\u00f3n de calidad.",
+          },
+          {
+            title: "Debate / Consenso",
+            text: "M\u00faltiples agentes analizan independientemente el mismo problema y luego comparan sus conclusiones. Un agente juez resuelve desacuerdos. Excelente para decisiones de alto riesgo donde la precisi\u00f3n importa m\u00e1s que la velocidad.",
+          },
+          {
+            title: "Jer\u00e1rquico",
+            text: "Una estructura de \u00e1rbol donde agentes gerentes delegan a agentes sub-gerentes, que delegan a agentes trabajadores. \u00datil para flujos de trabajo muy complejos con muchas subtareas, pero agrega latencia significativa.",
+          },
+        ],
       },
     },
     pillars: {
-      heading: "Los 5 Pilares de Agentes Listos para Producci\u00F3n",
+      heading: "Los 5 Pilares de Agentes IA Listos para Producci\u00f3n",
+      p1: "Despu\u00e9s de construir y deployar sistemas de agentes en m\u00faltiples industrias, identifiqu\u00e9 cinco pilares innegociables que separan a los agentes que funcionan en demos de los que funcionan en producci\u00f3n:",
       items: [
         {
-          title: "1. Confiabilidad: Hacer Agentes Predecibles en un Mundo Impredecible",
-          text: "Los LLMs son no-determin\u00EDsticos por naturaleza. Los agentes en producci\u00F3n necesitan comportamiento determin\u00EDstico alrededor de esa no-determinismo. Esto significa implementar salidas estructuradas (forzar cumplimiento de schema JSON), l\u00F3gica de reintentos con backoff exponencial, llamadas a herramientas idempotentes, checkpoints de estado para que los agentes puedan reanudarse despu\u00E9s de fallas, y l\u00EDmites de tiempo para cada llamada LLM y ejecuci\u00F3n de herramienta. Si tu agente no puede recuperarse de una llamada API fallida elegantemente, no est\u00E1 listo para producci\u00F3n.",
+          title: "1. Confiabilidad \u2014 Los Agentes Deben Fallar Elegantemente",
+          icon: "shield",
+          text: "En un demo, el agente siempre recibe el happy path. En producci\u00f3n, todo sale mal: APIs que expiran, modelos que alucinan, herramientas que devuelven formatos inesperados, l\u00edmites de tasa que se alcanzan, y conexiones de red que se caen. Un agente de producci\u00f3n debe manejar cada modo de falla sin crashear, perder estado, o producir resultados silenciosamente incorrectos.",
+          consequences: [
+            "Implement\u00e1 l\u00f3gica de reintentos con backoff exponencial para todas las llamadas externas",
+            "Agreg\u00e1 circuit breakers que dejen de llamar a un servicio fallando antes de que se propague en cascada",
+            "Constru\u00ed checkpoints de estado para que los agentes puedan retomar desde el \u00faltimo paso exitoso despu\u00e9s de una falla",
+            "Valid\u00e1 cada salida de herramienta antes de pasarla al siguiente paso del plan",
+          ],
         },
         {
-          title: "2. Observabilidad: No Pod\u00E9s Arreglar Lo Que No Pod\u00E9s Ver",
-          text: "Los sistemas de agentes son notoriamente dif\u00EDciles de debuggear. Una sola solicitud de usuario puede disparar 15 llamadas LLM, 8 ejecuciones de herramientas y 3 bucles de reintentos. Sin observabilidad adecuada, vol\u00E1s a ciegas. Implement\u00E1 logging a nivel de traza para cada paso de razonamiento, segu\u00ED el uso de tokens y latencia por llamada, registr\u00E1 entradas y salidas de herramientas (redactando datos sensibles), construi dashboards que muestren los caminos de decisi\u00F3n del agente, y configur\u00E1 alertas para comportamiento an\u00F3malo.",
+          title: "2. Observabilidad \u2014 Deb\u00e9s Ver Qu\u00e9 Est\u00e1n Haciendo los Agentes",
+          icon: "shield",
+          text: "Esta es la raz\u00f3n n\u00famero uno por la que proyectos de agentes mueren en producci\u00f3n. El equipo lanza un agente, empieza a producir resultados incorrectos, y nadie puede descifrar por qu\u00e9 porque no hay visibilidad de la cadena de razonamiento del agente. Necesit\u00e1s tracear cada decisi\u00f3n, cada llamada a herramienta, cada input y output, cada invocaci\u00f3n del modelo.",
+          consequences: [
+            "Logue\u00e1 la traza de razonamiento completa: qu\u00e9 pens\u00f3 el agente, qu\u00e9 planific\u00f3, qu\u00e9 ejecut\u00f3 y qu\u00e9 observ\u00f3",
+            "Rastre\u00e1 el uso de tokens, latencia y costo por ejecuci\u00f3n de agente \u2014 estos costos pueden espiralizarse sin visibilidad",
+            "Implement\u00e1 alertas para comportamiento an\u00f3malo: ejecuciones inusualmente largas, tasas de error altas, patrones inesperados de uso de herramientas",
+            "Constru\u00ed dashboards que permitan a stakeholders no t\u00e9cnicos entender qu\u00e9 est\u00e1n haciendo los agentes",
+          ],
         },
         {
-          title: "3. Barreras de Protecci\u00F3n: Limitar la Autonom\u00EDa Sin Matar la Utilidad",
-          text: "Cuanto m\u00E1s aut\u00F3nomo es un agente, m\u00E1s da\u00F1o puede hacer. Los agentes en producci\u00F3n necesitan barreras en capas: validaci\u00F3n de entrada (rechazar solicitudes maliciosas o fuera de alcance), filtrado de salida (bloquear respuestas da\u00F1inas, incorrectas o fuera de marca), l\u00EDmites de acciones (limitar el n\u00FAmero de llamadas a herramientas por solicitud), l\u00EDmites de alcance (restringir qu\u00E9 herramientas y datos puede acceder un agente), y compuertas humanas para decisiones de alto impacto.",
+          title: "3. Guardarrieles \u2014 Los Agentes Necesitan L\u00edmites",
+          icon: "shield",
+          text: "Un agente aut\u00f3nomo sin guardarrieles es un pasivo, no un activo. El agente eventualmente encontrar\u00e1 una situaci\u00f3n para la que no fue dise\u00f1ado, y sin l\u00edmites adecuados, tomar\u00e1 con confianza la acci\u00f3n incorrecta. Los guardarrieles definen qu\u00e9 puede hacer un agente, qu\u00e9 no puede hacer, y cu\u00e1ndo debe escalar a un humano.",
+          consequences: [
+            "Defin\u00ed l\u00edmites expl\u00edcitos de acci\u00f3n: qu\u00e9 herramientas puede llamar el agente, a qu\u00e9 datos puede acceder, qu\u00e9 operaciones puede realizar",
+            "Implement\u00e1 validaci\u00f3n de inputs para rechazar requests maliciosas o mal formadas antes de que el agente las procese",
+            "Agreg\u00e1 validaci\u00f3n de outputs para capturar datos alucinados, filtraci\u00f3n de PII, o respuestas que violen reglas de negocio",
+            "Configur\u00e1 checkpoints human-in-the-loop para acciones de alto riesgo (transacciones financieras, eliminaci\u00f3n de datos, comunicaciones externas)",
+          ],
         },
         {
-          title: "4. Fallbacks: Degradaci\u00F3n Elegante Sobre Falla Catastr\u00F3fica",
-          text: "Los agentes en producci\u00F3n deben fallar elegantemente. Cuando el LLM principal est\u00E1 ca\u00EDdo, recurr\u00ED a un modelo secundario. Cuando una herramienta expira, devolv\u00E9 un resultado parcial con contexto. Cuando el agente entra en un bucle de razonamiento, sal\u00ED despu\u00E9s de N iteraciones y escal\u00E1. Cuando la confianza es baja, deriv\u00E1 a un operador humano. El objetivo nunca es \u201Cperfecto o nada\u201D \u2014 es \u201Cmejor resultado posible dadas las restricciones actuales.\u201D",
+          title: "4. Fallbacks \u2014 Siempre Ten\u00e9 un Plan B",
+          icon: "shield",
+          text: "Incluso los mejores agentes van a fallar en algunas tareas. La diferencia entre un sistema de producci\u00f3n y un demo es qu\u00e9 pasa cuando el agente no puede completar la tarea. Un demo simplemente crashea. Un sistema de producci\u00f3n degrada elegantemente a un enfoque m\u00e1s simple o escala a un humano con contexto completo de lo que se intent\u00f3.",
+          consequences: [
+            "Constru\u00ed cadenas de fallback por niveles: modelo primario \u2192 modelo backup \u2192 sistema basado en reglas \u2192 escalaci\u00f3n humana",
+            "Al escalar a humanos, pas\u00e1 el contexto completo: qu\u00e9 intent\u00f3 el agente, qu\u00e9 fall\u00f3, y qu\u00e9 informaci\u00f3n se recolect\u00f3",
+            "Implement\u00e1 scoring de confianza para que el agente sepa cu\u00e1ndo est\u00e1 inseguro y deba buscar verificaci\u00f3n",
+            "Dise\u00f1\u00e1 flujos de modo degradado que provean valor parcial incluso cuando el pipeline completo del agente no est\u00e1 disponible",
+          ],
         },
         {
-          title: "5. Control de Costos: Los Agentes Pueden Quemar Dinero R\u00E1pido",
-          text: "Un agente sin control puede acumular miles de d\u00F3lares en costos de API en minutos. Los despliegues en producci\u00F3n necesitan presupuestos de tokens por solicitud, ruteo de modelos (modelos baratos para tareas simples, modelos caros para razonamiento complejo), cach\u00E9 para llamadas repetidas y consultas comunes, circuit breakers que detengan agentes si los costos superan umbrales, y an\u00E1lisis regular del costo por tarea. Los equipos que omiten controles de costos consistentemente reportan costos 3-5x mayores a lo proyectado.",
+          title: "5. Control de Costos \u2014 Los Agentes Pueden Quemar Plata R\u00e1pido",
+          icon: "shield",
+          text: "Ac\u00e1 hay algo de lo que nadie habla en demos de agentes: el costo. Un agente que hace 15 llamadas a herramientas, cada una involucrando una invocaci\u00f3n de modelo, puede f\u00e1cilmente costar $0.50-$2.00 por ejecuci\u00f3n. Multiplic\u00e1 eso por miles de usuarios y est\u00e1s mirando facturas que pueden empeque\u00f1ecer tus costos de infraestructura. Los agentes de producci\u00f3n deben ser conscientes del costo.",
+          consequences: [
+            "Establec\u00e9 l\u00edmites de presupuesto duros por ejecuci\u00f3n de agente y por usuario \u2014 mat\u00e1 la ejecuci\u00f3n si excede el presupuesto",
+            "Us\u00e1 ruteo de modelos: envi\u00e1 tareas simples a modelos m\u00e1s baratos/r\u00e1pidos, reserv\u00e1 modelos caros para razonamiento complejo",
+            "Cache\u00e1 outputs de herramientas agresivamente \u2014 si diez usuarios hacen la misma pregunta, no hagas diez llamadas API id\u00e9nticas",
+            "Monitor\u00e1 tendencias de costos y configur\u00e1 alertas para picos inesperados antes de que se conviertan en sorpresas en la factura",
+          ],
         },
       ],
     },
     protocols: {
-      heading: "MCP y A2A: Los Protocolos Que Conectan Agentes al Mundo Real",
-      headers: ["Aspecto", "MCP (Model Context Protocol)", "A2A (Agent-to-Agent)"],
-      rows: [
-        ["Prop\u00F3sito", "Conecta agentes a herramientas y fuentes de datos externas", "Permite comunicaci\u00F3n entre diferentes agentes"],
-        ["Analog\u00EDa", "USB-C para IA \u2014 conectividad universal de herramientas", "HTTP para agentes \u2014 comunicaci\u00F3n inter-agente estandarizada"],
-        ["Desarrollado Por", "Anthropic (est\u00E1ndar abierto)", "Google DeepMind (est\u00E1ndar abierto)"],
-        ["Beneficio Clave", "Un est\u00E1ndar de integraci\u00F3n en vez de conectores custom por herramienta", "Agentes de diferentes proveedores/frameworks pueden colaborar"],
-        ["Uso en Producci\u00F3n", "Acceso a bases de datos, llamadas API, operaciones de archivos, navegaci\u00F3n web", "Orquestaci\u00F3n de agentes entre equipos, ecosistemas multi-proveedor"],
-        ["Madurez", "Adopci\u00F3n r\u00E1pida \u2014 soportado por frameworks principales", "Emergente \u2014 ganando tracci\u00F3n en entornos empresariales"],
-      ],
-      callout: "MCP y A2A son complementarios, no competidores. MCP maneja la conexi\u00F3n agente-herramienta (integraci\u00F3n vertical), mientras A2A maneja la comunicaci\u00F3n agente-agente (integraci\u00F3n horizontal). Los sistemas en producci\u00F3n usan cada vez m\u00E1s ambos: MCP para dar a cada agente sus capacidades de herramientas, y A2A para que los agentes coordinen a trav\u00E9s de l\u00EDmites organizacionales.",
-      p1: "MCP (Model Context Protocol) se est\u00E1 convirtiendo r\u00E1pidamente en el est\u00E1ndar de c\u00F3mo los agentes interact\u00FAan con herramientas externas. En vez de escribir c\u00F3digo de integraci\u00F3n custom para cada API, base de datos y servicio, implement\u00E1s un \u00FAnico servidor MCP que expone tus herramientas en un formato estandarizado. Cualquier agente compatible con MCP puede descubrir y usar esas herramientas.",
-      p2: "A2A (protocolo Agent-to-Agent) resuelve el problema de interoperabilidad entre agentes. Cuando tu agente de servicio al cliente necesita derivar a un agente de facturaci\u00F3n construido por otro equipo (o incluso otra empresa), A2A proporciona la capa de comunicaci\u00F3n est\u00E1ndar. Maneja descubrimiento de capacidades, delegaci\u00F3n de tareas y paso de resultados entre agentes que pueden no conocer los internos del otro.",
-    },
-    useCases: {
-      heading: "Casos de Uso Reales: D\u00F3nde los Agentes Realmente Funcionan",
+      heading: "MCP y A2A: C\u00f3mo los Agentes Se Conectan al Mundo Real",
+      p1: "Dos protocolos est\u00e1n emergiendo r\u00e1pidamente como los est\u00e1ndares de c\u00f3mo los agentes IA interact\u00faan con sistemas externos y entre s\u00ed. Entender estos protocolos es cr\u00edtico para cualquiera que construya sistemas de agentes en producci\u00f3n.",
       items: [
         {
-          title: "Automatizaci\u00F3n de Servicio al Cliente",
-          text: "Sistemas multi-agente donde un agente de triaje clasifica solicitudes entrantes, agentes especialistas manejan dominios espec\u00EDficos (facturaci\u00F3n, soporte t\u00E9cnico, devoluciones), y un agente de calidad revisa respuestas antes de enviarlas. Las empresas reportan 40-60% de reducci\u00F3n en volumen de tickets humanos con sistemas de agentes bien implementados, manteniendo o mejorando las puntuaciones de satisfacci\u00F3n.",
-          points: [
-            "Agente de triaje rutea al especialista correcto en menos de 2 segundos",
-            "Agentes especialistas acceden a CRM, historial de pedidos y bases de conocimiento v\u00EDa MCP",
-            "Agente de calidad detecta errores, violaciones de pol\u00EDticas y problemas de tono antes del env\u00EDo",
-            "Escalamiento humano se activa autom\u00E1ticamente para casos complejos o sensibles",
+          title: "MCP (Model Context Protocol)",
+          text: "Desarrollado por Anthropic, MCP es un est\u00e1ndar abierto que define c\u00f3mo los modelos de IA se conectan a herramientas y fuentes de datos externas. Pensalo como USB-C para IA \u2014 un conector universal que permite que cualquier modelo de IA hable con cualquier herramienta a trav\u00e9s de una interfaz estandarizada. Antes de MCP, cada integraci\u00f3n entre un modelo de IA y una herramienta externa requer\u00eda c\u00f3digo custom. MCP estandariza esto con una arquitectura cliente-servidor donde los servidores MCP exponen herramientas y recursos, y los clientes MCP (el runtime del modelo de IA) los consumen.",
+          benefits: [
+            "Escrib\u00ed una integraci\u00f3n de herramienta una vez, usala con cualquier modelo compatible con MCP",
+            "Manejo de errores y autenticaci\u00f3n estandarizados en todas las conexiones de herramientas",
+            "Ecosistema creciente de servidores MCP pre-construidos para servicios comunes (bases de datos, APIs, sistemas de archivos)",
+            "Modelo de seguridad con declaraciones expl\u00edcitas de capacidades \u2014 el modelo solo puede acceder a lo que el servidor expone",
           ],
         },
         {
-          title: "An\u00E1lisis de Datos Automatizado",
-          text: "Agentes que pueden consultar bases de datos, ejecutar an\u00E1lisis estad\u00EDsticos, generar visualizaciones y producir reportes en lenguaje natural. La clave es dar al agente herramientas bien delimitadas (acceso de solo lectura a bases de datos, bibliotecas de visualizaci\u00F3n aprobadas) y plantillas de salida claras.",
-          points: [
-            "Agente analista recibe preguntas en lenguaje natural y las traduce a SQL",
-            "Agente de validaci\u00F3n verifica consultas por correcci\u00F3n y rendimiento antes de ejecutar",
-            "Agente de reportes transforma resultados crudos en res\u00FAmenes ejecutivos",
-            "Particularmente efectivo para reportes recurrentes que antes requer\u00EDan tiempo de analistas",
+          title: "A2A (Agent-to-Agent Protocol)",
+          text: "Introducido por Google, A2A define c\u00f3mo los agentes IA se comunican entre s\u00ed. Mientras MCP maneja la comunicaci\u00f3n agente-herramienta, A2A maneja la comunicaci\u00f3n agente-agente. Esto es esencial para sistemas multi-agente donde agentes construidos por diferentes equipos, usando diferentes modelos, y corriendo en diferente infraestructura necesitan colaborar en tareas.",
+          benefits: [
+            "Los agentes pueden descubrir las capacidades de otros din\u00e1micamente a trav\u00e9s de Agent Cards",
+            "Delegaci\u00f3n de tareas y reporte de estado estandarizado entre agentes",
+            "Soporte para tareas de larga duraci\u00f3n con actualizaciones en streaming",
+            "Autenticaci\u00f3n y autorizaci\u00f3n enterprise-ready entre sistemas de agentes",
           ],
         },
+      ],
+      p2: "La combinaci\u00f3n de MCP + A2A crea una base poderosa: MCP permite que los agentes interact\u00faen con herramientas y datos, mientras A2A permite que los agentes interact\u00faen entre s\u00ed. Juntos, habilitan ecosistemas de agentes verdaderamente distribuidos e interoperables.",
+    },
+    useCases: {
+      heading: "Casos de Uso Reales en Producci\u00f3n: D\u00f3nde los Agentes Realmente Entregan Valor",
+      p1: "Cortemos el hype y miremos d\u00f3nde los agentes IA est\u00e1n realmente funcionando en producci\u00f3n hoy, entregando valor de negocio medible:",
+      cases: [
         {
-          title: "Revisi\u00F3n de C\u00F3digo y Desarrollo",
-          text: "Agentes IA integrados en el flujo de desarrollo para revisi\u00F3n de c\u00F3digo automatizada, detecci\u00F3n de bugs y generaci\u00F3n de c\u00F3digo. Los despliegues en producci\u00F3n t\u00EDpicamente usan una configuraci\u00F3n multi-agente: un agente para an\u00E1lisis de seguridad, uno para revisi\u00F3n de rendimiento, uno para estilo/mejores pr\u00E1cticas, con un orquestador que sintetiza hallazgos.",
-          points: [
-            "Agente de seguridad escanea vulnerabilidades, riesgos de inyecci\u00F3n y problemas de dependencias",
-            "Agente de rendimiento identifica cuellos de botella, fugas de memoria y oportunidades de optimizaci\u00F3n",
-            "Agente de estilo asegura consistencia con est\u00E1ndares de c\u00F3digo del equipo",
-            "Resultados agregados en una revisi\u00F3n \u00FAnica y priorizada que los desarrolladores realmente leen",
-          ],
+          title: "Automatizaci\u00f3n de Atenci\u00f3n al Cliente",
+          text: "Sistemas multi-agente donde un agente de triaje clasifica tickets entrantes, un agente de conocimiento busca en documentaci\u00f3n y resoluciones pasadas, y un agente de respuesta redacta respuestas personalizadas. Un agente supervisor revisa las respuestas antes de enviar y escala casos complejos a humanos. Las empresas est\u00e1n viendo 40-60% de reducci\u00f3n en tiempo de primera respuesta con estos sistemas.",
         },
         {
-          title: "Trading y An\u00E1lisis Financiero",
-          text: "Agentes que monitorean datos de mercado, analizan patrones, ejecutan trades y gestionan riesgo. Este es uno de los casos m\u00E1s demandantes por los requisitos de tiempo real, los riesgos financieros y las restricciones regulatorias. Los despliegues exitosos siempre incluyen un agente de gesti\u00F3n de riesgo separado con poder de veto sobre los agentes de trading.",
-          points: [
-            "Agente de monitoreo procesa feeds de datos en tiempo real y detecta se\u00F1ales",
-            "Agente de an\u00E1lisis eval\u00FAa oportunidades contra patrones hist\u00F3ricos y condiciones actuales",
-            "Agente de ejecuci\u00F3n coloca trades con l\u00EDmites estrictos de tama\u00F1o de posici\u00F3n y riesgo",
-            "Agente de riesgo puede anular cualquier trade y activar stop-losses del portafolio completo",
-          ],
+          title: "Pipelines Automatizados de An\u00e1lisis de Datos",
+          text: "Agentes que monitorean fuentes de datos, detectan anomal\u00edas, ejecutan flujos de an\u00e1lisis y generan reportes con insights accionables. Un agente de datos extrae y limpia datos, un agente de an\u00e1lisis ejecuta modelos estad\u00edsticos, y un agente de reportes crea visualizaciones y res\u00famenes. Esto convierte lo que sol\u00eda ser una tarea semanal de analista en un pipeline automatizado en tiempo real.",
+        },
+        {
+          title: "Revisi\u00f3n de C\u00f3digo y Aseguramiento de Calidad",
+          text: "Sistemas de code review multi-agente donde un agente de seguridad escanea vulnerabilidades, un agente de estilo verifica est\u00e1ndares de c\u00f3digo, un agente de l\u00f3gica revisa la correctitud de la l\u00f3gica de negocio, y un agente de documentaci\u00f3n verifica que los cambios de c\u00f3digo est\u00e9n correctamente documentados. Estos sistemas capturan 30-40% m\u00e1s issues que la revisi\u00f3n de c\u00f3digo con un solo modelo.",
+        },
+        {
+          title: "Operaciones Financieras y Trading",
+          text: "Agentes que monitorean condiciones de mercado, analizan sentimiento de noticias, ejecutan trades dentro de par\u00e1metros de riesgo predefinidos y generan reportes de compliance. La clave ac\u00e1 es el sistema de guardarrieles: cada acci\u00f3n est\u00e1 limitada por l\u00edmites de riesgo estrictos y se requiere aprobaci\u00f3n humana para operaciones por encima de ciertos umbrales.",
         },
       ],
     },
     techStack: {
-      heading: "Construyendo Tu Primer Agente en Producci\u00F3n: Stack Tecnol\u00F3gico Recomendado",
-      p1: "No necesit\u00E1s construir todo desde cero. El ecosistema ha madurado significativamente. Ac\u00E1 hay un stack pr\u00E1ctico para desarrollo de agentes en producci\u00F3n:",
-      items: [
+      heading: "Construyendo Tu Primer Agente de Producci\u00f3n: Stack Tecnol\u00f3gico Recomendado",
+      p1: "Si est\u00e1s listo para pasar de la experimentaci\u00f3n a producci\u00f3n, ac\u00e1 est\u00e1 el stack tecnol\u00f3gico que recomiendo basado en lo que realmente est\u00e1 funcionando en deployments de producci\u00f3n hoy:",
+      stack: [
         {
           title: "Frameworks de Agentes",
-          text: "LangGraph para flujos multi-agente complejos con gesti\u00F3n de estado. CrewAI para prototipado r\u00E1pido multi-agente. El SDK de Agentes de Anthropic (Claude) u OpenAI para sistemas de agente \u00FAnico. Vercel AI SDK para agentes integrados con web. Eleg\u00ED seg\u00FAn tus necesidades de complejidad \u2014 no uses un framework multi-agente para un problema de agente \u00FAnico.",
+          text: "LangGraph para flujos multi-agente complejos con manejo de estado. CrewAI para prototipado r\u00e1pido multi-agente. El SDK de Agentes de Anthropic (Claude) o el SDK de Agentes de OpenAI para sistemas de agente \u00fanico con fuertes capacidades de uso de herramientas.",
         },
         {
-          title: "Selecci\u00F3n de LLM",
-          text: "Claude 3.5/4 Opus para tareas de razonamiento complejo. GPT-4o para agentes de prop\u00F3sito general con visi\u00F3n. Claude 3.5 Haiku o GPT-4o-mini para tareas de alto volumen y menor complejidad. Consider\u00E1 ejecutar m\u00FAltiples modelos: un modelo r\u00E1pido y barato para ruteo y un modelo potente para razonamiento complejo. Este patr\u00F3n de \u201Cruteo de modelos\u201D puede reducir costos 60-70%.",
+          title: "Capa de Orquestaci\u00f3n",
+          text: "LangGraph provee m\u00e1quinas de estado integradas para orquestaci\u00f3n de agentes. Para pipelines m\u00e1s simples, un orquestador custom usando Python as\u00edncrono con patrones adecuados de reintentos y circuit breakers es frecuentemente m\u00e1s mantenible que un framework.",
         },
         {
-          title: "Integraci\u00F3n de Herramientas",
-          text: "Servidores MCP para acceso estandarizado a herramientas. Construi tus propios servidores MCP para APIs y bases de datos internas. Us\u00E1 servidores MCP de la comunidad para integraciones comunes (GitHub, Slack, bases de datos). Implement\u00E1 autenticaci\u00F3n adecuada, limitaci\u00F3n de tasa y registro de auditor\u00EDa en cada endpoint de herramienta.",
+          title: "Observabilidad",
+          text: "LangSmith o Langfuse para trazado y evaluaci\u00f3n espec\u00edficos de LLM. Combin\u00e1 con herramientas APM est\u00e1ndar (Datadog, New Relic) para monitoreo de infraestructura. Siempre logue\u00e1 trazas de razonamiento completas \u2014 las vas a necesitar al debuggear issues de producci\u00f3n.",
         },
         {
-          title: "Observabilidad y Monitoreo",
-          text: "LangSmith o LangFuse para visualizaci\u00F3n de trazas de agentes. OpenTelemetry para trazado distribuido a trav\u00E9s de sistemas de agentes. Dashboards personalizados en Grafana o Datadog para m\u00E9tricas de negocio. Configur\u00E1 alertas de PagerDuty para fallas de agentes, picos de costos y degradaci\u00F3n de calidad.",
+          title: "Integraci\u00f3n de Herramientas",
+          text: "Constru\u00ed servidores MCP para tus herramientas custom. Us\u00e1 servidores MCP existentes del ecosistema creciente para integraciones est\u00e1ndar (bases de datos, sistemas de archivos, b\u00fasqueda web). Esta inversi\u00f3n rinde frutos a medida que agreg\u00e1s m\u00e1s agentes que necesitan las mismas herramientas.",
         },
         {
-          title: "Barreras y Seguridad",
-          text: "Guardrails AI o capas de validaci\u00F3n custom para filtrado de entrada/salida. Prompting con IA Constitucional para seguridad incorporada. Agentes de validaci\u00F3n separados para salidas de alto riesgo. Siempre implement\u00E1 human-in-the-loop para acciones que no se pueden deshacer (transacciones financieras, comunicaciones externas, modificaciones de datos).",
+          title: "Guardarrieles y Seguridad",
+          text: "Guardrails AI o capas de validaci\u00f3n custom para chequeo de input/output. Implement\u00e1 control de acceso basado en roles (RBAC) a nivel de herramienta \u2014 diferentes agentes obtienen diferentes permisos. Agreg\u00e1 rate limiting y caps de presupuesto en cada capa.",
+        },
+        {
+          title: "Evaluaci\u00f3n y Testing",
+          text: "Constru\u00ed datasets de evaluaci\u00f3n a partir de interacciones reales de producci\u00f3n. Us\u00e1 pipelines de eval automatizados para testear comportamiento de agentes antes del deployment. Implement\u00e1 frameworks de A/B testing para comparar versiones de agentes en producci\u00f3n con tr\u00e1fico real.",
         },
       ],
     },
     cta: {
-      heading: "\u00BFListo para Llevar Tus Agentes IA de Demo a Producci\u00F3n?",
-      p1: "Construir agentes IA listos para producci\u00F3n requiere m\u00E1s que ingenier\u00EDa de prompts \u2014 requiere pensamiento de sistemas, arquitectura cuidadosa y patrones probados en batalla. Los equipos que tienen \u00E9xito son los que tratan el desarrollo de agentes como ingenier\u00EDa de software, no como magia de IA.",
-      p2: "Ya sea que est\u00E9s atrapado en el purgatorio de pilotos, luchando con problemas de confiabilidad, o empezando desde cero y quer\u00E9s hacerlo bien desde el principio \u2014 el camino a producci\u00F3n es m\u00E1s corto de lo que pens\u00E1s con la gu\u00EDa correcta.",
-      boxTitle: "\u00BFNecesit\u00E1s Ayuda Construyendo Agentes IA para Producci\u00F3n?",
-      boxText: "Dise\u00F1o y construyo sistemas de agentes IA custom que realmente funcionan en producci\u00F3n \u2014 desde dise\u00F1o de arquitectura y orquestaci\u00F3n multi-agente hasta integraci\u00F3n MCP y despliegue. Convirtamos tu prototipo de agente en un sistema de grado producci\u00F3n.",
-      primaryBtn: "Iniciar una Conversaci\u00F3n",
+      heading: "\u00bfListo para Construir Agentes IA Que Realmente Funcionen en Producci\u00f3n?",
+      p1: "Construir sistemas de agentes IA de producci\u00f3n requiere una combinaci\u00f3n rara de expertise en IA, disciplina de ingenier\u00eda de software y pensamiento de arquitectura de sistemas. La brecha entre un agente demo y un agente de producci\u00f3n es enorme \u2014 pero es una brecha que se puede cerrar con el enfoque correcto.",
+      p2: "Dise\u00f1o y construyo sistemas de agentes IA personalizados para empresas \u2014 desde automatizaciones de agente \u00fanico hasta arquitecturas multi-agente completas. Ya sea que est\u00e9s empezando de cero o tratando de llevar un piloto atascado a producci\u00f3n, puedo ayudarte a construir agentes que realmente funcionen en el mundo real.",
+      boxTitle: "Construyamos Tu Sistema de Agentes IA",
+      boxText: "Voy a evaluar tu caso de uso, dise\u00f1ar la arquitectura de agentes correcta (agente \u00fanico o multi-agente), implementar guardarrieles y observabilidad de grado producci\u00f3n, y deployar un sistema que entregue valor de negocio real \u2014 no solo demos impresionantes.",
+      primaryBtn: "Inici\u00e1 una Conversaci\u00f3n",
       secondaryBtn: "Ver Mis Servicios",
     },
     authorBio: {
-      specialization: "Desarrollador Full-Stack e Ingeniero de Sistemas IA",
-      description: "Diego construye sistemas de agentes IA para producci\u00F3n y ayuda a equipos a cerrar la brecha entre demos impresionantes y despliegues confiables. Con experiencia pr\u00E1ctica en arquitecturas multi-agente, integraciones MCP y automatizaci\u00F3n con LLMs, ayuda a negocios a convertir prototipos de IA en sistemas de grado producci\u00F3n.",
+      specialization: "Desarrollador Full-Stack & Arquitecto de Sistemas IA",
+      description: "Diego se especializa en dise\u00f1ar y construir sistemas de agentes IA de producci\u00f3n que van m\u00e1s all\u00e1 de demos y prototipos. Con experiencia pr\u00e1ctica implementando arquitecturas multi-agente, integraciones MCP y sistemas de guardarrieles de grado producci\u00f3n, ayuda a empresas a convertir experimentos de IA en automatizaci\u00f3n confiable y escalable.",
     },
     related: {
-      heading: "Art\u00EDculos Relacionados",
+      heading: "Art\u00edculos Relacionados",
       articles: [
         {
-          title: "Cuando la IA Falla al Programar: De Prototipo a Pesadilla en Producci\u00F3n",
-          excerpt: "Por qu\u00E9 el 80% de los proyectos generados con IA nunca llegan a producci\u00F3n y c\u00F3mo rescatar proyectos atascados.",
+          title: "Cuando la IA Falla al Programar: De Prototipo a Pesadilla en Producci\u00f3n",
+          excerpt: "Por qu\u00e9 el 80% de los proyectos generados con IA nunca llegan a producci\u00f3n y c\u00f3mo rescatar proyectos atascados.",
           link: "/blog/ai-coding-problems-project-rescue-services",
         },
         {
-          title: "De Vibe Coding a Producci\u00F3n: La Gu\u00EDa Completa para Publicar Proyectos Construidos con IA",
-          excerpt: "C\u00F3mo llevar c\u00F3digo generado por IA de prototipo a producci\u00F3n con pr\u00E1cticas de ingenier\u00EDa probadas.",
+          title: "Vibe Coding: Por Qu\u00e9 el 90% de los Proyectos con IA Nunca Llegan a Producci\u00f3n",
+          excerpt: "Vibe coding es incre\u00edble para prototipar pero devastador para producci\u00f3n. Aprend\u00e9 por qu\u00e9 la mayor\u00eda de los proyectos vibe-coded fallan.",
           link: "/blog/vibe-coding-ai-projects-production-guide",
         },
       ],
@@ -588,35 +683,23 @@ const AIAgentsArticle = () => {
               <p className="text-lg">{c.intro.p3}</p>
               <p className="text-xl font-semibold text-accent">{c.intro.p4}</p>
 
-              {/* What Are Agents */}
+              {/* What AI Agents Actually Are */}
               <section>
                 <h2 className="text-3xl font-bold text-white mb-6">{c.whatAreAgents.heading}</h2>
                 <p className="mb-6 text-lg">{c.whatAreAgents.p1}</p>
-
-                <div className="space-y-3 mb-6">
-                  {c.whatAreAgents.comparison.map((item, i) => (
-                    <div key={i} className="bg-white/5 border border-white/10 rounded-lg p-4">
-                      <p className="text-white font-medium">{item}</p>
-                    </div>
-                  ))}
-                </div>
-
                 <p className="mb-6">{c.whatAreAgents.p2}</p>
 
-                <div className="border-l-4 border-blue-500 bg-blue-500/10 p-6 rounded-r-lg mb-8">
-                  <p className="text-white/90">{c.whatAreAgents.callout}</p>
-                </div>
-
-                <h3 className="text-2xl font-semibold text-white mb-4">{c.whatAreAgents.howTitle}</h3>
-                <div className="space-y-4 mb-6">
-                  {c.whatAreAgents.howSteps.map((step, i) => (
+                <h3 className="text-2xl font-semibold text-white mb-4">{c.whatAreAgents.characteristicsTitle}</h3>
+                <div className="space-y-3 mb-6">
+                  {c.whatAreAgents.characteristics.map((char, i) => (
                     <div key={i} className="flex gap-3">
-                      <span className="text-accent font-bold text-lg mt-0.5">{i + 1}.</span>
-                      <p className="text-white/80">{step}</p>
+                      <BsLightning className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                      <p className="text-white/80">{char}</p>
                     </div>
                   ))}
                 </div>
-                <p className="text-white/70 italic">{c.whatAreAgents.howConclusion}</p>
+
+                <p className="text-lg">{c.whatAreAgents.p3}</p>
               </section>
 
               {/* Single vs Multi-Agent */}
@@ -624,95 +707,109 @@ const AIAgentsArticle = () => {
                 <h2 className="text-3xl font-bold text-white mb-6">{c.singleVsMulti.heading}</h2>
                 <p className="mb-8 text-lg">{c.singleVsMulti.p1}</p>
 
-                {/* Stats Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                  {c.singleVsMulti.stats.map((stat, i) => (
-                    <div key={i} className="bg-gradient-to-br from-accent/15 to-transparent border border-accent/20 rounded-xl p-5 text-center">
-                      <div className="text-3xl font-bold text-accent mb-1">{stat.value}</div>
-                      <div className="text-white/60 text-sm">{stat.label}</div>
+                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                  <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6">
+                    <h3 className="text-xl font-semibold text-green-400 mb-4">{c.singleVsMulti.single.title}</h3>
+                    <ul className="space-y-3">
+                      {c.singleVsMulti.single.items.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2 text-white/80 text-sm">
+                          <BsCheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6">
+                    <h3 className="text-xl font-semibold text-blue-400 mb-4">{c.singleVsMulti.multi.title}</h3>
+                    <ul className="space-y-3">
+                      {c.singleVsMulti.multi.items.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2 text-white/80 text-sm">
+                          <BsLightning className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Orchestration Patterns */}
+                <h3 className="text-2xl font-semibold text-white mb-4">{c.singleVsMulti.patterns.title}</h3>
+                <div className="space-y-6 mb-8">
+                  {c.singleVsMulti.patterns.items.map((pattern, i) => (
+                    <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6">
+                      <h4 className="text-xl font-semibold text-white mb-2">{pattern.title}</h4>
+                      <p className="text-white/80">{pattern.text}</p>
                     </div>
                   ))}
                 </div>
-
-                {/* Sub-sections */}
-                {[c.singleVsMulti.single, c.singleVsMulti.multi, c.singleVsMulti.patterns].map((sub, i) => (
-                  <div key={i} className="mb-6">
-                    <h3 className="text-xl font-semibold text-white mb-3">{sub.title}</h3>
-                    <p>{sub.text}</p>
-                  </div>
-                ))}
               </section>
 
               {/* 5 Pillars */}
               <section>
-                <h2 className="text-3xl font-bold text-white mb-8">{c.pillars.heading}</h2>
-                <div className="space-y-6">
+                <h2 className="text-3xl font-bold text-white mb-6">{c.pillars.heading}</h2>
+                <p className="mb-8 text-lg">{c.pillars.p1}</p>
+
+                <div className="space-y-6 mb-8">
                   {c.pillars.items.map((item, i) => (
-                    <div key={i} className="flex gap-4">
-                      <BsCheckCircle className="w-6 h-6 text-green-400 mt-1 flex-shrink-0" />
-                      <div>
-                        <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
-                        <p className="text-white/70">{item.text}</p>
+                    <div key={i} className="bg-accent/5 border border-accent/20 rounded-xl p-6">
+                      <div className="flex items-start gap-4">
+                        <BsShield className="w-8 h-8 text-accent mt-1 flex-shrink-0" />
+                        <div>
+                          <h3 className="text-xl font-semibold text-accent mb-3">{item.title}</h3>
+                          <p className="text-white/80 mb-4">{item.text}</p>
+                          <ul className="space-y-2 text-white/70 text-sm">
+                            {item.consequences.map((consequence, j) => (
+                              <li key={j} className="flex items-start gap-2">
+                                <BsCheckCircle className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                                <span>{consequence}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   ))}
                 </div>
               </section>
 
-              {/* Protocols Comparison Table */}
+              {/* MCP and A2A Protocols */}
               <section>
-                <h2 className="text-3xl font-bold text-white mb-8">{c.protocols.heading}</h2>
-                <div className="overflow-x-auto mb-6">
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr>
-                        {c.protocols.headers.map((h, i) => (
-                          <th key={i} className="text-left p-3 bg-accent/10 border border-white/10 text-accent text-sm font-semibold">
-                            {h}
-                          </th>
+                <h2 className="text-3xl font-bold text-white mb-6">{c.protocols.heading}</h2>
+                <p className="mb-8 text-lg">{c.protocols.p1}</p>
+
+                <div className="space-y-6 mb-8">
+                  {c.protocols.items.map((protocol, i) => (
+                    <div key={i} className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6">
+                      <h3 className="text-xl font-semibold text-blue-400 mb-3">{protocol.title}</h3>
+                      <p className="text-white/80 mb-4">{protocol.text}</p>
+                      <ul className="space-y-2 text-white/70 text-sm">
+                        {protocol.benefits.map((benefit, j) => (
+                          <li key={j} className="flex items-start gap-2">
+                            <BsCheckCircle className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                            <span>{benefit}</span>
+                          </li>
                         ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {c.protocols.rows.map((row, i) => (
-                        <tr key={i}>
-                          {row.map((cell, j) => (
-                            <td key={j} className="p-3 border border-white/10 text-white/70 text-sm">
-                              {cell}
-                            </td>
-                          ))}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </ul>
+                    </div>
+                  ))}
                 </div>
 
-                <div className="border-l-4 border-yellow-500 bg-yellow-500/10 p-6 rounded-r-lg mb-6">
-                  <p className="text-white/90">{c.protocols.callout}</p>
+                <div className="border-l-4 border-accent bg-accent/10 p-6 rounded-r-lg">
+                  <p className="text-white/90 font-medium">{c.protocols.p2}</p>
                 </div>
-
-                <p className="mb-4">{c.protocols.p1}</p>
-                <p>{c.protocols.p2}</p>
               </section>
 
-              {/* Use Cases */}
+              {/* Real Use Cases */}
               <section>
-                <h2 className="text-3xl font-bold text-white mb-8">{c.useCases.heading}</h2>
-                <div className="space-y-8">
-                  {c.useCases.items.map((item, i) => (
+                <h2 className="text-3xl font-bold text-white mb-6">{c.useCases.heading}</h2>
+                <p className="mb-8 text-lg">{c.useCases.p1}</p>
+
+                <div className="space-y-6 mb-8">
+                  {c.useCases.cases.map((useCase, i) => (
                     <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6">
-                      <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
-                      {item.text && <p className="text-white/80 mb-4">{item.text}</p>}
-                      {item.points && (
-                        <ul className="space-y-2 mt-3">
-                          {item.points.map((point, j) => (
-                            <li key={j} className="flex items-start gap-2 text-white/80">
-                              <BsCheckCircle className="w-4 h-4 text-green-400 mt-1 flex-shrink-0" />
-                              <span>{point}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
+                      <h3 className="text-xl font-semibold text-white mb-2">{useCase.title}</h3>
+                      <p className="text-white/80">{useCase.text}</p>
                     </div>
                   ))}
                 </div>
@@ -722,11 +819,19 @@ const AIAgentsArticle = () => {
               <section>
                 <h2 className="text-3xl font-bold text-white mb-6">{c.techStack.heading}</h2>
                 <p className="mb-8 text-lg">{c.techStack.p1}</p>
-                <div className="space-y-8">
-                  {c.techStack.items.map((item, i) => (
+
+                <div className="space-y-6 mb-8">
+                  {c.techStack.stack.map((tech, i) => (
                     <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6">
-                      <h3 className="text-xl font-semibold text-white mb-3">{item.title}</h3>
-                      <p className="text-white/80">{item.text}</p>
+                      <div className="flex gap-4">
+                        <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
+                          <span className="text-white font-bold text-sm">{i + 1}</span>
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-semibold text-white mb-2">{tech.title}</h3>
+                          <p className="text-white/80">{tech.text}</p>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>

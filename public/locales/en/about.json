@@ -1,11 +1,11 @@
 {
   "seo": {
-    "title": "About Diego Rodriguez - Senior Full Stack Developer & ML Trading Specialist",
-    "description": "Learn about Diego Rodriguez, a senior full stack developer with 9+ years of experience in Web3, fintech, algorithmic trading systems with Python/Flask, Jesse framework, and machine learning (PPO, SAC algorithms). University educated with multiple certifications in blockchain and software engineering.",
-    "keywords": "diego rodriguez about, full stack developer experience, web3 expertise, python flask developer, jesse framework, machine learning trading, PPO SAC algorithms, trading systems developer, software engineer uruguay, blockchain developer experience, fintech developer background"
+    "title": "About Diego Rodriguez - Senior Full-Stack & AI Engineer",
+    "description": "Learn about Diego Rodriguez, a Senior Full-Stack & AI Engineer with 9+ years of experience building AI-powered systems, LLM orchestration, RAG pipelines, ML-driven risk detection, and algorithmic trading with reinforcement learning. Currently building AI-integrated SaaS products with dynamic content generation and intelligent recommendation engines.",
+    "keywords": "diego rodriguez about, senior full stack AI engineer, LLM orchestration, RAG pipelines, prompt engineering, AI agent systems, machine learning, reinforcement learning, PyTorch, Python, TypeScript, FastAPI, algorithmic trading, risk detection, AI SaaS developer, software engineer uruguay"
   },
-  "heading": "Transforming <accent>ideas</accent> into digital reality.",
-  "bio": "I'm an enterprising full-stack developer who loves challenges and never gives up easily. With expertise in Web3, fintech, algorithmic trading using Python/Flask, Jesse framework, and machine learning (PPO, SAC algorithms), I specialize in creating intelligent financial applications that drive business growth.",
+  "heading": "Bridging <accent>AI</accent> with real-world products.",
+  "bio": "Senior Full-Stack Engineer with 9+ years designing, building, and deploying production-grade applications across fintech, real-time platforms, and AI-powered systems. Specialized in bridging AI/ML capabilities with real-world products — from LLM orchestration and RAG pipelines to ML-driven risk detection and algorithmic trading systems powered by reinforcement learning.",
   "counters": {
     "experience": "Years of experience",
     "projects": "Projects completed",
@@ -16,84 +16,94 @@
   "sections": {
     "skills": "skills",
     "experience": "experience",
-    "financialExpertise": "financial expertise",
+    "aiExpertise": "AI expertise",
     "productsCanBuild": "products I can build",
     "education": "education"
   },
   "skillItems": {
     "frontend": "Frontend Development",
-    "backend": "Backend Development",
-    "ml": "Machine Learning & Data Science (Trading)",
-    "devops": "DevOps & Cloud Services"
+    "backend": "Backend & APIs",
+    "ml": "AI / Machine Learning",
+    "devops": "DevOps & Cloud"
   },
   "experienceItems": {
-    "vipclub": {
-      "title": "Senior Fullstack Developer - VIPCLUB.LV",
+    "idelsoft": {
+      "title": "Senior Software Engineer - iDelsoft",
+      "stage": "2025 - Present",
+      "description": "AI-powered SaaS platform for US market — LLM-driven proposal generation, intelligent recommendation engine, payment processing infrastructure"
+    },
+    "proxify": {
+      "title": "Senior Software Engineer - Proxify",
+      "stage": "2025",
+      "description": "AI-native payment gateway (x402 protocol) — autonomous AI agent transaction processing, tool/function calling interfaces for LLM-powered agents"
+    },
+    "gaming": {
+      "title": "Senior Full-Stack Engineer - Gaming Platform",
       "stage": "2024 - 2025",
-      "description": "Web3 crypto casino platform development with blockchain integration and Python-based analytics"
+      "description": "High-traffic real-time platform — ML-driven risk scoring (94% precision), fraud detection, anomaly detection pipelines, real-time WebSocket architecture"
     },
     "encora": {
-      "title": "Senior Frontend Developer - ENCORA",
+      "title": "Senior Frontend Developer - Encora",
       "stage": "2021 - 2023",
-      "description": "Fintech SaaS startup - Led frontend architecture and mentored junior developers"
+      "description": "Fintech SaaS — Led frontend architecture with React/Next.js, real-time data visualization dashboards, mentored engineering team"
     },
     "codigo": {
-      "title": "Full Stack Developer - CODIGO DEL SUR",
+      "title": "Full-Stack Developer - Código del Sur",
       "stage": "2020 - 2021",
-      "description": "Insurance SaaS platform - Developed new features and maintained production systems"
+      "description": "Insurance SaaS — Serverless APIs with AWS Lambda, dynamic form engines, third-party API integration with structured output validation"
     },
     "vida": {
-      "title": "Full Stack Developer - VIDA SERVICIO",
+      "title": "Full-Stack Developer - Vida Servicio",
       "stage": "2016 - 2020",
-      "description": "Custom business applications development and legacy system maintenance"
+      "description": "10+ production web & mobile apps — React, Node.js, PHP/Laravel, GraphQL APIs, React Native, Firebase"
     }
   },
-  "financialItems": {
+  "aiExpertiseItems": {
+    "llmOrchestration": {
+      "title": "LLM Orchestration & RAG",
+      "description": "Production RAG pipelines with LangChain/LangGraph, vector databases (pgvector), and retrieval-augmented generation for domain-specific applications"
+    },
+    "aiAgents": {
+      "title": "AI Agent Systems",
+      "description": "Autonomous AI agents with tool/function calling, structured outputs, and machine-to-machine protocols for payment processing and automation"
+    },
+    "promptEngineering": {
+      "title": "Prompt Engineering & Structured Outputs",
+      "description": "Template management, few-shot examples, industry-specific context injection, JSON schema validation, and Pydantic models for reliable AI content"
+    },
+    "riskDetection": {
+      "title": "ML-Driven Risk Detection",
+      "description": "Real-time fraud detection with scikit-learn, behavioral pattern analysis, anomaly detection pipelines, and feature engineering for risk classification"
+    },
     "algoTrading": {
-      "title": "Algorithmic Trading Systems",
-      "description": "Development of automated trading bots using Python, Jesse framework, and advanced ML algorithms (PPO, SAC)"
-    },
-    "mlTrading": {
-      "title": "Machine Learning Trading",
-      "description": "Implementation of reinforcement learning algorithms (PPO, SAC) for adaptive trading strategies and market prediction"
-    },
-    "dataAnalysis": {
-      "title": "Financial Data Analysis",
-      "description": "Real-time market data processing using Python, Flask APIs, technical indicators, and risk management systems"
-    },
-    "tradingPlatform": {
-      "title": "Trading Platform Development",
-      "description": "Custom trading interfaces, portfolio management tools, and market analysis dashboards with Python backends"
-    },
-    "defi": {
-      "title": "DeFi & Yield Farming",
-      "description": "Smart contract integration for decentralized finance protocols and yield optimization strategies"
+      "title": "Algorithmic Trading with RL",
+      "description": "Multi-symbol trading systems with reinforcement learning (PPO, SAC), custom PyTorch training environments, and adaptive strategy optimization"
     }
   },
   "productItems": {
-    "aiTrading": {
-      "title": "AI Trading Systems",
-      "description": "Advanced algorithmic trading platforms using Jesse framework with PPO/SAC reinforcement learning models"
+    "aiSaas": {
+      "title": "AI-Powered SaaS Platforms",
+      "description": "Full-stack platforms with LLM integration, dynamic content generation, intelligent recommendations, and automated workflows"
     },
-    "financialApis": {
-      "title": "Financial APIs",
-      "description": "RESTful APIs built with Flask for market data processing, trading signals, and portfolio management"
+    "llmApps": {
+      "title": "LLM-Integrated Applications",
+      "description": "RAG systems, chatbots, document processing pipelines with LangChain/LangGraph and vector databases"
     },
-    "chromeExtensions": {
-      "title": "Chrome Extensions",
-      "description": "Browser extensions for automation, productivity, trading assistance, and Web3 integration"
+    "aiAgentSystems": {
+      "title": "AI Agent Systems",
+      "description": "Autonomous agents with tool calling, payment processing, and machine-to-machine communication protocols"
     },
-    "webApps": {
-      "title": "Web Applications",
-      "description": "Modern responsive web apps using React, Next.js, and Python backends with Flask"
+    "riskSystems": {
+      "title": "ML Risk & Fraud Detection",
+      "description": "Real-time risk scoring engines, anomaly detection, behavioral analysis, and automated fraud prevention systems"
     },
-    "hybridMobile": {
-      "title": "Hybrid Mobile Apps",
-      "description": "Cross-platform mobile applications using React Native with Python API integration"
+    "recommendationEngines": {
+      "title": "Recommendation Engines",
+      "description": "Intelligent systems analyzing user profiles, business data, and behavioral signals for personalized suggestions"
     },
-    "mlBots": {
-      "title": "ML Trading Bots",
-      "description": "Intelligent trading systems with adaptive learning capabilities using reinforcement learning algorithms"
+    "tradingSystems": {
+      "title": "Algorithmic Trading Systems",
+      "description": "Automated trading with reinforcement learning models, real-time data pipelines, and portfolio management dashboards"
     }
   },
   "educationItems": {
