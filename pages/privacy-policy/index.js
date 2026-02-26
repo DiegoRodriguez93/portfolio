@@ -74,16 +74,15 @@ const PrivacyPolicy = () => {
               <section>
                 <h2 className="text-2xl font-bold text-white mb-4">3. Cookies and Tracking Technologies</h2>
                 <p className="mb-4">
-                  We use cookies and similar tracking technologies to:
+                  We use the following cookies and tracking technologies:
                 </p>
                 <ul className="list-disc pl-6 space-y-2">
-                  <li><strong>Necessary Cookies:</strong> Essential for website functionality</li>
-                  <li><strong>Analytics Cookies:</strong> Help us understand how visitors use our site</li>
-                  <li><strong>Functional Cookies:</strong> Remember your preferences and settings</li>
-                  <li><strong>Marketing Cookies:</strong> Used to show relevant advertisements</li>
+                  <li><strong>Necessary Cookies:</strong> Essential for website functionality (e.g., language preference).</li>
+                  <li><strong>Analytics Cookies (Google Analytics):</strong> Help us understand how visitors use our site. These are enabled by default to improve our services. We do not use marketing or advertising cookies.</li>
                 </ul>
                 <p className="mt-4">
-                  You can control cookie preferences through our cookie consent banner or your browser settings.
+                  You can opt out of analytics cookies at any time using the cookie notice banner on your first visit,
+                  or by clearing your browser&apos;s localStorage for this site. We do not sell or share analytics data with third parties for advertising purposes.
                 </p>
               </section>
 

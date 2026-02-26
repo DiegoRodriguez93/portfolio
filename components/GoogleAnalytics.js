@@ -20,11 +20,10 @@ const GoogleAnalytics = () => {
       }
       window.gtag = gtag;
 
-      // Set default consent state
+      // Set default consent state - granted by default (non-EU site)
       gtag('consent', 'default', {
-        analytics_storage: 'denied',
+        analytics_storage: 'granted',
         ad_storage: 'denied',
-        wait_for_update: 500,
       });
 
       // Load Google Analytics script de forma async
@@ -38,20 +37,12 @@ const GoogleAnalytics = () => {
           page_location: window.location.href,
         });
 
-        // Check if user has already consented
+        // Check if user has explicitly opted out
         const consent = localStorage.getItem('cookie-consent');
-        if (consent) {
-          try {
-            const preferences = JSON.parse(consent);
-            if (preferences.analytics) {
-              gtag('consent', 'update', {
-                analytics_storage: 'granted',
-                ad_storage: preferences.marketing ? 'granted' : 'denied',
-              });
-            }
-          } catch (error) {
-            console.error('Error parsing cookie preferences:', error);
-          }
+        if (consent === 'denied') {
+          gtag('consent', 'update', {
+            analytics_storage: 'denied',
+          });
         }
       };
       

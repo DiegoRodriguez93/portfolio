@@ -13,21 +13,10 @@
     "es": "ES"
   },
   "cookie": {
-    "title": "Cookie Settings",
-    "description": "We use cookies to enhance your experience and analyze our traffic. Choose your preferences below.",
-    "acceptAll": "Accept All",
-    "rejectAll": "Reject All",
-    "customize": "Customize Settings",
-    "savePreferences": "Save Preferences",
-    "necessary": "Necessary",
-    "necessaryDesc": "Essential for website functionality",
-    "analytics": "Analytics",
-    "analyticsDesc": "Help us understand website usage",
-    "functional": "Functional",
-    "functionalDesc": "Remember your preferences",
-    "marketing": "Marketing",
-    "marketingDesc": "Show relevant advertisements",
-    "required": "(Required)",
+    "title": "Cookie Notice",
+    "message": "This site uses cookies for analytics to improve your experience.",
+    "ok": "OK",
+    "optOut": "Opt out",
     "privacyPolicy": "Privacy Policy"
   },
   "projectsBtn": {
