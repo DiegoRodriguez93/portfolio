@@ -1,6 +1,7 @@
 function generateSiteMap() {
   const baseUrl = "https://www.diego-rodriguez.work";
   const today = new Date().toISOString().split("T")[0];
+  const locales = ["en", "es"];
 
   const pages = [
     { url: "", priority: "1.0", changefreq: "weekly" },
@@ -29,32 +30,48 @@ function generateSiteMap() {
     { url: "/blog/fintech-api-development-security-scalability", date: "2025-01-01" },
   ];
 
+  const allEntries = [
+    ...pages.map((page) => ({
+      url: page.url,
+      lastmod: today,
+      changefreq: page.changefreq,
+      priority: page.priority,
+    })),
+    ...blogPosts.map((post) => ({
+      url: post.url,
+      lastmod: post.date,
+      changefreq: "monthly",
+      priority: "0.7",
+    })),
+  ];
+
+  const hreflangLinks = (path) =>
+    locales
+      .map((locale) => {
+        const href = locale === "en" ? `${baseUrl}${path}` : `${baseUrl}/${locale}${path}`;
+        return `<xhtml:link rel="alternate" hreflang="${locale}" href="${href}"/>`;
+      })
+      .concat(`<xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}${path}"/>`)
+      .join("\n            ");
+
+  const urlBlocks = allEntries.flatMap((entry) =>
+    locales.map((locale) => {
+      const loc = locale === "en" ? `${baseUrl}${entry.url}` : `${baseUrl}/${locale}${entry.url}`;
+      return `
+       <url>
+           <loc>${loc}</loc>
+           <lastmod>${entry.lastmod}</lastmod>
+           <changefreq>${entry.changefreq}</changefreq>
+           <priority>${entry.priority}</priority>
+           ${hreflangLinks(entry.url)}
+       </url>`;
+    })
+  );
+
   return `<?xml version="1.0" encoding="UTF-8"?>
-   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-     ${pages
-       .map(
-         (page) => `
-       <url>
-           <loc>${baseUrl}${page.url}</loc>
-           <lastmod>${today}</lastmod>
-           <changefreq>${page.changefreq}</changefreq>
-           <priority>${page.priority}</priority>
-       </url>
-     `
-       )
-       .join("")}
-     ${blogPosts
-       .map(
-         (post) => `
-       <url>
-           <loc>${baseUrl}${post.url}</loc>
-           <lastmod>${post.date}</lastmod>
-           <changefreq>monthly</changefreq>
-           <priority>0.7</priority>
-       </url>
-     `
-       )
-       .join("")}
+   <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+           xmlns:xhtml="http://www.w3.org/1999/xhtml">
+     ${urlBlocks.join("")}
    </urlset>
  `;
 }

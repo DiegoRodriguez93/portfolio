@@ -69,6 +69,12 @@ const SEO = ({
       <meta property="og:image:alt" content={finalTitle} />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content={router.locale === "es" ? "es_ES" : "en_US"} />
+      <meta property="og:locale:alternate" content={router.locale === "es" ? "en_US" : "es_ES"} />
+
+      {/* Hreflang Tags */}
+      <link rel="alternate" hrefLang="en" href={`${siteUrl}${router.asPath}`} />
+      <link rel="alternate" hrefLang="es" href={`${siteUrl}/es${router.asPath}`} />
+      <link rel="alternate" hrefLang="x-default" href={`${siteUrl}${router.asPath}`} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
