@@ -7,6 +7,7 @@ import {
   HiChatBubbleBottomCenterText,
   HiEnvelope,
   HiDocumentText,
+  HiCalendar,
 } from "react-icons/hi2";
 
 // next link
@@ -23,6 +24,7 @@ const navData = [
   { nameKey: "services", path: "/services", icon: <HiRectangleGroup /> },
   { nameKey: "work", path: "/work", icon: <HiViewColumns /> },
   { nameKey: "blog", path: "/blog", icon: <HiDocumentText /> },
+  { nameKey: "schedule", path: "/schedule", icon: <HiCalendar /> },
   {
     nameKey: "contact",
     path: "/contact",

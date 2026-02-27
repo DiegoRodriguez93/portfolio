@@ -1,0 +1,50 @@
+{
+  "seo": {
+    "title": "Schedule a Meeting - Diego Rodriguez",
+    "description": "Book a free 1-hour meeting with Diego Rodriguez. Select a time slot that works for you.",
+    "keywords": "schedule meeting, book consultation, Diego Rodriguez, freelance developer"
+  },
+  "heading": "Schedule a <accent>Meeting</accent>",
+  "subheading": "Book a free 30-min meeting — it's on me!",
+  "steps": {
+    "calendar": "Pick a Date",
+    "slots": "Choose a Time",
+    "form": "Your Details",
+    "success": "Confirmed!"
+  },
+  "calendar": {
+    "selectDay": "Select an available day",
+    "noSlotsMonth": "No available slots this month",
+    "prev": "Previous month",
+    "next": "Next month"
+  },
+  "slots": {
+    "title": "Available times on",
+    "timezone": "Times shown in",
+    "noSlots": "No available slots for this day",
+    "back": "Back to calendar"
+  },
+  "form": {
+    "title": "Your Details",
+    "name": "Your name",
+    "email": "Your email",
+    "message": "Message (optional)",
+    "messagePlaceholder": "What would you like to discuss?",
+    "confirm": "Confirm Booking",
+    "confirming": "Confirming...",
+    "back": "Back to times"
+  },
+  "success": {
+    "title": "Meeting Confirmed!",
+    "subtitle": "You will receive a confirmation email shortly.",
+    "yourTime": "Your time",
+    "meetingLink": "Meeting Link",
+    "addToCalendar": "Add to Google Calendar",
+    "bookAnother": "Book another meeting"
+  },
+  "errors": {
+    "loadSlots": "Could not load available slots. Please try again.",
+    "book": "Could not confirm booking. Please try again.",
+    "slotTaken": "This slot was just taken. Please choose another time."
+  }
+}

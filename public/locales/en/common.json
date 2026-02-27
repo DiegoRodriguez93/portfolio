@@ -5,6 +5,7 @@
     "services": "services",
     "work": "work",
     "blog": "blog",
+    "schedule": "schedule",
     "testimonials": "testimonials",
     "contact": "contact"
   },

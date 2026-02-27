@@ -1,0 +1,50 @@
+{
+  "seo": {
+    "title": "Agendar una Reunion - Diego Rodriguez",
+    "description": "Agenda una reunion gratuita de 1 hora con Diego Rodriguez. Selecciona el horario que mejor te convenga.",
+    "keywords": "agendar reunion, consulta, Diego Rodriguez, desarrollador freelance"
+  },
+  "heading": "Agenda una <accent>Reunion</accent>",
+  "subheading": "Reserva una meeting de 30min, ¡por ahora es gratis!",
+  "steps": {
+    "calendar": "Elige una Fecha",
+    "slots": "Elige un Horario",
+    "form": "Tus Datos",
+    "success": "Confirmado!"
+  },
+  "calendar": {
+    "selectDay": "Selecciona un dia disponible",
+    "noSlotsMonth": "No hay horarios disponibles este mes",
+    "prev": "Mes anterior",
+    "next": "Mes siguiente"
+  },
+  "slots": {
+    "title": "Horarios disponibles el",
+    "timezone": "Horarios en",
+    "noSlots": "No hay horarios disponibles para este dia",
+    "back": "Volver al calendario"
+  },
+  "form": {
+    "title": "Tus Datos",
+    "name": "Tu nombre",
+    "email": "Tu email",
+    "message": "Mensaje (opcional)",
+    "messagePlaceholder": "¿De que te gustaria hablar?",
+    "confirm": "Confirmar Reserva",
+    "confirming": "Confirmando...",
+    "back": "Volver a horarios"
+  },
+  "success": {
+    "title": "Reunion Confirmada!",
+    "subtitle": "Recibiras un email de confirmacion en breve.",
+    "yourTime": "Tu horario",
+    "meetingLink": "Link de la Reunion",
+    "addToCalendar": "Agregar a Google Calendar",
+    "bookAnother": "Agendar otra reunion"
+  },
+  "errors": {
+    "loadSlots": "No se pudieron cargar los horarios. Por favor intenta de nuevo.",
+    "book": "No se pudo confirmar la reserva. Por favor intenta de nuevo.",
+    "slotTaken": "Este horario ya fue tomado. Por favor elige otro."
+  }
+}

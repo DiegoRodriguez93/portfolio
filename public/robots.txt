@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /admin
 
 # AI Crawlers (allow for GEO - Generative Engine Optimization)
 User-agent: GPTBot

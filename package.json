@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@next/font": "^13.4.4",
+    "@opentelemetry/api": "^1.9.0",
     "@vercel/og": "^0.6.8",
     "critters": "^0.0.16",
+    "firebase-admin": "^13.7.0",
     "framer-motion": "^10.12.16",
     "i18next": "^25.8.11",
     "next": "13.4.3",
