@@ -217,6 +217,7 @@ export default function ChatBot() {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const hasGreeted = useRef(false);
+  const prevLocaleRef = useRef(locale);
 
   // Init session ID from localStorage
   useEffect(() => {
@@ -244,6 +245,18 @@ export default function ChatBot() {
       return () => clearTimeout(timer);
     }
   }, []); // empty deps: runs once on mount, not on route changes
+
+  // Reset greeting when locale changes, but only if no active conversation
+  useEffect(() => {
+    if (prevLocaleRef.current !== locale) {
+      prevLocaleRef.current = locale;
+      const hasUserMessages = state.messages.some((m) => m.role === "user");
+      if (!hasUserMessages) {
+        hasGreeted.current = false;
+        dispatch({ type: "SET_MESSAGES", messages: [] });
+      }
+    }
+  }, [locale, state.messages]);
 
   // Show greeting on first open
   useEffect(() => {
