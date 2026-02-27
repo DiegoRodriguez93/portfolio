@@ -231,6 +231,20 @@ export default function ChatBot() {
     dispatch({ type: "SET_SESSION_ID", sessionId: sid });
   }, []);
 
+  // Auto-open on desktop: only first visit, never if user already dismissed
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const dismissed = localStorage.getItem("chatbot-dismissed");
+    const autoOpened = localStorage.getItem("chatbot-auto-opened");
+    if (!dismissed && !autoOpened && window.innerWidth >= 1280) {
+      const timer = setTimeout(() => {
+        dispatch({ type: "OPEN" });
+        localStorage.setItem("chatbot-auto-opened", "true");
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, []); // empty deps: runs once on mount, not on route changes
+
   // Show greeting on first open
   useEffect(() => {
     if (state.isOpen && state.messages.length === 0 && !hasGreeted.current) {
@@ -325,6 +339,11 @@ export default function ChatBot() {
     [state.sessionId, state.flow, state.flowStep, state.leadData, state.messages, state.isTyping, locale, ui]
   );
 
+  const handleClose = () => {
+    dispatch({ type: "CLOSE" });
+    localStorage.setItem("chatbot-dismissed", "true");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     sendMessage(state.inputValue);
@@ -377,7 +396,7 @@ export default function ChatBot() {
                 <p className="text-[11px] text-white/50 leading-tight truncate">{ui.subtitle}</p>
               </div>
               <button
-                onClick={() => dispatch({ type: "CLOSE" })}
+                onClick={handleClose}
                 className="p-1.5 rounded-lg text-white/40 hover:text-white hover:bg-white/10 transition-all duration-200"
                 aria-label={ui.closeAria}
               >
@@ -432,13 +451,25 @@ export default function ChatBot() {
 
       {/* Bubble Button */}
       <motion.button
-        onClick={() => dispatch({ type: "TOGGLE" })}
+        onClick={() => state.isOpen ? handleClose() : dispatch({ type: "OPEN" })}
         aria-label={state.isOpen ? ui.closeAria : ui.openAria}
-        whileHover={{ scale: 1.08 }}
+        animate={!state.isOpen ? { y: [0, -6, 0] } : {}}
+        transition={!state.isOpen ? { duration: 2.4, repeat: Infinity, ease: "easeInOut" } : {}}
+        whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.93 }}
-        className="relative w-14 h-14 rounded-full shadow-2xl flex items-center justify-center text-white text-2xl"
+        className="relative w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl overflow-hidden"
         style={{ backgroundColor: "#F13024" }}
       >
+        {/* Ambient glow ring when closed */}
+        {!state.isOpen && (
+          <motion.span
+            className="absolute inset-0 rounded-full pointer-events-none"
+            style={{ boxShadow: "0 0 0 0 rgba(241,48,36,0.5)" }}
+            animate={{ boxShadow: ["0 0 0 0px rgba(241,48,36,0.4)", "0 0 0 10px rgba(241,48,36,0)", "0 0 0 0px rgba(241,48,36,0)"] }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
+          />
+        )}
+
         {/* Pulse ring when unread */}
         {state.hasUnread && (
           <motion.span

@@ -10,12 +10,19 @@ const CookieConsent = () => {
 
   useEffect(() => {
     const consent = localStorage.getItem('cookie-consent');
-    if (!consent) {
-      const timer = setTimeout(() => {
-        setShowBanner(true);
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
+    if (consent) return;
+
+    fetch('/api/geo-consent')
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.required) {
+          const timer = setTimeout(() => setShowBanner(true), 1000);
+          return () => clearTimeout(timer);
+        }
+      })
+      .catch(() => {
+        // If geo check fails, default to not showing to avoid annoying everyone
+      });
   }, []);
 
   const saveConsent = (value) => {
