@@ -67,9 +67,9 @@ const nextConfig = {
           },
         ],
       },
-      // Public files (images, docs, etc.): 1 day cache
+      // Public files (images, docs, fonts, etc.): 1 day cache
       {
-        source: "/:path((?!api/).*)\\.(?:png|jpg|jpeg|gif|webp|avif|svg|ico|pdf|woff2?)$",
+        source: "/:path*.(png|jpg|jpeg|gif|webp|avif|svg|ico|pdf|woff|woff2)",
         headers: [
           {
             key: "Cache-Control",
