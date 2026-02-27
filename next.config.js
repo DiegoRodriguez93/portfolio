@@ -28,6 +28,7 @@ const nextConfig = {
   async headers() {
     return [
       {
+        // Security headers for all routes (no Cache-Control here — Next.js manages HTML caching)
         source: "/:path*",
         headers: [
           {
@@ -54,20 +55,35 @@ const nextConfig = {
             key: "Referrer-Policy",
             value: "origin-when-cross-origin",
           },
-          // Performance headers
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
         ],
       },
-      // Headers específicos para assets estáticos
+      // Static assets: 1 month cache
       {
         source: "/_next/static/:path*",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
+            value: "public, max-age=2592000, immutable",
+          },
+        ],
+      },
+      // Public files (images, docs, etc.): 1 day cache
+      {
+        source: "/:path((?!api/).*)\\.(?:png|jpg|jpeg|gif|webp|avif|svg|ico|pdf|woff2?)$",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      // API routes: never cache
+      {
+        source: "/api/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-store, no-cache",
           },
         ],
       },
