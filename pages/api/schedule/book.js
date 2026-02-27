@@ -183,14 +183,14 @@ export default async function handler(req, res) {
 
     await Promise.all([
       resend.emails.send({
-        from: "Diego Rodriguez <onboarding@resend.dev>",
+        from: "Diego Rodriguez <noreply@diego-rodriguez.work>",
         to: clientEmail,
         subject: `Meeting Confirmed: ${clientFormattedDate}`,
         html: clientEmailHtml,
         attachments: [icsAttachment],
       }),
       resend.emails.send({
-        from: "Portfolio Bookings <onboarding@resend.dev>",
+        from: "Portfolio Bookings <noreply@diego-rodriguez.work>",
         to: "diegorodriguezpaiva1993@gmail.com",
         subject: `New booking: ${clientName} - ${adminFormattedDate}`,
         html: adminEmailHtml,

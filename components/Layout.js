@@ -14,6 +14,7 @@ import Header from '../components/Header';
 import TopLeftImg from '../components/TopLeftImg';
 import GoogleAnalytics from '../components/GoogleAnalytics';
 import CookieConsent from '../components/CookieConsent';
+import ChatBot from '../components/ChatBot';
 
 const Layout = ({ children }) => {
   return (
@@ -22,6 +23,7 @@ const Layout = ({ children }) => {
     >
       <GoogleAnalytics />
       <CookieConsent />
+      <ChatBot />
       <TopLeftImg />
       <Nav />
       <Header />

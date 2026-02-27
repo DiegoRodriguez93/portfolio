@@ -40,7 +40,8 @@
     "yourTime": "Tu horario",
     "meetingLink": "Link de la Reunion",
     "addToCalendar": "Agregar a Google Calendar",
-    "bookAnother": "Agendar otra reunion"
+    "bookAnother": "Agendar otra reunion",
+    "checkSpam": "¿No ves el email? Revisá tu carpeta de spam o correo no deseado."
   },
   "errors": {
     "loadSlots": "No se pudieron cargar los horarios. Por favor intenta de nuevo.",

@@ -40,7 +40,8 @@
     "yourTime": "Your time",
     "meetingLink": "Meeting Link",
     "addToCalendar": "Add to Google Calendar",
-    "bookAnother": "Book another meeting"
+    "bookAnother": "Book another meeting",
+    "checkSpam": "Don't see the email? Check your spam or junk folder."
   },
   "errors": {
     "loadSlots": "Could not load available slots. Please try again.",

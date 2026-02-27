@@ -503,7 +503,8 @@ export default function SchedulePage() {
               >
                 <div className="text-5xl mb-4">🎉</div>
                 <h3 className="text-white font-bold text-2xl mb-2">{t("schedule:success.title")}</h3>
-                <p className="text-white/60 mb-6">{t("schedule:success.subtitle")}</p>
+                <p className="text-white/60 mb-3">{t("schedule:success.subtitle")}</p>
+                <p className="text-white/40 text-sm mb-6">📬 {t("schedule:success.checkSpam")}</p>
 
                 <div className="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6 text-left">
                   <p className="text-white/60 text-sm mb-1">{t("schedule:success.yourTime")}</p>
