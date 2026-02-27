@@ -1,41 +1,11 @@
-import { useEffect, useState, useRef } from "react";
-import { useRouter } from "next/router";
+import { useContext } from "react";
 import Link from "next/link";
 import Socials from "../components/Socials";
 import LanguageSwitcher from "../components/LanguageSwitcher";
+import { HeaderVisibilityContext } from "../pages/_app";
 
 const Header = () => {
-  const [visible, setVisible] = useState(true);
-  const lastY = useRef(0);
-  const router = useRouter();
-
-  useEffect(() => {
-    setVisible(true);
-    lastY.current = 0;
-
-    // Small delay so the new motion.div has time to mount
-    const timer = setTimeout(() => {
-      const container = document.querySelector(".overflow-y-auto");
-      if (!container) return;
-
-      const handleScroll = () => {
-        const currentY = container.scrollTop;
-        if (currentY < 20) {
-          setVisible(true);
-        } else if (currentY > lastY.current) {
-          setVisible(false);
-        } else {
-          setVisible(true);
-        }
-        lastY.current = currentY;
-      };
-
-      container.addEventListener("scroll", handleScroll, { passive: true });
-      return () => container.removeEventListener("scroll", handleScroll);
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [router.pathname]);
+  const visible = useContext(HeaderVisibilityContext);
 
   return (
     <header
