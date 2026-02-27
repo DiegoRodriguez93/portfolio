@@ -77,7 +77,7 @@
     },
     "apiSecurity": {
       "title": "Tu API Esta Expuesta: 5 Vulnerabilidades Que la IA Encuentra en Segundos y los Desarrolladores Ignoran",
-      "excerpt": "La mayoria de las APIs llegan a produccion con vulnerabilidades criticas. Conoce las 5 fallas de seguridad mas comunes — autenticacion rota, exposicion excesiva de datos, falta de rate limiting, ataques de inyeccion y control de acceso roto — y como las herramientas de seguridad con IA las detectan en segundos."
+      "excerpt": "La mayoria de las APIs llegan a produccion con vulnerabilidades criticas. Conoce las 5 fallas de seguridad mas comunes: autenticacion rota, exposicion excesiva de datos, falta de rate limiting, ataques de inyeccion y control de acceso roto, y como las herramientas de seguridad con IA las detectan en segundos."
     },
     "aiAgents": {
       "title": "Agentes IA en Produccion: Como Construir Sistemas Multi-Agente Que Realmente Funcionen",

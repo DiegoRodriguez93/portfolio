@@ -5,7 +5,7 @@
     "keywords": "diego rodriguez sobre, ingeniero full stack AI senior, orquestacion LLM, pipelines RAG, prompt engineering, sistemas agentes IA, machine learning, aprendizaje por refuerzo, PyTorch, Python, TypeScript, FastAPI, trading algoritmico, deteccion de riesgos, desarrollador SaaS IA, ingeniero software uruguay"
   },
   "heading": "Conectando la <accent>IA</accent> con productos reales.",
-  "bio": "Ingeniero Full-Stack Senior con mas de 9 anos disenando, construyendo y desplegando aplicaciones de produccion en fintech, plataformas en tiempo real y sistemas potenciados por IA. Especializado en conectar capacidades de AI/ML con productos reales — desde orquestacion de LLMs y pipelines RAG hasta deteccion de riesgos con ML y sistemas de trading algoritmico con aprendizaje por refuerzo.",
+  "bio": "Ingeniero Full-Stack Senior con mas de 9 anos disenando, construyendo y desplegando aplicaciones de produccion en fintech, plataformas en tiempo real y sistemas potenciados por IA. Especializado en conectar capacidades de AI/ML con productos reales, desde orquestacion de LLMs y pipelines RAG hasta deteccion de riesgos con ML y sistemas de trading algoritmico con aprendizaje por refuerzo.",
   "counters": {
     "experience": "Anos de experiencia",
     "projects": "Proyectos completados",
@@ -30,32 +30,32 @@
     "idelsoft": {
       "title": "Ingeniero de Software Senior - iDelsoft",
       "stage": "2025 - Presente",
-      "description": "Plataforma SaaS potenciada por IA para mercado US — generacion de propuestas con LLM, motor de recomendaciones inteligente, infraestructura de procesamiento de pagos"
+      "description": "Plataforma SaaS potenciada por IA para mercado US: generacion de propuestas con LLM, motor de recomendaciones inteligente, infraestructura de procesamiento de pagos"
     },
     "proxify": {
       "title": "Ingeniero de Software Senior - Proxify",
       "stage": "2025",
-      "description": "Gateway de pagos nativo con IA (protocolo x402) — procesamiento autonomo de transacciones por agentes IA, interfaces de tool/function calling para agentes LLM"
+      "description": "Gateway de pagos nativo con IA (protocolo x402): procesamiento autonomo de transacciones por agentes IA, interfaces de tool/function calling para agentes LLM"
     },
     "gaming": {
       "title": "Ingeniero Full-Stack Senior - Plataforma Gaming",
       "stage": "2024 - 2025",
-      "description": "Plataforma de alto trafico en tiempo real — scoring de riesgo con ML (94% precision), deteccion de fraude, pipelines de deteccion de anomalias, arquitectura WebSocket"
+      "description": "Plataforma de alto trafico en tiempo real: scoring de riesgo con ML (94% precision), deteccion de fraude, pipelines de deteccion de anomalias, arquitectura WebSocket"
     },
     "encora": {
       "title": "Desarrollador Frontend Senior - Encora",
       "stage": "2021 - 2023",
-      "description": "SaaS Fintech — Lidere arquitectura frontend con React/Next.js, dashboards de visualizacion de datos en tiempo real, mentoria de equipo de ingenieria"
+      "description": "SaaS Fintech: lidere arquitectura frontend con React/Next.js, dashboards de visualizacion de datos en tiempo real, mentoria de equipo de ingenieria"
     },
     "codigo": {
       "title": "Desarrollador Full-Stack - Codigo del Sur",
       "stage": "2020 - 2021",
-      "description": "SaaS de Seguros — APIs serverless con AWS Lambda, motores de formularios dinamicos, integracion de APIs con validacion de outputs estructurados"
+      "description": "SaaS de Seguros: APIs serverless con AWS Lambda, motores de formularios dinamicos, integracion de APIs con validacion de outputs estructurados"
     },
     "vida": {
       "title": "Desarrollador Full-Stack - Vida Servicio",
       "stage": "2016 - 2020",
-      "description": "10+ aplicaciones web y moviles en produccion — React, Node.js, PHP/Laravel, APIs GraphQL, React Native, Firebase"
+      "description": "10+ aplicaciones web y moviles en produccion: React, Node.js, PHP/Laravel, APIs GraphQL, React Native, Firebase"
     }
   },
   "aiExpertiseItems": {

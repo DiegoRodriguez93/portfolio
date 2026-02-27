@@ -77,7 +77,7 @@
     },
     "apiSecurity": {
       "title": "Your API Is Exposed: 5 Vulnerabilities AI Finds in Seconds That Developers Ignore",
-      "excerpt": "Most APIs ship to production with critical vulnerabilities. Learn the 5 most common security flaws — broken authentication, excessive data exposure, missing rate limiting, injection attacks, and broken access control — and how AI security tools catch them in seconds."
+      "excerpt": "Most APIs ship to production with critical vulnerabilities. Learn the 5 most common security flaws: broken authentication, excessive data exposure, missing rate limiting, injection attacks, and broken access control, and how AI security tools catch them in seconds."
     },
     "aiAgents": {
       "title": "AI Agents in Production: How to Build Multi-Agent Systems That Actually Work",
