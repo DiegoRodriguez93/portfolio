@@ -81,7 +81,10 @@ export default async function handler(req, res) {
       let blocked = false;
       for (const block of blockedDocs) {
         if (block.type === "specific") {
-          if (overlap(slotStart, slotEnd, block.startUtc.toDate(), block.endUtc.toDate())) { blocked = true; break; }
+          if (!block.startUtc || !block.endUtc) continue;
+          const bStart = typeof block.startUtc.toDate === "function" ? block.startUtc.toDate() : new Date(block.startUtc);
+          const bEnd   = typeof block.endUtc.toDate === "function" ? block.endUtc.toDate() : new Date(block.endUtc);
+          if (overlap(slotStart, slotEnd, bStart, bEnd)) { blocked = true; break; }
         } else if (block.type === "recurring" && block.dayOfWeek === dayOfWeek) {
           const bStart = new Date(Date.UTC(y, m - 1, d, Number(block.startHourUtc), Number(block.startMinuteUtc ?? 0)));
           const bEnd   = new Date(Date.UTC(y, m - 1, d, Number(block.endHourUtc),   Number(block.endMinuteUtc ?? 0)));
